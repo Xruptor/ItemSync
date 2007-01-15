@@ -1,4 +1,4 @@
-﻿## Interface: 20003
+## Interface: 20003
 ## Title: ItemSync |cff7fff7f -Ace2-|r
 ## Notes: ItemSync the happy item gatherer and toolkit.
 ## Version: r10000
@@ -7,10 +7,11 @@
 ## X-Category: Inventory
 ## X-eMail: derkyle@gmail.com
 ## X-Website: http://www.manaflux.com
-## X-Embeds: Ace2, DewdropLib, Crayon-2.0, Metrognome-2.0
 ## X-WoWIPortal: derkyle
+## X-Embeds: Ace2, DewdropLib, CrayonLib, Metrognome
+## OptionalDeps: Ace2
 ## SavedVariables: ISyncDB
-## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib
+
 
 libs\AceLibrary\AceLibrary.lua
 libs\AceOO-2.0\AceOO-2.0.lua
