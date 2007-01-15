@@ -10,6 +10,7 @@
 -Added: a Total Invalid count to the main window frame.
 -Added: ItemSync will now remember your last dropdown sorting selection.
 -Added: support for free floating minimap button.
+-Added: ItemSync is now on the WOWAce.com SVN Repository.
 
 
 [[[VERSION r10000]]]:
