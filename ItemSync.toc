@@ -9,7 +9,7 @@
 ## X-Website: http://www.manaflux.com
 ## X-WoWIPortal: derkyle
 ## X-Embeds: Ace2, DewdropLib, CrayonLib, Metrognome
-## OptionalDeps: Ace2
+## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib
 ## SavedVariables: ISyncDB
 
 
