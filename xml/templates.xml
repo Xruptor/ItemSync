@@ -1,0 +1,750 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+ 
+ 
+	<Frame name="ISyncFrame_MainTemplate" virtual="true" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true">
+			<Size>
+				<AbsDimension x="360" y="495"/>
+			</Size>
+			<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+				<BackgroundInsets>
+					<AbsInset left="11" right="12" top="12" bottom="11"/>
+				</BackgroundInsets>
+				<TileSize>
+					<AbsValue val="32"/>
+				</TileSize>
+				<EdgeSize>
+					<AbsValue val="32"/>
+				</EdgeSize>
+			</Backdrop>
+			<Layers>
+				<Layer level="ARTWORK">
+					<FontString name="$parentInfo" inherits="GameFontNormalSmall" justifyH="LEFT">
+						<Anchors>
+							<Anchor point="TOP"> 
+								<Offset>
+									<AbsDimension x="80" y="-26"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</FontString>
+					
+				</Layer>
+			</Layers>
+			<Frames>
+			
+				<Frame name="$parentHeader_Box" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+					<Size>
+						<AbsDimension x="338" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="0" y="255"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="BACKGROUND">
+							<FontString name="$parentText" inherits="GameFontNormal" text="">
+								<Anchors>
+									<Anchor point="CENTER"> 
+										<Offset>
+											<AbsDimension x="9" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+					<Scripts>
+						<OnLoad>
+
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(162/255, 217/255, 111/255, 0.7);
+						</OnLoad>
+						<OnMouseDown>
+							if( arg1 == "LeftButton" ) then
+								GameTooltip:Hide();
+								getglobal(this:GetParent():GetName()):StartMoving();
+							end
+						</OnMouseDown>
+						<OnMouseUp>
+							getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+						</OnMouseUp>
+					</Scripts>
+				</Frame>
+			
+				<Button name="$parent_CloseButton" inherits="UIPanelCloseButton" toplevel="true">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="$parentHeader_Box" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="9" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+			</Frames>
+	
+ 
+ 			<Scripts>
+		     		<OnMouseDown> this:StartMoving();  </OnMouseDown>
+		      		<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
+		      		<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+ 			</Scripts>
+	
+	</Frame>
+	
+
+
+	<Button name="ISyncItemButtonTemplate" virtual="true">
+			<Size>
+				<AbsDimension x="300" y="16"/>
+			</Size>
+			<Scripts>
+				<OnLoad>
+					this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				</OnLoad>
+				<OnClick>
+					if (ItemSync) then ItemSync:ButtonClick(arg1); end
+				</OnClick>
+				<OnEnter>
+					if (ItemSync) then ItemSync:ButtonEnter(); end
+				</OnEnter>
+				<OnLeave>
+					if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
+				</OnLeave>
+			</Scripts>
+			
+			<ButtonText name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+				<Size>
+					<AbsDimension x="275" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="20" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors> 
+			</ButtonText>
+		<Layers>
+			<Layer level="ARTWORK">
+
+				<Texture name="$parentSubItem" file="Interface\MoneyFrame\Arrow-Right-Down">
+					<Size>
+						<AbsDimension x="12" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="20" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Button>
+	
+	
+
+	<Frame name="ISync_GB_Template" virtual="true">
+		<Size>
+		    <AbsDimension x="90" y="16"/>
+		</Size>
+		<Frames>
+		    <Button name="$parent_Blip">
+			<Size>
+			    <AbsDimension x="26" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT">
+				<Offset>
+				    <AbsDimension x="-13" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<NormalTexture name="$parentTexture" file="Interface\AddOns\ItemSync\images\Input">
+			    <Size>
+				<AbsDimension x="17" y="17"/>
+			    </Size>
+			    <Anchors>
+				<Anchor point="LEFT"/>
+			    </Anchors>
+			</NormalTexture>
+			<PushedTextOffset>
+			    <AbsDimension x="0" y="0"/>
+			</PushedTextOffset>
+
+			<Scripts>
+				<OnLoad>
+				</OnLoad>
+				<OnEnter>
+				</OnEnter>
+				<OnLeave>					
+				</OnLeave>
+				<OnClick>
+				</OnClick>
+			</Scripts>
+   						
+   			</Button>
+		</Frames>
+	</Frame>
+	
+	
+	<Button name="ISync_FavoritesItemButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="300" y="16"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				if (ItemSync) then ItemSync:Fav_ButtonClick(arg1); end
+			</OnClick>
+			<OnEnter>
+				if (ItemSync) then ItemSync:Fav_ButtonEnter(); end
+			</OnEnter>
+			<OnLeave>
+				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
+			</OnLeave>
+		</Scripts>
+
+		<ButtonText name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+			<Size>
+				<AbsDimension x="275" y="12"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="20" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors> 
+		</ButtonText>
+		<Layers>
+			<Layer level="ARTWORK">
+
+				<Texture name="$parentSubItem" file="Interface\MoneyFrame\Arrow-Right-Down">
+					<Size>
+						<AbsDimension x="12" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="20" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Button>
+	
+	
+	<Frame name="ISync_FavoritesRemItem_ButtonTemplate" virtual="true">
+		<Size>
+		    <AbsDimension x="90" y="16"/>
+		</Size>
+		<Frames>
+		    <Button name="$parent_Blip">
+			<Size>
+			    <AbsDimension x="26" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT">
+				<Offset>
+				    <AbsDimension x="-13" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<NormalTexture name="$parentTexture" file="Interface\AddOns\ItemSync\images\Favorite_Delete">
+			    <Size>
+				<AbsDimension x="17" y="17"/>
+			    </Size>
+			    <Anchors>
+				<Anchor point="LEFT"/>
+			    </Anchors>
+			</NormalTexture>
+			<PushedTextOffset>
+			    <AbsDimension x="0" y="0"/>
+			</PushedTextOffset>
+			<Scripts>
+				<OnLoad>
+					this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				</OnLoad>
+				<OnEnter>
+					if (ItemSync) then  ItemSync:Fav_DeleteButton(this:GetParent(), 1); end
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide();						
+				</OnLeave>
+				<OnClick>
+					if (ItemSync) then  ItemSync:Fav_DeleteButton(this:GetParent(), 2); end
+				</OnClick>
+			</Scripts>
+   						
+   			</Button>
+		</Frames>
+	</Frame>
+	
+	
+	<CheckButton name="ISync_TabTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\SpellBook\SpellBook-SkillLineTab">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-3" y="11"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				if (ItemSync) then ItemSync:TabClick(); end
+			</OnClick>
+			<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+				GameTooltip:SetText(this.tipinfo);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<NormalTexture/>
+		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+		<CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD"/>
+	</CheckButton>
+	
+	
+	<Button name="ISync_DD_Template" virtual="true">
+			<Size>
+				<AbsDimension x="160" y="26"/>
+			</Size>
+			<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background"
+					  edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<EdgeSize>
+					<AbsValue val="16"/>
+				</EdgeSize>
+				<TileSize>
+					<AbsValue val="16"/>
+				</TileSize>
+				<BackgroundInsets>
+					<AbsInset left="5" right="5" top="5" bottom="5"/>
+				</BackgroundInsets>
+			</Backdrop>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<FontString name="$parentLabel" inherits="GameFontNormalSmall">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="5" y="1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</FontString>
+					<FontString name="$parentSelection" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+						<Size>
+							<AbsDimension x="0" y="16"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT">
+								<Offset>
+									<AbsDimension x="-26" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</FontString>
+				</Layer>
+			</Layers>
+			<Frames>
+				<Button name="$parentButton">
+					<Size>
+						<AbsDimension x="24" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if( this:GetParent().ToggleMenu ) then
+								this:GetParent().ToggleMenu();
+							end
+						</OnClick>
+					</Scripts>
+					<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up">
+						<Size>
+							<AbsDimension x="24" y="24"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</NormalTexture>
+					<PushedTexture name="$parentPushedTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down">
+						<Size>
+							<AbsDimension x="24" y="24"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</PushedTexture>
+					<DisabledTexture name="$parentDisabledTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled">
+						<Size>
+							<AbsDimension x="24" y="24"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</DisabledTexture>
+					<HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD">
+						<Size>
+							<AbsDimension x="24" y="24"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</HighlightTexture>
+				</Button>
+			</Frames>
+			<Scripts>
+				<OnClick>
+					if( this.ToggleMenu ) then
+						this.ToggleMenu();
+					end
+				</OnClick>
+				<OnHide>
+					if( this.OnHide ) then
+						this.OnHide();
+					end
+				</OnHide>
+				<OnEnter>
+					if( this.OnEnter ) then
+						this.OnEnter();
+					end
+				</OnEnter>
+				<OnLeave>
+					if( this.OnLeave ) then
+						this.OnLeave();
+					end
+				</OnLeave>
+			</Scripts>
+	</Button>
+		
+		
+	<EditBox name="ISync_SearchBoxTemplate" letters="256" historyLines="0" virtual="true" autoFocus="false">
+		<Size>
+			<AbsDimension x="200" y="20"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-FilterBorder">
+					<Size>
+						<AbsDimension x="12" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-11" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.09375" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\ClassTrainerFrame\UI-ClassTrainer-FilterBorder">
+					<Size>
+						<AbsDimension x="195" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.09375" right="0.90625" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\ClassTrainerFrame\UI-ClassTrainer-FilterBorder">
+					<Size>
+						<AbsDimension x="12" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEscapePressed>
+				this:ClearFocus()
+			</OnEscapePressed>
+			<OnEnterPressed>
+				
+				if (this:GetName() == "ISyncMainFrame_QuickSearch") then
+					ISync_SearchFrameName_Search:SetText("");
+				elseif (this:GetName() == "ISync_SearchFrameName_Search") then
+					ISyncMainFrame_QuickSearch:SetText("");
+				end
+
+				if (ItemSync) then ItemSync:Main_Refresh(); end
+				
+			</OnEnterPressed>
+			<OnClick>this:SetFocus();</OnClick>
+			<OnLeave></OnLeave>
+			<OnEnter></OnEnter>
+		</Scripts>
+		<FontString inherits="ChatFontNormal"/>
+	</EditBox>
+	
+	
+	
+	
+	<Button name="ISync_QuickBagButtonTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="350"  y="27"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="190"   y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="43" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentLeft" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10"   y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="34" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10"   y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.75" right="0.828125" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10"   y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.75" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentItem">
+				<Size>
+					<AbsDimension x="25"   y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BORDER">
+						<Texture name="$parentIconTexture"/>
+						<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="true">
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-5" y="2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentStock" inherits="NumberFontNormalYellow" justifyH="LEFT" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						if (ItemSync) then ItemSync:QuickBag_ItemClick(arg1); end
+					</OnClick>
+					<OnEnter>
+						if (ItemSync) then ItemSync:QuickBag_ItemEnter(); end
+					</OnEnter>
+					<OnLeave>
+						if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
+					</OnLeave>
+				</Scripts>
+				<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+			</Button>
+			<Frame name="$parentMoneyFrame" inherits="SmallMoneyFrameTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						SmallMoneyFrame_OnLoad();
+						MoneyFrame_SetType("AUCTION");
+					</OnLoad>
+				</Scripts>
+			</Frame>
+
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+
+			</OnLoad>
+			<OnClick>
+				if (ItemSync) then ItemSync:QuickBag_ItemClick(arg1); end
+			</OnClick>
+			<OnEnter>
+				if (ItemSync) then ItemSync:QuickBag_ItemEnter(); end
+			</OnEnter>
+			<OnLeave>
+				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
+			</OnLeave>
+			
+		</Scripts>
+		<HighlightTexture name="$parentHighlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="315"   y="22"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="33" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
+		</HighlightTexture>
+	</Button>
+	
+	
+	
+	<Frame name="ItemSync_CountFrame" toplevel="true" enableMouse="true" movable = "true" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="75" y="27"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+			</Anchor>
+		</Anchors>
+
+		<TitleRegion/>
+		<Backdrop name="$parentBackdrop" bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT" text="">
+					<Anchors>
+						<Anchor point="CENTER"> 
+							<Offset>
+								<AbsDimension x="8" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+			</Layer>
+			
+			<Layer level="OVERLAY">
+			
+				<Texture name="$parent_Bag" file="Interface\Icons\INV_Misc_Bag_13.png" hidden="false">
+					<Size>
+						<AbsDimension x="16" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="5" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			
+			</Layer>
+					
+		</Layers>
+
+		<Frames>
+		</Frames>
+
+		<Scripts>
+			<OnEnter>
+				if (ItemSync) then ItemSync:ItemCount_OnEnter(); end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown> this:StartMoving();  </OnMouseDown>
+			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(this, arg1); end</OnMouseUp>
+			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+		</Scripts>
+		
+	</Frame>
+	
+	
+ </Ui>

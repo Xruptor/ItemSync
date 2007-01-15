@@ -1,0 +1,459 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+
+ <Script file="QuickBag.lua"/>
+	
+	<Frame name="ISync_QuickBagFrame"  toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+			<Size>
+				<AbsDimension x="415" y="480"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+				<BackgroundInsets>
+					<AbsInset left="11" right="12" top="12" bottom="11"/>
+				</BackgroundInsets>
+				<TileSize>
+					<AbsValue val="32"/>
+				</TileSize>
+				<EdgeSize>
+					<AbsValue val="32"/>
+				</EdgeSize>
+			</Backdrop>
+ 			<Layers>
+  				<Layer level="BACKGROUND">
+  
+  					<Texture file="Interface\AddOns\ItemSync\images\BackDrop_QuickBag">
+  						<Size>
+  							<AbsDimension x="393" y="460"></AbsDimension>
+  						</Size>
+  						<Anchors>
+  							<Anchor point="LEFT">
+  								<Offset>
+  									<AbsDimension x="10" y="0"></AbsDimension>
+  								</Offset>
+  							</Anchor>
+  						</Anchors>
+  
+  					</Texture>
+  			
+ 				</Layer>
+ 			</Layers>
+			<Frames>
+	
+				<Frame name="ISync_QuickBagFrame_HeaderBox" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+					<Size>
+						<AbsDimension x="395" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_QuickBagFrame" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="BACKGROUND">
+							<FontString name="ISync_QuickBagFrame_HeaderBox_Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="CENTER"> 
+										<Offset>
+											<AbsDimension x="9" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+					<Scripts>
+						<OnLoad>
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(1.0, 128/256, 0.0, 0.7);
+						</OnLoad>
+						<OnMouseDown>
+							if( arg1 == "LeftButton" ) then
+								GameTooltip:Hide();
+								getglobal(this:GetParent():GetName()):StartMoving();
+							end
+						</OnMouseDown>
+						<OnMouseUp>
+							getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+						</OnMouseUp>
+					</Scripts>
+				</Frame>
+
+
+				<Button name="ISync_QuickBagFrame_CloseButton" inherits="UIPanelCloseButton" toplevel="true">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ISync_QuickBagFrame_HeaderBox" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="9" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+		
+		
+		
+				
+				    <CheckButton name="ISync_Quickbag_Opt0" virtual="true">
+					<Size>
+					    <AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+					    <Anchor point="LEFT" relativeTo="ISync_QuickBagFrame">
+						<Offset>
+						    <AbsDimension x="120" y="207"/>
+						</Offset>
+					    </Anchor>
+					</Anchors>
+					<Layers>
+					    <Layer level="ARTWORK">
+						<FontString name="ISync_Quickbag_Opt0Text" inherits="GameFontHighlightSmall">
+						    <Anchors>
+							<Anchor point="RIGHT" relativePoint="LEFT">
+							    <Offset>
+								<AbsDimension x="0" y="1"/>
+							    </Offset>
+							</Anchor>
+						    </Anchors>
+						</FontString>
+					    </Layer>
+					</Layers>
+					<Scripts>
+					    <OnClick>
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",0,this:GetChecked()); end
+					    </OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+					<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+					<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+					<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+				    </CheckButton>
+				    
+				    
+				
+				    <CheckButton name="ISync_Quickbag_Opt1" virtual="true">
+					<Size>
+					    <AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+					    <Anchor point="LEFT" relativeTo="ISync_QuickBagFrame">
+						<Offset>
+						    <AbsDimension x="250" y="207"/>
+						</Offset>
+					    </Anchor>
+					</Anchors>
+					<Layers>
+					    <Layer level="ARTWORK">
+						<FontString name="ISync_Quickbag_Opt1Text" inherits="GameFontHighlightSmall">
+						    <Anchors>
+							<Anchor point="RIGHT" relativePoint="LEFT">
+							    <Offset>
+								<AbsDimension x="0" y="1"/>
+							    </Offset>
+							</Anchor>
+						    </Anchors>
+						</FontString>
+					    </Layer>
+					</Layers>
+					<Scripts>
+					    <OnClick>
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",1,this:GetChecked()); end
+					    </OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+					<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+					<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+					<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+				    </CheckButton>
+
+
+				    <CheckButton name="ISync_Quickbag_Opt2" virtual="true">
+					<Size>
+					    <AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+					    <Anchor point="BOTTOMLEFT" relativeTo="ISync_QuickBagFrame">
+						<Offset>
+						    <AbsDimension x="80" y="10"/>
+						</Offset>
+					    </Anchor>
+					</Anchors>
+					<Layers>
+					    <Layer level="ARTWORK">
+						<FontString name="ISync_Quickbag_Opt2Text" inherits="GameFontHighlightSmall">
+						    <Anchors>
+							<Anchor point="RIGHT" relativePoint="LEFT">
+							    <Offset>
+								<AbsDimension x="0" y="1"/>
+							    </Offset>
+							</Anchor>
+						    </Anchors>
+						</FontString>
+					    </Layer>
+					</Layers>
+					<Scripts>
+					    <OnClick>
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",2,this:GetChecked()); end
+					    </OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+					<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+					<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+					<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+				    </CheckButton>
+				    
+				    
+				    <CheckButton name="ISync_Quickbag_Opt3" virtual="true">
+					<Size>
+					    <AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+					    <Anchor point="BOTTOMLEFT" relativeTo="ISync_QuickBagFrame">
+						<Offset>
+						    <AbsDimension x="180" y="10"/>
+						</Offset>
+					    </Anchor>
+					</Anchors>
+					<Layers>
+					    <Layer level="ARTWORK">
+						<FontString name="ISync_Quickbag_Opt3Text" inherits="GameFontHighlightSmall">
+						    <Anchors>
+							<Anchor point="RIGHT" relativePoint="LEFT">
+							    <Offset>
+								<AbsDimension x="0" y="1"/>
+							    </Offset>
+							</Anchor>
+						    </Anchors>
+						</FontString>
+					    </Layer>
+					</Layers>
+					<Scripts>
+					    <OnClick>
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",3,this:GetChecked()); end
+					    </OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+					<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+					<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+					<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+				    </CheckButton>
+				    
+					<Button name="ISync_QB_Button1" inherits="ISync_QuickBagButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="15" y="-40"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button2" inherits="ISync_QuickBagButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button3" inherits="ISync_QuickBagButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button4" inherits="ISync_QuickBagButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button5" inherits="ISync_QuickBagButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button6" inherits="ISync_QuickBagButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button7" inherits="ISync_QuickBagButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button8" inherits="ISync_QuickBagButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button9" inherits="ISync_QuickBagButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button10" inherits="ISync_QuickBagButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button11" inherits="ISync_QuickBagButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button10" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button12" inherits="ISync_QuickBagButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button11" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button13" inherits="ISync_QuickBagButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button12" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button14" inherits="ISync_QuickBagButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button13" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ISync_QB_Button15" inherits="ISync_QuickBagButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QB_Button14" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<ScrollFrame name="ISync_QuickBag_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="296" y="354"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="ISync_QuickBagFrame">
+								<Offset>
+									<AbsDimension x="80" y="-65"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture name="$parentScrollBarTop">
+									<Size>
+										<AbsDimension x="31" y="256"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="$parentScrollBarScrollUpButton">
+											<Offset>
+												<AbsDimension x="0" y="5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+								</Texture>
+								<Texture>
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOM" relativeTo="$parentScrollBarScrollDownButton">
+											<Offset>
+												<AbsDimension x="0" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(16, ItemSync.QuickBag_UpdateScrollFrame);
+							</OnVerticalScroll>
+						</Scripts>
+					</ScrollFrame>
+			</Frames>
+			<Scripts>
+				<OnShow>
+					if (ItemSync) then ItemSync:QuickBag_Refresh(); end
+					PlaySound("igBackPackOpen");
+				</OnShow>
+				<OnLoad>
+					ISync_QuickBagFrame_HeaderBox_Text:SetText(ISL["QuickBag"]);
+					ISync_Quickbag_Opt0Text:SetText(ISL["QuickBag_ShowStack"]);
+					ISync_Quickbag_Opt1Text:SetText(ISL["QuickBag_HideEmpty"]);
+					ISync_Quickbag_Opt2Text:SetText(ISL["QuickBag_SortPrice"]);
+					ISync_Quickbag_Opt3Text:SetText(ISL["QuickBag_SortRarity"]);
+
+				</OnLoad> 
+				<OnHide>
+					PlaySound("igBackPackClose");
+
+				</OnHide>
+		     		<OnMouseDown> this:StartMoving();  </OnMouseDown>
+		      		<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
+		      		<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+			</Scripts>
+	</Frame>
+
+
+ </Ui>
+

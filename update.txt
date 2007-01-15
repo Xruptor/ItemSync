@@ -1,0 +1,45 @@
+[[[VERSION r10001]]]:
+-Fixed: a bug where users couldn't add favorites.
+-Fixed: a bug where the rarity filtering wasn't working properly.
+-Fixed: a bug where valid items where being shown as Unknown on the main window.
+-Fixed: a minor glitch with Ace2 and EnhTooltip.  ItemSync will now force display and hide.
+-Fixed: you can no loger scroll the main window while force validating and item.
+-Added: two new functions ItemSync:ItemCount_OnEnter() and ItemSync:ItemCount_OnMouseUp().
+-Added: a tooltip to the ItemSync Counter Frame.
+-Added: the ability to Control+Left-Click the ItemSync Counter frame to toggle ItemSync.
+-Added: a Total Invalid count to the main window frame.
+-Added: ItemSync will now remember your last dropdown sorting selection.
+-Added: support for free floating minimap button.
+
+
+[[[VERSION r10000]]]:
+-ItemSync has been Aced! Ace2 to be exact.
+-Rebuilt many of the function structures.
+-Added the ability to search items by resistances.
+-Items with the same name but different stats are now displayed in a pale yellow as a subitem of the parent.
+-Added a check to see wether or not a bag is an ammo bag (soul bag, herb bag, etc..) and ignore it.  This will prevent lag.
+-Added checks for empty variables.
+-Added the ability to update an item forcefully then have it refresh itself on the main window display.
+-Added a better force routine then in the old versions.
+-Added a timer to display the results of the force validation.
+-Added user friendly icons to the main display.
+-Enhanced the way that tooltips are hooked.
+-Fixed several key issues with tooltips.
+-Removed the price text display from original ItemSync.
+-Enhanced the way that tooltips are displayed.
+-Slightly altered the way that tooltips are parsed.
+-Enhanced the way that items are grabbed from chat.
+-Fixed an issue where the text color of items wouldn't update on the main display.
+-Fixed an issue where the close button on the upper right hand corner didn't always allow focus from the mouse.
+-Changed the top header bar for frames slightly.
+-Updated the search parsing routine.
+-Updated the optimizing and validation routines.  (More efficient)
+-Added several item checks to maintain integrity.
+-ItemSync now parses out negative numbers within the itemID stream. (LOL freaking blizzard)
+-Mouse clicks have been updated to make it easier for folks to use.
+--
+--To many feature updates and rewrites to list!  Enjoy!!!
+
+Known Issues:
+-Right clicking on the QuickBag does noting right now till I find a secure method to use the secure functions for using items.
+(If you want to sell and item you have to pick it up and put it in the vendor window.)

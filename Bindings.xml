@@ -1,0 +1,30 @@
+<Bindings>
+	<Binding name="ITEMSYNC" header="ITEMSYNC">
+		if (ISync_MainFrame:IsVisible()) then
+			ISync_MainFrame:Hide();
+		else
+			ISync_MainFrame:Show();
+		end
+	</Binding>
+	<Binding name="FAVORITES" header="ITEMSYNC">
+		if (ISync_Favorites:IsVisible()) then
+			ISync_Favorites:Hide();
+		else
+			ISync_Favorites:Show();
+		end
+	</Binding>
+	<Binding name="ITEMID" header="ITEMSYNC">
+		if (ISync_ItemIDFrame:IsVisible()) then
+			ISync_ItemIDFrame:Hide();
+		else
+			ISync_ItemIDFrame:Show();
+		end
+	</Binding>
+	<Binding name="QUICKBAG" header="ITEMSYNC">
+		if (ISync_QuickBagFrame:IsVisible()) then
+			ISync_QuickBagFrame:Hide();
+		else
+			ISync_QuickBagFrame:Show();
+		end
+	</Binding>
+</Bindings>

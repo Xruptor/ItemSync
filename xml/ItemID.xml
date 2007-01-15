@@ -1,0 +1,195 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+ 
+ <Script file="ItemID.lua"/>
+ 
+ 	  <Frame name="ISync_ItemIDFrame"  toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+ 		<Size>
+ 			<AbsDimension x="310" y="120"/>
+ 		</Size>
+ 		<Anchors>
+ 			<Anchor point="TOP" relativeTo="ISync_MainFrame" relativePoint="TOP">
+ 				<Offset>
+ 					<AbsDimension x="0" y="140"/>
+ 				</Offset>
+ 			</Anchor>
+ 		</Anchors>
+ 		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+ 			<BackgroundInsets>
+ 				<AbsInset left="11" right="12" top="12" bottom="11"/>
+ 			</BackgroundInsets>
+ 			<TileSize>
+ 				<AbsValue val="32"/>
+ 			</TileSize>
+ 			<EdgeSize>
+ 				<AbsValue val="32"/>
+ 			</EdgeSize>
+ 		</Backdrop>
+ 	    <Layers>
+		<Layer level="BACKGROUND">
+
+			<Texture file="Interface\AddOns\ItemSync\images\BackDrop_ItemID">
+				<Size>
+					<AbsDimension x="288" y="100"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+
+		</Layer>	
+		<Layer level="ARTWORK">
+
+			<FontString name="ISync_ItemIDFrameFormatLabel" inherits="GameFontNormal">
+			  <Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+			      <Offset>
+				<AbsDimension x="20" y="-13"/>
+			      </Offset>
+			    </Anchor>
+			  </Anchors>
+			</FontString>
+			
+			<FontString name="ISync_ItemIDFrameLabel" inherits="GameFontNormal">
+			  <Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+			      <Offset>
+				<AbsDimension x="20" y="-35"/>
+			      </Offset>
+			    </Anchor>
+			  </Anchors>
+			</FontString>
+			<FontString name="ISync_ItemIDFrameWarnLabel" inherits="GameFontNormal">
+				<Anchors>
+					<Anchor point="TOP"> 
+						<Offset>
+							<AbsDimension x="0" y="-58"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+ 	    </Layers>
+ 	    <Frames>
+ 	    
+ 	 
+		<Frame name="ISync_ItemIDFrameHeader_Box" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+			<Size>
+				<AbsDimension x="289" y="30"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="ISync_ItemIDFrame" relativePoint="LEFT">
+					<Offset>
+						<AbsDimension x="0" y="68"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<FontString name="ISync_ItemIDFrameText" inherits="GameFontNormal">
+						<Anchors>
+							<Anchor point="CENTER"> 
+								<Offset>
+									<AbsDimension x="9" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</FontString>
+				</Layer>
+			</Layers>
+			<Scripts>
+				<OnLoad>
+
+					this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+					this:SetBackdropColor(153/255, 102/255, 1, 0.7);
+				</OnLoad>
+				<OnMouseDown>
+					if( arg1 == "LeftButton" ) then
+						GameTooltip:Hide();
+						getglobal(this:GetParent():GetName()):StartMoving();
+					end
+				</OnMouseDown>
+				<OnMouseUp>
+					getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+				</OnMouseUp>
+			</Scripts>
+		</Frame>
+				
+ 			
+		<Button name="ISync_ItemIDFrame_CloseButton" inherits="UIPanelCloseButton" toplevel="true">
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="ISync_ItemIDFrameHeader_Box" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="9" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+				
+				
+				
+ 		      <EditBox name="ISync_ItemIDFrameEdit" inherits="InputBoxTemplate" letters="40" historyLines="10" multiLine="false" autoFocus="false">
+ 			<Size>
+ 			  <AbsDimension x="155" y="30"/>
+ 			</Size>
+ 			<Anchors>
+ 			  <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="ISync_ItemIDFrameLabel">
+ 			    <Offset>
+ 			      <AbsDimension x="10" y="8"/>
+ 			    </Offset>
+ 			  </Anchor>
+ 			</Anchors>
+ 			<Scripts>
+ 			  <OnEnterPressed>
+ 			   	if(ItemSync) then ItemSync:ItemID_Search(); end
+ 			  </OnEnterPressed>
+ 			</Scripts>
+ 		      </EditBox>
+ 		      <Button name="ISync_ItemIDFrameSearchButton" inherits="OptionsButtonTemplate">
+ 			<Size>
+ 			  <AbsDimension x="70" y="21"/>
+ 			</Size>
+ 			<Anchors>
+ 			  <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="ISync_ItemIDFrameEdit">
+ 			    <Offset>
+ 			      <AbsDimension x="0" y="-6"/>
+ 			    </Offset>
+ 			  </Anchor>
+ 			</Anchors>
+ 			<Scripts>
+ 			  <OnLoad>
+ 			  </OnLoad>
+ 			  <OnClick>
+ 			  	if(ItemSync) then ItemSync:ItemID_Search(); end
+ 			  </OnClick>
+ 			</Scripts>
+ 		      </Button>
+ 		</Frames>
+ 		    <Scripts>
+ 		    	<OnShow>
+ 		    		ISync_ItemIDFrameLabel:SetText(ISL["ItemID_Item"]);
+ 		    		
+ 		    		ISync_ItemIDFrameWarnLabel:SetText(ItemSync.crayon:Red(ISL["ItemID_Warn"])..ISL["ItemID_Warn2"]);
+ 
+ 				ISync_ItemIDFrameFormatLabel:SetText(ItemSync.crayon:Colorize("A2D96F", ISL["ItemID_Format"]));
+
+ 		    		ISync_ItemIDFrameSearchButton:SetText(ISL["Search"]);
+ 		    		ISync_ItemIDFrameText:SetText(ISL["ItemID"]);
+ 		    		
+ 		    		PlaySound("igMainMenuOptionCheckBoxOn");
+
+ 		    	</OnShow>
+ 		    	<OnHide>
+ 		    		PlaySound("igMainMenuOptionCheckBoxOff");
+ 		    	</OnHide>
+ 			<OnMouseDown> this:StartMoving();  </OnMouseDown>
+ 			<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
+ 			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+ 		    </Scripts>
+	  </Frame>
+
+
+ </Ui>

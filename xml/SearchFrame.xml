@@ -1,0 +1,363 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+
+ <Script file="SearchFrame.lua"/>
+
+ 	<Frame name="ISync_SearchFrame" inherits="ISyncFrame_MainTemplate" hidden="true" parent="ISync_MainFrame">
+ 			<Size>
+ 				<AbsDimension x="360" y="495"/>
+ 			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ISync_MainFrame" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="32" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+ 			<Layers>
+  				<Layer level="BACKGROUND">
+  
+  					<Texture file="Interface\AddOns\ItemSync\images\BackDrop_Search">
+  						<Size>
+  							<AbsDimension x="338" y="475"></AbsDimension>
+  						</Size>
+  						<Anchors>
+  							<Anchor point="LEFT">
+  								<Offset>
+  									<AbsDimension x="10" y="0"></AbsDimension>
+  								</Offset>
+  							</Anchor>
+  						</Anchors>
+  
+  					</Texture>
+  			
+ 				</Layer>
+ 			</Layers>
+ 			
+ 			<Frames>
+				<Button name="ISync_DD_Location" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+
+				<Button name="ISync_DD_Rarity" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="185" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+				<Button name="ISync_DD_Weapon" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-130"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+				<Button name="ISync_DD_Level" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="185" y="-130"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+				<Button name="ISync_DD_Tradeskill" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-190"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+				<Button name="ISync_DD_Armor" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-250"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+				<Button name="ISync_DD_Shield" inherits="ISync_DD_Template">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-310"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+
+				<CheckButton name="ISync_Search_Resist1" inherits="OptionsCheckButtonTemplate">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="ISync_DD_Level" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (this:GetChecked()) then
+							    PlaySound("igMainMenuOptionCheckBoxOn");
+							else
+							    PlaySound("igMainMenuOptionCheckBoxOff");
+							end
+						</OnClick>
+					</Scripts>
+				</CheckButton>
+
+
+				<CheckButton name="ISync_Search_Resist2" inherits="OptionsCheckButtonTemplate">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="ISync_Search_Resist1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (this:GetChecked()) then
+							    PlaySound("igMainMenuOptionCheckBoxOn");
+							else
+							    PlaySound("igMainMenuOptionCheckBoxOff");
+							end
+						</OnClick>
+					</Scripts>
+				</CheckButton>
+				
+				<CheckButton name="ISync_Search_Resist3" inherits="OptionsCheckButtonTemplate">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="ISync_Search_Resist2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (this:GetChecked()) then
+							    PlaySound("igMainMenuOptionCheckBoxOn");
+							else
+							    PlaySound("igMainMenuOptionCheckBoxOff");
+							end
+						</OnClick>
+					</Scripts>
+				</CheckButton>
+				
+				<CheckButton name="ISync_Search_Resist4" inherits="OptionsCheckButtonTemplate">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="ISync_Search_Resist3" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (this:GetChecked()) then
+							    PlaySound("igMainMenuOptionCheckBoxOn");
+							else
+							    PlaySound("igMainMenuOptionCheckBoxOff");
+							end
+						</OnClick>
+					</Scripts>
+				</CheckButton>
+				
+				<CheckButton name="ISync_Search_Resist5" inherits="OptionsCheckButtonTemplate">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="ISync_Search_Resist4" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (this:GetChecked()) then
+							    PlaySound("igMainMenuOptionCheckBoxOn");
+							else
+							    PlaySound("igMainMenuOptionCheckBoxOff");
+							end
+						</OnClick>
+					</Scripts>
+				</CheckButton>
+
+				<Frame name="ISync_SearchFrame_NameBox" inherits="OptionFrameBoxTemplate">
+					<Size>
+						<AbsDimension x="335" y="60"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_SearchFrame" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="13" y="120"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="BACKGROUND">
+							<FontString name="ISync_SearchFrame_NameBoxText" inherits="GameFontNormalSmall">
+								<Anchors>
+									<Anchor point="CENTER">
+										<Offset>
+											<AbsDimension x="-60" y="20"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+
+					<Frames>
+						<EditBox name="ISync_SearchFrameName_Search" inherits="ISync_SearchBoxTemplate" autoFocus="false">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</EditBox>
+						
+						<Button name="ISync_SearchFrameNameField_Clear" toplevel="true">
+							<Size>
+								<AbsDimension x="32" y="32"/>
+							</Size>
+							<HitRectInsets>
+								<AbsInset left="9" right="7" top="-7" bottom="10"/>
+							</HitRectInsets>
+							<Anchors>
+								<Anchor point="RIGHT" relativeTo="ISync_SearchFrameName_Search" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="30" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									ISync_SearchFrameName_Search:SetText("");
+								</OnClick>
+							</Scripts>
+							<NormalTexture file="Interface\Buttons\CancelButton-Up"/>
+							<PushedTexture file="Interface\Buttons\CancelButton-Down"/>
+							<HighlightTexture file="Interface\Buttons\CancelButton-Highlight" alphaMode="ADD"/>
+						</Button>
+						
+
+					</Frames>
+
+					<Scripts>
+						<OnLoad>
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(0.15, 0.15, 0.15);
+						</OnLoad>
+					</Scripts>
+				</Frame>
+				
+				
+				<Button name="ISync_SearchFrame_SearchButton" inherits="UIPanelButtonTemplate">
+					<Size>
+						<AbsDimension x="70" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="20" y="28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (ItemSync) then ISyncMainFrame_QuickSearch:SetText(""); ItemSync:Main_Refresh(); end
+						</OnClick>
+					</Scripts>
+				</Button>
+				
+				<Button name="ISync_SearchFrame_ResetButton" inherits="UIPanelButtonTemplate">
+					<Size>
+						<AbsDimension x="70" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-20" y="28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							if (ItemSync) then ItemSync:ResetSearch(); end
+						</OnClick>
+					</Scripts>
+				</Button>
+				
+
+ 			</Frames>
+  
+  			<Scripts>
+    				<OnLoad>	
+ 						ISync_SearchFrameHeader_Box:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						ISync_SearchFrameHeader_Box:SetBackdropColor(0.0, 0.0, 1.0, 0.7);
+  				</OnLoad>
+  				<OnShow>
+						ISync_SearchFrameHeader_BoxText:SetText(ISL["Search"]);
+						ISync_SearchFrame_NameBoxText:SetText(ISL["SearchName"]);
+						ISync_SearchFrame_SearchButton:SetText(ISL["Search"]);
+						ISync_SearchFrame_ResetButton:SetText(ISL["Reset"]);
+						
+						getglobal(ISync_Search_Resist1:GetName() .. "Text"):SetText(ISL["ArcaneResistance"]);
+						getglobal(ISync_Search_Resist2:GetName() .. "Text"):SetText(ISL["FireResistance"]);
+						getglobal(ISync_Search_Resist3:GetName() .. "Text"):SetText(ISL["NatureResistance"]);
+						getglobal(ISync_Search_Resist4:GetName() .. "Text"):SetText(ISL["FrostResistance"]);
+						getglobal(ISync_Search_Resist5:GetName() .. "Text"):SetText(ISL["ShadowResistance"]);
+						
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						
+  				</OnShow>
+  				
+  				<OnHide>
+  						PlaySound("igMainMenuOptionCheckBoxOff");
+  				</OnHide>
+  				
+ 		      		<OnLeave>
+ 		      		
+ 		      		</OnLeave>
+  			</Scripts>
+ 	
+	</Frame>
+	
+ </Ui>

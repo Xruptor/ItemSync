@@ -1,0 +1,399 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+
+ <Script file="Filters.lua"/>
+
+ 	<Frame name="ISync_FiltersFrame" inherits="ISyncFrame_MainTemplate" hidden="true" parent="ISync_MainFrame">
+ 			<Size>
+ 				<AbsDimension x="360" y="495"/>
+ 			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ISync_MainFrame" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="32" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+ 			<Layers>
+  				<Layer level="BACKGROUND">
+  
+  					<Texture file="Interface\AddOns\ItemSync\images\BackDrop_Filters">
+  						<Size>
+  							<AbsDimension x="338" y="475"></AbsDimension>
+  						</Size>
+  						<Anchors>
+  							<Anchor point="LEFT">
+  								<Offset>
+  									<AbsDimension x="10" y="0"></AbsDimension>
+  								</Offset>
+  							</Anchor>
+  						</Anchors>
+  
+  					</Texture>
+  			
+ 				</Layer>
+ 			</Layers>
+ 			
+ 			<Frames>
+
+ 				<Button name="ISync_FiltersFrame_HelpButton" virtual="true" hidden="false">
+ 					<Size>
+ 						<AbsDimension x="25" y="25"/>
+ 					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOPLEFT">
+ 							<Offset>
+ 								<AbsDimension x="310" y="-10"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 					<Layers>
+ 						<Layer level="OVERLAY">
+ 							<FontString name="$parentText" inherits="GameFontNormal" justifyH="RIGHT" text="">
+ 								<Anchors>
+ 									<Anchor point="RIGHT">
+ 										<Offset>
+ 											<AbsDimension x="0" y="0"/>
+ 										</Offset>
+ 									</Anchor>
+ 								</Anchors>
+ 							</FontString>
+ 						</Layer>
+ 					</Layers>
+ 					<Scripts>
+ 						<OnLoad>
+ 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 						</OnLoad>
+ 						<OnClick>
+ 							if (ItemSync) then ItemSync:Show_Help(3); end
+ 						</OnClick>
+ 					</Scripts>
+ 				</Button>
+ 				
+				<Frame name="ISync_Filters_Rarity" inherits="OptionFrameBoxTemplate">
+					<Size>
+						<AbsDimension x="335" y="135"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FiltersFrame" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="13" y="460"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="BACKGROUND">
+							<FontString name="ISync_Filters_Rarity0Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-10"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+							<FontString name="ISync_Filters_Rarity1Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-30"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+							<FontString name="ISync_Filters_Rarity2Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-50"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+							<FontString name="ISync_Filters_Rarity3Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-70"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+
+							<FontString name="ISync_Filters_Rarity4Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-90"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+							<FontString name="ISync_Filters_Rarity5Text" inherits="GameFontNormal">
+								<Anchors>
+									<Anchor point="TOPLEFT"> 
+										<Offset>
+											<AbsDimension x="30" y="-110"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+
+					<Frames>
+						<CheckButton name="ISync_Filters_Rarity_Opt0" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",0,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+						<CheckButton name="ISync_Filters_Rarity_Opt1" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ISync_Filters_Rarity_Opt0" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",1,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+
+						<CheckButton name="ISync_Filters_Rarity_Opt2" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ISync_Filters_Rarity_Opt1" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",2,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+						<CheckButton name="ISync_Filters_Rarity_Opt3" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ISync_Filters_Rarity_Opt2" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",3,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+						<CheckButton name="ISync_Filters_Rarity_Opt4" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ISync_Filters_Rarity_Opt3" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",4,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+						<CheckButton name="ISync_Filters_Rarity_Opt5" inherits="OptionsCheckButtonTemplate">
+							<Size>
+								<AbsDimension x="26" y="26"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ISync_Filters_Rarity_Opt4" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",5,this:GetChecked()); end
+								</OnClick>
+							</Scripts>
+						</CheckButton>
+
+
+					</Frames>
+
+					<Scripts>
+						<OnLoad>
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(this:GetName().."Title"):SetText(ISL["RarityOpt_Header"]);
+							
+							
+							ISync_Filters_Rarity0Text:SetText(ISL["RarityOpt_0"]);
+							ISync_Filters_Rarity1Text:SetText(ISL["RarityOpt_1"]);
+							ISync_Filters_Rarity2Text:SetText(ISL["RarityOpt_2"]);
+							ISync_Filters_Rarity3Text:SetText(ISL["RarityOpt_3"]);
+							ISync_Filters_Rarity4Text:SetText(ISL["RarityOpt_4"]);
+							ISync_Filters_Rarity5Text:SetText(ISL["RarityOpt_5"]);
+							
+							
+						</OnLoad>
+					</Scripts>
+				</Frame>
+				
+				
+				<Frame name="ISync_Filters_InvalidPurge" inherits="OptionFrameBoxTemplate">
+					<Size>
+						<AbsDimension x="335" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FiltersFrame" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="13" y="150"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+					</Layers>
+
+					<Frames>
+
+						<Button name="ISync_Filters_InvalidPurgeButton" inherits="UIPanelButtonTemplate" text="OK">
+							<Size>
+								<AbsDimension x="90" y="21"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Dialog_Purge_Invalid(); end
+								</OnClick>
+							</Scripts>
+						</Button>
+
+					</Frames>
+
+					<Scripts>
+						<OnLoad>
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(this:GetName().."Title"):SetText(ISL["Filters_PurgeInvalid"]);
+						</OnLoad>
+					</Scripts>
+				</Frame>
+
+
+
+				<Frame name="ISync_Filters_RarityPurge" inherits="OptionFrameBoxTemplate">
+					<Size>
+						<AbsDimension x="335" y="60"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FiltersFrame" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="13" y="85"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+					</Layers>
+
+					<Frames>
+
+						<Button name="ISync_Filters_Rarity_DropDown" inherits="ISync_DD_Template">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="5" y="-20"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Button>
+
+						<Button name="ISync_Filters_RarityPurgeButton" inherits="UIPanelButtonTemplate" text="OK">
+							<Size>
+								<AbsDimension x="90" y="21"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="200" y="-20"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									if (ItemSync) then ItemSync:Dialog_Purge_Rarity(); end
+								</OnClick>
+							</Scripts>
+						</Button>
+
+					</Frames>
+
+					<Scripts>
+						<OnLoad>
+							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							this:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(this:GetName().."Title"):SetText(ISL["Filters_PurgeRarity"]);
+						</OnLoad>
+					</Scripts>
+				</Frame>
+				
+ 			</Frames>
+ 
+ 
+  			<Scripts>
+    				<OnLoad>	
+ 						ISync_FiltersFrameHeader_Box:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						ISync_FiltersFrameHeader_Box:SetBackdropColor(97/255, 163/255, 189/255, 0.7);
+  				</OnLoad>
+  				<OnShow>
+						ISync_FiltersFrameHeader_BoxText:SetText(ISL["Filters"]);
+						PlaySound("igMainMenuOptionCheckBoxOn");
+
+  				</OnShow>
+  				
+  				<OnHide>
+						PlaySound("igMainMenuOptionCheckBoxOff");  						
+  				</OnHide>
+  				
+ 		      		<OnLeave>
+ 		      		
+ 		      		</OnLeave>
+  			</Scripts>
+ 	
+	</Frame>
+
+	
+ </Ui>

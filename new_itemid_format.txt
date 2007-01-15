@@ -1,0 +1,11 @@
+
+The numeric fields in the new item link:
+
+1: Item ID
+2: Enchant ID (enchants, armor kits, etc)
+3: Gem
+4: Gem
+5: Gem
+6: Socket Bonus?
+7: Random-suffix ID (of the boar, etc)
+8: Server-resolved unique ID for this item 

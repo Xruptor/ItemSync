@@ -1,0 +1,158 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+
+ <Script file="Help.lua"/>
+	
+	<Frame name="ISync_HelpFrame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+			<Size>
+				<AbsDimension x="360" y="400"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			
+			
+			<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+				<BackgroundInsets>
+					<AbsInset left="11" right="12" top="12" bottom="11"/>
+				</BackgroundInsets>
+				<TileSize>
+					<AbsValue val="32"/>
+				</TileSize>
+				<EdgeSize>
+					<AbsValue val="32"/>
+				</EdgeSize>
+			</Backdrop>
+			<Layers>
+			</Layers>
+			<Frames>
+
+			<Frame name="$parentHeader_Box" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+				<Size>
+					<AbsDimension x="335" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="0" y="207"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentText" inherits="GameFontNormal" text="">
+							<Anchors>
+								<Anchor point="CENTER"> 
+									<Offset>
+										<AbsDimension x="9" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+
+						this:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						this:SetBackdropColor(1, 1, 0, 0.7);
+					</OnLoad>
+					<OnMouseDown>
+						if( arg1 == "LeftButton" ) then
+							GameTooltip:Hide();
+							getglobal(this:GetParent():GetName()):StartMoving();
+						end
+					</OnMouseDown>
+					<OnMouseUp>
+						getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+
+			<Button name="$parent_CloseButton" inherits="UIPanelCloseButton" toplevel="true">
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="$parentHeader_Box" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="9" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+			
+
+  			<Frame name="ISync_HelpFrameDescFrame" hidden="false">
+   				<Layers>
+   					<Layer level="ARTWORK">
+   					</Layer>
+   				</Layers>
+   				<Frames>
+   					<ScrollFrame name="ISync_HelpFrameDescFrameScrollFrame" inherits="UIPanelScrollFrameTemplate">
+   						<Size>
+   							<AbsDimension x="300" y="334"/>
+   						</Size>
+   						<Anchors>
+   							<Anchor point="TOPLEFT" relativeTo="ISync_HelpFrame">
+   								<Offset>
+   									<AbsDimension x="23" y="-45"/>
+   								</Offset>
+   							</Anchor>
+   						</Anchors>
+   						<Scripts>
+   							<OnShow>
+   								this:UpdateScrollChildRect();
+   							</OnShow>
+   						</Scripts>
+   						<ScrollChild>
+   							<Frame name="ISync_HelpFrameDescFrameScrollChildFrame">
+   								<Size>
+   									<AbsDimension x="300" y="334"/>
+   								</Size>
+   								<Layers>
+   									<Layer>
+   										<FontString name="ISync_HelpFrameText" inherits="GameFontNormal" justifyH="LEFT">
+   											<Size>
+   												<AbsDimension x="270" y="0"/>
+   											</Size>
+   											<Anchors>
+   												<Anchor point="TOPLEFT">
+   													<Offset>
+   														<AbsDimension x="10" y="-10"/>
+   													</Offset>
+   												</Anchor>
+   											</Anchors>
+   										</FontString>
+   									</Layer>
+   								</Layers>
+   								<Frames>
+   								</Frames>
+   							</Frame>
+   						</ScrollChild>
+   					</ScrollFrame>
+   					
+				</Frames>
+			</Frame>
+		</Frames>
+
+ 
+		<Scripts>
+
+			<OnLoad>
+				ISync_HelpFrameHeader_BoxText:SetText(ISL["Help"]);
+				
+			</OnLoad>
+			<OnShow>PlaySound("igMainMenuOpen");</OnShow>
+			<OnHide>PlaySound("igMainMenuClose"); </OnHide>
+			<OnMouseDown> this:StartMoving();  </OnMouseDown>
+			<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
+			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+		</Scripts>
+	
+	</Frame>
+	
+	
+ </Ui>
+

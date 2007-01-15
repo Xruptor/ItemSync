@@ -1,0 +1,677 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+ 
+ <Script file="Favorites.lua"/>
+ 
+ 	<Frame name="ISync_Favorites" inherits="ISyncFrame_MainTemplate" hidden="true" parent="UIParent">
+ 			<Size>
+ 				<AbsDimension x="360" y="495"/>
+ 			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+ 			<Layers>
+  				<Layer level="BACKGROUND">
+  
+  					<Texture file="Interface\AddOns\ItemSync\images\BackDrop_Favorites">
+  						<Size>
+  							<AbsDimension x="338" y="475"></AbsDimension>
+  						</Size>
+  						<Anchors>
+  							<Anchor point="LEFT">
+  								<Offset>
+  									<AbsDimension x="10" y="0"></AbsDimension>
+  								</Offset>
+  							</Anchor>
+  						</Anchors>
+  
+  					</Texture>
+  			
+ 				</Layer>
+ 			</Layers>
+ 			
+ 			<Frames>
+ 				<Button name="ISync_Favorites_DropDown" inherits="ISync_DD_Template">
+  					<Anchors>
+  						<Anchor point="TOPLEFT">
+  							<Offset>
+  								<AbsDimension x="24" y="-40"/>
+  							</Offset>
+  						</Anchor>
+ 					</Anchors>
+				</Button>
+
+				<Button name="$parentFavIconButton" virtual="true" hidden="false">
+					<Size>
+						<AbsDimension x="37" y="37"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-23" y="-33"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<NormalTexture file="Interface\Icons\INV_ValentinesCard01"/>
+				</Button>
+				
+ 				<Button name="ISync_Favorites_HelpButton" virtual="true" hidden="false">
+ 					<Size>
+ 						<AbsDimension x="25" y="25"/>
+ 					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOPLEFT">
+ 							<Offset>
+ 								<AbsDimension x="315" y="-10"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 					<Layers>
+ 						<Layer level="OVERLAY">
+ 							<FontString name="$parentText" inherits="GameFontNormal" justifyH="RIGHT" text="">
+ 								<Anchors>
+ 									<Anchor point="RIGHT">
+ 										<Offset>
+ 											<AbsDimension x="0" y="0"/>
+ 										</Offset>
+ 									</Anchor>
+ 								</Anchors>
+ 							</FontString>
+ 						</Layer>
+ 					</Layers>
+ 					<Scripts>
+ 						<OnLoad>
+ 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 						</OnLoad>
+ 						<OnClick>
+							if (ItemSync) then ItemSync:Show_Help(4); end
+ 						</OnClick>
+ 					</Scripts>
+ 				</Button>
+ 				
+				<Button name="ISync_FavoritesItem1" inherits="ISync_FavoritesItemButtonTemplate" id="1" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_Favorites">
+							<Offset>
+								<AbsDimension x="19" y="-75"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+					    <Frame name="ISync_FavoritesRemItem1" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="1" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem1" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem2" inherits="ISync_FavoritesItemButtonTemplate" id="2" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem2" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="2" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem2" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem3" inherits="ISync_FavoritesItemButtonTemplate" id="3" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem3" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="3" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem3" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem4" inherits="ISync_FavoritesItemButtonTemplate" id="4" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem3" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem4" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="4" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem4" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem5" inherits="ISync_FavoritesItemButtonTemplate" id="5" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem4" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem5" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="5" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem5" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem6" inherits="ISync_FavoritesItemButtonTemplate" id="6" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem5" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem6" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="6" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem6" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem7" inherits="ISync_FavoritesItemButtonTemplate" id="7" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem6" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+					    <Frame name="ISync_FavoritesRemItem7" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="7" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem7" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem8" inherits="ISync_FavoritesItemButtonTemplate" id="8" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem7" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem8" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="8" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem8" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem9" inherits="ISync_FavoritesItemButtonTemplate" id="9" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem8" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem9" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="9" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem9" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem10" inherits="ISync_FavoritesItemButtonTemplate" id="10" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem9" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+					    <Frame name="ISync_FavoritesRemItem10" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="10" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem10" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem11" inherits="ISync_FavoritesItemButtonTemplate" id="11" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem10" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem11" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="11" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem11" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem12" inherits="ISync_FavoritesItemButtonTemplate" id="12" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem11" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem12" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="12" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem12" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem13" inherits="ISync_FavoritesItemButtonTemplate" id="13" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem12" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem13" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="13" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem13" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+
+				<Button name="ISync_FavoritesItem14" inherits="ISync_FavoritesItemButtonTemplate" id="14" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem13" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem14" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="14" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem14" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem15" inherits="ISync_FavoritesItemButtonTemplate" id="15" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem14" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem15" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="15" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem15" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem16" inherits="ISync_FavoritesItemButtonTemplate" id="16" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem15" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem16" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="16" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem16" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem17" inherits="ISync_FavoritesItemButtonTemplate" id="17" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem16" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem17" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="17" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem17" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem18" inherits="ISync_FavoritesItemButtonTemplate" id="18" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem17" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem18" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="18" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem18" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem19" inherits="ISync_FavoritesItemButtonTemplate" id="19" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem18" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem19" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="19" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem19" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem20" inherits="ISync_FavoritesItemButtonTemplate" id="20" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem19" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem20" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="20" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem20" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem21" inherits="ISync_FavoritesItemButtonTemplate" id="21" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem20" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem21" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="21" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem21" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem22" inherits="ISync_FavoritesItemButtonTemplate" id="22" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem21" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+
+					    <Frame name="ISync_FavoritesRemItem22" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="22" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem22" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<Button name="ISync_FavoritesItem23" inherits="ISync_FavoritesItemButtonTemplate" id="23" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_FavoritesItem22" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Button>
+				
+					    <Frame name="ISync_FavoritesRemItem23" inherits="ISync_FavoritesRemItem_ButtonTemplate" id="23" hidden="true">
+						<Anchors>
+						    <Anchor point="LEFT" relativeTo="ISync_FavoritesItem23" relativePoint="LEFT">
+							<Offset>
+							    <AbsDimension x="13" y="-1"/>
+							</Offset>
+						    </Anchor>
+						</Anchors>
+					    </Frame>
+					    
+				<ScrollFrame name="ISync_Favorites_ListScrollFrame" inherits="FauxScrollFrameTemplate">
+					<Size>
+						<AbsDimension x="296" y="354"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ISync_Favorites">
+							<Offset>
+								<AbsDimension x="19" y="-75"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="ARTWORK">
+							<Texture name="$parentScrollBarTop">
+								<Size>
+									<AbsDimension x="31" y="256"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="$parentScrollBarScrollUpButton">
+										<Offset>
+											<AbsDimension x="0" y="5"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+							</Texture>
+							<Texture>
+								<Size>
+									<AbsDimension x="31" y="106"/>
+								</Size>
+								<Anchors>
+									<Anchor point="BOTTOM" relativeTo="$parentScrollBarScrollDownButton">
+										<Offset>
+											<AbsDimension x="0" y="-2"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+							</Texture>
+						</Layer>
+					</Layers>
+					<Scripts>
+						<OnVerticalScroll>
+							if(ItemSync) then
+								FauxScrollFrame_OnVerticalScroll(16, ItemSync.Fav_UpdateScrollFrame);
+							end
+						</OnVerticalScroll>
+					</Scripts>
+				</ScrollFrame>
+				
+	
+
+				<Button name="ISync_Favorites_ButtonFrameRefreshButton" inherits="UIPanelButtonTemplate">
+					<Size>
+						<AbsDimension x="70" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-85" y="-40"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnLoad>
+							this:SetText(ISL["Refresh"]);
+						</OnLoad>
+						<OnClick>
+							if (ItemSync) then ItemSync:Fav_Refresh(); end
+						</OnClick>
+					</Scripts>
+				</Button>
+				
+				<Button name="ISync_Favorites_ButtonFramePurgeButton" inherits="UIPanelButtonTemplate">
+					<Size>
+						<AbsDimension x="70" y="24"/>
+					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOPLEFT">
+ 							<Offset>
+ 								<AbsDimension x="27" y="-14"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+					<Scripts>
+						<OnLoad>
+							this:SetText(ISL["Purge"]);
+						</OnLoad>
+						<OnClick>
+							if (ItemSync) then ItemSync:Dialog_Purge_Fav(); end
+						</OnClick>
+					</Scripts>
+				</Button>
+
+
+ 			</Frames>
+  
+  			<Scripts>
+    				<OnLoad>	
+  						ISync_FavoritesHeader_Box:SetBackdropBorderColor(0.4, 0.4, 0.4);
+  						ISync_FavoritesHeader_Box:SetBackdropColor(250/255, 116/255, 123/255, 0.7);
+  						
+  				</OnLoad>
+  				<OnShow>
+ 						PlaySound("igMainMenuOptionCheckBoxOn");
+ 						
+ 						ISync_FavoritesHeader_BoxText:SetText(ISL["Favorites"]);
+
+ 						if(ItemSync and not ItemSync._favbuildtable) then 
+ 							ItemSync:Fav_Refresh();
+ 						end
+ 	
+  				</OnShow>
+  				
+  				<OnHide> if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end PlaySound("igMainMenuOptionCheckBoxOff");</OnHide>
+ 		      		<OnLeave></OnLeave>
+  			</Scripts>
+ 	
+	</Frame>
+
+
+ </Ui>

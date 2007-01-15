@@ -1,0 +1,140 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+ 
+ <Script file="Dialog.lua"/>
+
+ 	<Frame name="ISync_Dialog" toplevel="true" frameStrata="FULLSCREEN_DIALOG" movable="false" enableMouse="true" hidden="true" parent="UIParent">
+ 		<Size>
+ 			<AbsDimension x="325" y="150"/>
+ 		</Size>
+ 		<Anchors>
+ 
+ 			<Anchor point="CENTER" relativeTo="UIParent">
+ 				<Offset>
+ 					<AbsDimension x="0" y="0"/>
+ 				</Offset>
+ 			</Anchor>
+ 						
+ 		</Anchors>
+ 		<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+ 			<BackgroundInsets>
+ 				<AbsInset left="11" right="12" top="12" bottom="11"/>
+ 			</BackgroundInsets>
+ 			<TileSize>
+ 				<AbsValue val="32"/>
+ 			</TileSize>
+ 			<EdgeSize>
+ 				<AbsValue val="32"/>
+ 			</EdgeSize>
+ 		</Backdrop>
+ 		<Layers>
+ 			<Layer level="ARTWORK">
+ 				<Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
+ 					<Size>
+ 						<AbsDimension x="256" y="64"/>
+ 					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOP">
+ 							<Offset>
+ 								<AbsDimension x="0" y="12"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 				</Texture>
+ 				<FontString name="$parentHeaderText" inherits="GameFontNormal" text="">
+ 					<Anchors>
+ 						<Anchor point="TOP" relativeTo="$parentHeaderTexture">
+ 							<Offset>
+ 								<AbsDimension x="0" y="-14"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 				</FontString>
+ 				<FontString name="$parentInfo"  justifyH="CENTER" inherits="GameFontNormal" text="">
+ 					<Size>
+ 						<AbsDimension x="300" y="110"/>
+ 					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOP">
+ 							<Offset>
+ 								<AbsDimension x="0" y="16"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 				</FontString>
+ 				<FontString name="$parentItemText" inherits="GameFontNormal" justifyH="CENTER">
+ 					<Size>
+ 						<AbsDimension x="300" y="12"/>
+ 					</Size>
+ 					<Anchors>
+ 						<Anchor point="TOP">
+ 							<Offset>
+ 								<AbsDimension x="5" y="-60"/>
+ 							</Offset>
+ 						</Anchor>
+ 					</Anchors>
+ 				</FontString>
+  				<FontString name="$parentMoreInfo" inherits="GameFontNormal" justifyH="CENTER">
+  					<Size>
+  						<AbsDimension x="300" y="110"/>
+  					</Size>
+  					<Anchors>
+ 						<Anchor point="TOP">
+ 							<Offset>
+ 								<AbsDimension x="0" y="-20"/>
+ 							</Offset>
+ 						</Anchor>
+  					</Anchors>
+ 				</FontString>
+ 			</Layer>
+ 		</Layers>
+ 		<Frames>
+ 		
+ 			<Button name="$parentNoButton" hidden="false" inherits="GameMenuButtonTemplate" text="No">
+ 				<Size>
+ 					<AbsDimension x="125" y="32"/>
+ 				</Size>
+ 				<Anchors>
+ 					<Anchor point="RIGHT" relativePoint="CENTER">
+ 						<Offset>
+ 							<AbsDimension x="-10" y="-40"/>
+ 						</Offset>
+ 					</Anchor>
+ 				</Anchors>
+ 				<Scripts>
+ 					<OnClick>
+ 						if (ISync_Dialog.DontAction) then ISync_Dialog.DontAction(); end
+ 					</OnClick>
+ 				</Scripts>
+ 			</Button>
+ 			<Button name="$parentYesButton" hidden="false" inherits="GameMenuButtonTemplate" text="Yes">
+ 				<Size>
+ 					<AbsDimension x="125" y="32"/>
+ 				</Size>
+ 				<Anchors>
+ 					<Anchor point="LEFT" relativePoint="CENTER">
+ 						<Offset>
+ 							<AbsDimension x="10" y="-40"/>
+ 						</Offset>
+ 					</Anchor>
+ 				</Anchors>
+ 				<Scripts>
+ 					<OnClick>
+ 						if (ISync_Dialog.DoAction) then ISync_Dialog.DoAction(); end
+ 					</OnClick>
+ 				</Scripts>
+ 			</Button>
+ 		</Frames>
+ 		<Scripts>
+ 			<OnShow>
+ 				
+ 			</OnShow>
+ 			<OnHide>
+ 				PlaySound("UChatScrollButton");
+ 			</OnHide>
+ 			<OnUpdate>
+ 
+ 			</OnUpdate>
+ 		</Scripts>
+	</Frame>
+	
+ </Ui>

@@ -1,0 +1,74 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+
+ <Script file="Minimap.lua"/>
+	
+	<Frame name="ItemSyncMiniMapButtonFrame" parent="Minimap" enableMouse="true" hidden="true" movable = "true" frameStrata="LOW">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Minimap" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="2" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="ItemSyncMiniMapButton">
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\ItemSync\images\ISync_ButtonUp"/>
+				<PushedTexture file="Interface\AddOns\ItemSync\images\ISync_ButtonDown"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Scripts>
+					<OnLoad>
+						this:RegisterForDrag("RightButton");
+						this.isbeing_dragged = false;
+					</OnLoad>
+					<OnDragStart> 
+						this.isbeing_dragged = true;
+					</OnDragStart> 
+					<OnDragStop>
+						this.isbeing_dragged = false;
+					</OnDragStop>
+					<OnUpdate>
+						if(this.isbeing_dragged == true) then
+							if (ItemSync) then ItemSync:MiniMap_isBeingDragged(); end
+						else
+							if (ItemSync) then ItemSync:MiniMap_isBeingDragged(1); end
+						end
+					</OnUpdate>
+					<OnClick>
+						if (ItemSync) then ItemSync:MiniMap_OnClick(); end
+					</OnClick>
+					<OnEnter>
+						if (ItemSync) then ItemSync:MiniMap_OnEnter(); end
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				this:RegisterEvent("VARIABLES_LOADED");
+			</OnLoad>
+			<OnEvent>
+				if (ItemSync) then
+					ItemSync:MiniMap_UpdatePosition();
+				end
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+ </Ui>
+
