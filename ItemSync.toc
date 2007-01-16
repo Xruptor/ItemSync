@@ -36,6 +36,7 @@ locals\eng.lua
 locals\fr.lua
 locals\gr.lua
 locals\cn.lua
+locals\kr.lua
 
 ItemSync.lua
 ItemSync.xml
