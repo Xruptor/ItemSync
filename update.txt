@@ -1,4 +1,8 @@
-[[[VERSION r10001]]]:
+Version: r$Revision$
+-Fixed: an issue where the count frame was getting sticky with the mouse ;)
+-Added: Korean Localization (by Zeno)
+
+VERSION r10001:
 -Fixed: a bug where users couldn't add favorites.
 -Fixed: a bug where the rarity filtering wasn't working properly.
 -Fixed: a bug where valid items where being shown as Unknown on the main window.
@@ -13,7 +17,7 @@
 -Added: ItemSync is now on the WOWAce.com SVN Repository.
 
 
-[[[VERSION r10000]]]:
+VERSION r10000:
 -ItemSync has been Aced! Ace2 to be exact.
 -Rebuilt many of the function structures.
 -Added the ability to search items by resistances.

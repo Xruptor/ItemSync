@@ -164,16 +164,16 @@ end
 --[r10001]
 --ItemSync:ItemCount_OnMouseUp
 
-function ItemSync:ItemCount_OnMouseUp(f,s)
+function ItemSync:ItemCount_OnMouseUp(s)
 	if (IsControlKeyDown() and s and s == "LeftButton") then
 		if (ISync_MainFrame:IsVisible()) then
 			ISync_MainFrame:Hide();
 		else
 			ISync_MainFrame:Show();
 		end				
-	else
-		f:StopMovingOrSizing();
 	end
+	
+	ItemSync_CountFrame:StopMovingOrSizing();
 end
 
 

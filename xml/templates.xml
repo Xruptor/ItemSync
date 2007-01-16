@@ -739,8 +739,8 @@
 			<OnLeave>
 				GameTooltip:Hide();
 			</OnLeave>
-			<OnMouseDown> this:StartMoving();  </OnMouseDown>
-			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(this, arg1); end</OnMouseUp>
+			<OnMouseDown> if (not IsControlKeyDown()) then this:StartMoving(); end  </OnMouseDown>
+			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(arg1); end</OnMouseUp>
 			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
 		</Scripts>
 		

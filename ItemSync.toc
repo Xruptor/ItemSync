@@ -1,12 +1,13 @@
+## Id: $Id$
 ## Interface: 20003
 ## Title: ItemSync |cff7fff7f -Ace2-|r
 ## Notes: ItemSync the happy item gatherer and toolkit.
-## Version: r10001
+## Version: r$Revision$
 ## Author: Derkyle
 ## eMail: derkyle@gmail.com
 ## X-Category: Inventory
 ## X-eMail: derkyle@gmail.com
-## X-Website: http://www.manaflux.com
+## X-Website: http://derkyle.wowinterface.com/
 ## X-WoWIPortal: derkyle
 ## X-Embeds: Ace2, DewdropLib, CrayonLib, Metrognome
 ## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib
