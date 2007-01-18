@@ -146,7 +146,7 @@ function ItemSync:SetLootItem(tooltip, slot)
 	local link = GetLootSlotLink(slot);
 	local _,_, qty = GetLootSlotInfo(slot);
 	
-	self:Process_Tooltip(tooltip,link,qty);
+	self:Process_Tooltip(tooltip,link,qty,1);
 	return link, qty, 1;
 end
 

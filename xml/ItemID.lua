@@ -88,21 +88,11 @@ function ItemSync:ItemID_StartShow(link, coreid, subid, frame)
 				self:Print(self:ReturnHyperlink(oldcore, oldsub));
 				
 				--blizzard really screwed up with negatives so we have to parse two different ways
-				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:.%d+)|h%[(.-)%]|h|r") do
+				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:[-0-9]+)|h%[(.-)%]|h|r") do
 					if(item) then
-						if(item) then
-							self:_parselinks(item, color, name);
-						end
+						self:_parselinks(item, color, name);
 					end
-				end
-
-				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:%d+)|h%[(.-)%]|h|r") do
-					if(item) then
-						if(item) then
-							self:_parselinks(item, color, name);
-						end
-					end
-				end
+				end	
 		
 				self:Parse(oldcore, linkold);
 		

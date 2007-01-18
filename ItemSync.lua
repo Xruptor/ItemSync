@@ -232,9 +232,9 @@ function ItemSync:ParseChat(text)
 
 	if (text) then
 		
-		local sStore = { }; --blizzard really screwed everything over when they allowed negatives in itemid's
+		local sStore = { }; --prevent repeats
 		
-		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:.%d+)|h%[(.-)%]|h|r") do
+		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:[-0-9]+)|h%[(.-)%]|h|r") do
 			if(item) then
 				if (not sStore[item]) then
 					sStore[item] = 1;
@@ -242,21 +242,11 @@ function ItemSync:ParseChat(text)
 				end
 				
 			end
-		end
-
-		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:%d+)|h%[(.-)%]|h|r") do
-			if(item) then
-				if (not sStore[item]) then
-					sStore[item] = 1;
-					self:_parselinks(item, color, name);
-				end
-			end
-		end
+		end		
 		
 		sStore = nil;
-		
-		--string.find("1234:-123", ":%-")
 	end
+	
 end
 
 function ItemSync:EventResync(event)
@@ -486,20 +476,12 @@ function ItemSync:_split(s,p,n)
 end
 
 function ItemSync:_removeNegative(l)
+
+	local sVar = string.match(l,"(%d+:%d+:%d+:%d+:%d+:%d+:%d+:)");
 	
-	local _, _, sVar = strfind(l, "(%d+:%d+:%d+:%d+:%d+:%d+:%d+:%d+)")
-	
-		if (sVar) then return sVar; end
-	
-	local _, _, sVar2 = strfind(l, "(%d+:%d+:%d+:%d+:%d+:%d+:%d+:.%d+)")
-	
-		if (not sVar2) then return nil; end
-	
-	local newLink = string.gsub(sVar2, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):.(%d+)", "%1:0:0:0:0:0:%7:0")
-	
-		if (newLink) then return newLink; end
-		
-	return nil;
+	if (not sVar) then return nil; end
+	sVar = sVar.."0"; --add a zero at the end since we stripped it
+	return sVar;
 end
 
 

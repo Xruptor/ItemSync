@@ -1,6 +1,10 @@
 Version: r$Revision$
 -Fixed: an issue where the count frame was getting sticky with the mouse ;)
+-Fixed: an issue with negative values in the ItemID.
+-Updated: _removeNegative function.
 -Added: Korean Localization (by Zeno)
+-Removed: Icon tooltip from looting window.
+
 
 VERSION r10001:
 -Fixed: a bug where users couldn't add favorites.
