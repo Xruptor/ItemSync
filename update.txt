@@ -1,3 +1,8 @@
+-Added: Color rarity check to the tooltip parser.  Will update item stored rarity.
+-Added: Increased the amount of invalid items that are parsed while using the Invalid Validater.
+-Fixed: double check added for tooltip parsing and minimum level checking
+
+
 Version: r$Revision$
 -Fixed: an issue where the count frame was getting sticky with the mouse ;)
 -Fixed: an issue with negative values in the ItemID.

@@ -36,6 +36,8 @@ function ItemSync:Parse(coreid, link)
 	local r = {self:_split(self.db.account[self.realm]["items"][coreid], "°")}
 	if (not r) then return nil; end
 	
+	local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X  = GetItemInfo(link)
+
 	--------------------------------------------------------	
 	--------------------------------------------------------
 	for index = 1, ISyncTooltip:NumLines(), 1 do
@@ -224,7 +226,16 @@ function ItemSync:Parse(coreid, link)
 	--------------------------------------------------------	
 	--------------------------------------------------------
 
+	--update minimum level
+	if (minLevel_X and r[8] ~= minLevel_X) then
+		r[8] = minLevel_X;
+	end
 
+	--update color quality
+	if (quality_X and r[1] ~= quality_X) then
+		r[1] = quality_X;
+	end
+	
 	--------------------------------------------------------	
 	--------------------------------------------------------
 	--------------------------------------------------------	

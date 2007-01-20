@@ -234,6 +234,7 @@ function ItemSync:ParseChat(text)
 		
 		local sStore = { }; --prevent repeats
 		
+		--special thanks to Kaelten for some advice =)
 		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:[-0-9]+)|h%[(.-)%]|h|r") do
 			if(item) then
 				if (not sStore[item]) then
@@ -476,7 +477,8 @@ function ItemSync:_split(s,p,n)
 end
 
 function ItemSync:_removeNegative(l)
-
+	
+	--special thanks to Kaelten for some advice =)
 	local sVar = string.match(l,"(%d+:%d+:%d+:%d+:%d+:%d+:%d+:)");
 	
 	if (not sVar) then return nil; end

@@ -243,7 +243,7 @@ function ItemSync:Optimize_Invalid_Process()
 				return nil;
 			end
 			
-			for iCount=ISync_Optimize_Bar._CurrCount , (ISync_Optimize_Bar._CurrCount + 30) , 1 do
+			for iCount=ISync_Optimize_Bar._CurrCount , (ISync_Optimize_Bar._CurrCount + 50) , 1 do
 			
 				if (ISync_Optimize_Bar._listdata[iCount]) then
 					ISync_MainFrame.TooltipButton = UIParent:GetID();
@@ -254,7 +254,7 @@ function ItemSync:Optimize_Invalid_Process()
 				end			
 			end
 			
-			ISync_Optimize_Bar._CurrCount = (ISync_Optimize_Bar._CurrCount + 30); --up the count
+			ISync_Optimize_Bar._CurrCount = (ISync_Optimize_Bar._CurrCount + 50); --up the count
 			
 			if(ISync_Optimize_Bar._CurrCount >= ISync_Optimize_Bar._listCount) then 
 				ISync_Optimize_BarText:SetText( ISync_Optimize_Bar._listCount.."/"..ISync_Optimize_Bar._listCount );
