@@ -1,0 +1,3 @@
+Add NONE to search capabilities to prevent people from constantly reseting ;)
+Add [#fdf#] for full name searches on Fetch Link
+Review the tooltip display to fix Auctioneer errors.
