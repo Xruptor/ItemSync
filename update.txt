@@ -1,13 +1,14 @@
+Version: r$Revision$
+-Added: Korean Localization (by Zeno)
 -Added: Color rarity check to the tooltip parser.  Will update item stored rarity.
 -Added: Increased the amount of invalid items that are parsed while using the Invalid Validater.
--Fixed: double check added for tooltip parsing and minimum level checking
-
-
-Version: r$Revision$
+-Added: None value to search dropdowns to reset value to empty.
 -Fixed: an issue where the count frame was getting sticky with the mouse ;)
 -Fixed: an issue with negative values in the ItemID.
+-Fixed: double check added for tooltip parsing and minimum level checking
+-Fixed: embed auctioneer doubling (hopefully)
+-Fixed: prices for different stacks of the same item will now display correctly. (thanks dracula)
 -Updated: _removeNegative function.
--Added: Korean Localization (by Zeno)
 -Removed: Icon tooltip from looting window.
 
 

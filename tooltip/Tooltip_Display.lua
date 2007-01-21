@@ -36,6 +36,7 @@ function ItemSync:GameTooltip_OnHide()
 		
 		--[r10001]
 		if (EnhTooltip) then
+			EnhTooltip.ClearTooltip();
 			EnhTooltip.HideTooltip();
 		end
 	end
@@ -253,7 +254,15 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 		self._lasttooltip.vendprice = tonumber(r[9]) or -1;
 		self._lasttooltip.vendqty = tonumber(r[10]) or 1;
 		self._lasttooltip.link = "item:"..sVar;
+		self._lasttooltip.qty = qty;
 		r = nil;
+		
+		self:Debug("Tooltip Process: "..name_X)
+		
+	elseif (self._lasttooltip.coreid == coreid and self._lasttooltip.qty ~= qty) then
+	
+		self._lasttooltip.priceqty = (self._lasttooltip.price * qty) or -1;
+		self._lasttooltip.qty = qty;
 		
 		self:Debug("Tooltip Process: "..name_X)
 	end

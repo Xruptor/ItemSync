@@ -26,6 +26,13 @@ function ItemSync:On_DD_SearchEnable()
 				table.sort (self.t2);
 				---------------
 				
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_LocationSelection:SetText(""); ISync_DD_Location._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+				
 				for k, v in pairs(self.t2) do
 
 					self.dewdrop:AddLine(
@@ -81,6 +88,13 @@ function ItemSync:On_DD_SearchEnable()
 
 					local grabColor = ITEM_QUALITY_COLORS[k];
 			
+					self.dewdrop:AddLine(
+						'text', ISL["ShowNone"],
+						'closeWhenClicked', true,
+						'tooltipTitle', "",
+						'func', function() ISync_DD_RaritySelection:SetText(""); ISync_DD_Rarity._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+					)
+				
 					self.dewdrop:AddLine(
 						'text', ISA["RARITY"][k],
 						'textR', grabColor.r,
@@ -146,6 +160,13 @@ function ItemSync:On_DD_SearchEnable()
 				table.sort (self.t2);
 				---------------
 				
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_WeaponSelection:SetText(""); ISync_DD_Weapon._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+					
 				for k, v in pairs(self.t2) do
 
 					self.dewdrop:AddLine(
@@ -203,6 +224,13 @@ function ItemSync:On_DD_SearchEnable()
 				table.foreach (ISA["TS"], function (j) table.insert (self.t2, j) end )
 				table.sort (self.t2);
 				---------------
+				
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_TradeskillSelection:SetText(""); ISync_DD_Tradeskill._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
 				
 				for k, v in pairs(self.t2) do
 
@@ -262,6 +290,13 @@ function ItemSync:On_DD_SearchEnable()
 				table.sort (self.t2);
 				---------------
 				
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_ArmorSelection:SetText(""); ISync_DD_Armor._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+				
 				for k, v in pairs(self.t2) do
 
 					self.dewdrop:AddLine(
@@ -320,6 +355,13 @@ function ItemSync:On_DD_SearchEnable()
 				table.sort (self.t2);
 				---------------
 				
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_ShieldSelection:SetText(""); ISync_DD_Shield._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+				
 				for k, v in pairs(self.t2) do
 
 					self.dewdrop:AddLine(
@@ -371,6 +413,13 @@ function ItemSync:On_DD_SearchEnable()
    			'relativePoint', "BOTTOM",
 			'children', function()
 			
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_LevelSelection:SetText(""); ISync_DD_Level._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+				
 				for k=0, 13, 1 do
 
 					self.dewdrop:AddLine(
