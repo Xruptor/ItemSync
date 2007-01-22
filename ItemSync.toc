@@ -9,8 +9,8 @@
 ## X-eMail: derkyle@gmail.com
 ## X-Website: http://derkyle.wowinterface.com/
 ## X-WoWIPortal: derkyle
-## X-Embeds: Ace2, DewdropLib, CrayonLib, Metrognome
-## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib
+## X-Embeds: Ace2, DewdropLib, CrayonLib, Metrognome, FuBarPlugin-2.0, FuBar
+## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib, FuBarPlugin-2.0, FuBar
 ## SavedVariables: ISyncDB
 
 
@@ -26,6 +26,7 @@ libs\AceLocale-2.2\AceLocale-2.2.lua
 libs\AceConsole-2.0\AceConsole-2.0.lua
 libs\AceAddon-2.0\AceAddon-2.0.lua
 libs\AceModuleCore-2.0\AceModuleCore-2.0.lua
+libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua
 
 libs\Metrognome-2.0\Metrognome-2.0.lua
 libs\Dewdrop-2.0\Dewdrop-2.0.lua
