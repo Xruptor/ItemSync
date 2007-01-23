@@ -49,6 +49,7 @@
 		["ToggleFav"] = "즐겨찾기 메뉴 열기/닫기",
 		["ToggleQuick"] = "QuickBag 메뉴 열기/닫기",
 		["ToggleItemID"] = "아이템 ID 메뉴 열기/닫기",
+		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
 		--////////////////////////////////
 		
 		--////////////////////////////////

@@ -64,6 +64,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["ToggleFav"] = "Favoritenfenster Umschalten",
 		["ToggleQuick"] = "QuickBagfenster Umschalten",
 		["ToggleItemID"] = "Toggle ItemID Window",
+		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
 		--////////////////////////////////
 		
 		--////////////////////////////////

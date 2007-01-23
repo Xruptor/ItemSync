@@ -64,6 +64,7 @@
 		["ToggleFav"] = "Toggle Favorites Window",
 		["ToggleQuick"] = "Toggle QuickBag Window",
 		["ToggleItemID"] = "Toggle ItemID Window",
+		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
