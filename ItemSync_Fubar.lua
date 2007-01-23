@@ -16,6 +16,7 @@ ItemSyncFu.clickableTooltip = false
 ItemSyncFu.cannotDetachTooltip = true
 ItemSyncFu.hideWithoutStandby = true
 ItemSyncFu.defaultPosition = "RIGHT"
+ItemSyncFu.cannotAttachToMinimap = true
 
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_ItemSyncFu")
 
@@ -40,7 +41,9 @@ local options = {
 ItemSyncFu.OnMenuRequest = options
 
 function ItemSyncFu:OnEnable()
-	--do nothing
+	if (self:IsMinimapAttached()) then
+		ItemSyncFu:Hide();
+	end
 end
 
 function ItemSyncFu:OnTextUpdate()
