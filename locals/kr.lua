@@ -49,7 +49,7 @@
 		["ToggleFav"] = "즐겨찾기 메뉴 열기/닫기",
 		["ToggleQuick"] = "QuickBag 메뉴 열기/닫기",
 		["ToggleItemID"] = "아이템 ID 메뉴 열기/닫기",
-		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
+		["ToggleItemSyncFubar"] = "클릭 - ItemSync 열기/닫기",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -143,7 +143,7 @@
 		["Fav_Duplicate"] = "이 아이템은 이미 즐겨찾기에 등록되어 있습니다.",
 		["Fav_Delete"] = "클릭하면 즐겨찾기에서 아이템을 삭제합니다.",
 		["Fav_PurgeWarning"] = "정말로 이 아이템을\n 다음 플레이어의 즐겨찾기에서 삭제하시겠습니까?",
-		["Fav_DialogComplete"] = "즐겨찾기의 처리가 성공적으로 완료되었습니다.",
+		["Fav_PurgeDialogComplete"] = "즐겨찾기의 처리가 성공적으로 완료되었습니다.",
 		["Fav_DeleteHeader"] = "즐겨찾기 삭제",
 		["Fav_DeleteWarning"] = "이 아이템을 다음 플레이어의 즐겨찾기에서 삭제하시겠습니까?",
 		["Fav_DeleteComplete"] = "아이템이 성공적으로 삭제되었습니다.",
@@ -301,7 +301,7 @@
 		["ItemCount_FrameHeader"] = "ItemSync 아이템 갯수 프레임",
 		["ItemCount_LeftClick"] = "컨트롤+왼쪽 클릭 = ItemSync 열기/닫기",
 		--////////////////////////////////
-
+		
 
 	    }--end return
 	    
