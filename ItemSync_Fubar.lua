@@ -41,9 +41,13 @@ local options = {
 ItemSyncFu.OnMenuRequest = options
 
 function ItemSyncFu:OnEnable()
-	if (self:IsMinimapAttached()) then
-		ItemSyncFu:Hide();
+
+	if IsAddOnLoaded("Fubar") then
+	    --do something
+	else
+	    ItemSyncFu:Hide();
 	end
+	
 end
 
 function ItemSyncFu:OnTextUpdate()
