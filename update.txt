@@ -9,6 +9,8 @@ Version: r$Revision$
 -Fixed: double check added for tooltip parsing and minimum level checking
 -Fixed: embed auctioneer doubling (hopefully)
 -Fixed: prices for different stacks of the same item will now display correctly. (thanks dracula)
+-Fixed: Swatting the double minimap button that occurs on some computers.
+-Fixed: ItemSync not storing items because of negative values in the itemID's.
 -Updated: _removeNegative function.
 -Removed: Icon tooltip from looting window.
 

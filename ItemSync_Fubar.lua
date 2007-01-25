@@ -17,6 +17,7 @@ ItemSyncFu.cannotDetachTooltip = true
 ItemSyncFu.hideWithoutStandby = true
 ItemSyncFu.defaultPosition = "RIGHT"
 ItemSyncFu.cannotAttachToMinimap = true
+ItemSyncFu.dontCreateMinimap = true
 
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_ItemSyncFu")
 
@@ -42,12 +43,8 @@ ItemSyncFu.OnMenuRequest = options
 
 function ItemSyncFu:OnEnable()
 
-	if IsAddOnLoaded("Fubar") then
-	    --do something
-	else
-	    ItemSyncFu:Hide();
-	end
-	
+	--self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	--self:RegisterEvent("ADDON_LOADED")
 end
 
 function ItemSyncFu:OnTextUpdate()

@@ -8,7 +8,7 @@
 
 function ItemSync:ItemID_Search()
 
-	local _, _, userLink = string.find(ISync_ItemIDFrameEdit:GetText(), "(%d+:?%d*:?%d*:?%d*:?%d*:?%d*:?%d*:?%d*)");
+	local _, _, userLink = string.find(ISync_ItemIDFrameEdit:GetText(), "([-0-9]+:?[-0-9]*:?[-0-9]*:?[-0-9]*:?[-0-9]*:?[-0-9]*:?[-0-9]*:?[-0-9]*)");
 	
 	if (userLink) then
 		
@@ -17,7 +17,7 @@ function ItemSync:ItemID_Search()
 		if (tonumber(userLink)) then --single digit
 			sVar = userLink..":0:0:0:0:0:0:0";
 		else
-			local sChk2 = string.gsub(userLink, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%8")
+			local sChk2 = string.gsub(userLink, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%8")
 			if (not tonumber(sChk2)) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemID_Invalid"]));
 				return nil;
@@ -27,9 +27,9 @@ function ItemSync:ItemID_Search()
 		
 		if (not sVar) then self:Print(self.crayon:Colorize("A2D96F", ISL["ItemID_Invalid"])); return nil; end
 		
-		local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
-		local regid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1:0:0:0:0:0:%7:0")
-		local subid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%7")
+		local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+		local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
+		local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
 	
 		self:ItemID_Start("item:"..sVar,coreid,subid);
 		
@@ -88,7 +88,7 @@ function ItemSync:ItemID_StartShow(link, coreid, subid, frame)
 				self:Print(self:ReturnHyperlink(oldcore, oldsub));
 				
 				--blizzard really screwed up with negatives so we have to parse two different ways
-				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:[-0-9]+)|h%[(.-)%]|h|r") do
+				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
 					if(item) then
 						self:_parselinks(item, color, name);
 					end

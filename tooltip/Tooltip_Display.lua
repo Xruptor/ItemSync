@@ -230,9 +230,9 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 	local sVar = self:_removeNegative(link);
 	if (not sVar) then return nil; end
 
-	local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
-	local regid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1:0:0:0:0:0:%7:0")
-	local subid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%7")
+	local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+	local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
+	local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
 
 	coreid = tonumber(coreid);
 	subid = tonumber(subid);

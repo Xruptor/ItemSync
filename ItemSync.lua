@@ -110,7 +110,6 @@ function ItemSync:OnEnable()
 	BINDING_NAME_ITEMID = ISL["ToggleItemID"];
 	BINDING_NAME_QUICKBAG = ISL["ToggleQuick"];
 
-		
 	--same server check
 	if (not self.db.account["dboptions"]["sameserv"][1]) then self.db.account["dboptions"]["sameserv"][1] = 0; end
 	if (self.db.account["dboptions"]["sameserv"][1] == 1) then self.realm = 1; end --same server
@@ -235,7 +234,7 @@ function ItemSync:ParseChat(text)
 		local sStore = { }; --prevent repeats
 		
 		--special thanks to Kaelten for some advice =)
-		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+:%d+:%d+:%d+:[-0-9]+)|h%[(.-)%]|h|r") do
+		for color, item, name in string.gmatch(text, "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
 			if(item) then
 				if (not sStore[item]) then
 					sStore[item] = 1;
@@ -399,7 +398,7 @@ function ItemSync:BagUpdate()
 				local sVar = self:_removeNegative(link);
 				if (not sVar) then return nil; end
 
-				local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
+				local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
 				if (not tonumber(coreid)) then return nil; end
 				
 				local _,_,_,_,_,_,subtype = GetItemInfo(tonumber(coreid)) 
@@ -477,15 +476,16 @@ function ItemSync:_split(s,p,n)
 end
 
 function ItemSync:_removeNegative(l)
+	--this function is used to remove the last portion of the itemid with the large numbers and replace it with zero
 	
 	--special thanks to Kaelten for some advice =)
-	local sVar = string.match(l,"(%d+:%d+:%d+:%d+:%d+:%d+:%d+:)");
+	local sVar = string.match(l,"([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:)");
 	
 	if (not sVar) then return nil; end
+	
 	sVar = sVar.."0"; --add a zero at the end since we stripped it
 	return sVar;
 end
-
 
 function ItemSync:_parselinks(link, color, name)
 	if (not link) then return nil; end
@@ -493,9 +493,9 @@ function ItemSync:_parselinks(link, color, name)
 	local sVar = self:_removeNegative(link);
 	if (not sVar) then return nil; end
 	
-	local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
-	local regid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1:0:0:0:0:0:%7:0")
-	local subid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%7")
+	local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+	local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
+	local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
 	
 	coreid = tonumber(coreid);
 	subid = tonumber(subid);
@@ -543,7 +543,7 @@ function ItemSync:_parselinks(link, color, name)
 			self:UpdateItemCounter();
 		end
 		
-	elseif (self.db.account[self.realm]["items"][coreid] and subid > 0) then --else check for subitem
+	elseif (self.db.account[self.realm]["items"][coreid] and subid ~= 0) then --else check for subitem
 		local r = {self:_split(self.db.account[self.realm]["items"][coreid], "°")}
 		
 		if (r and r[13]) then
@@ -581,7 +581,7 @@ function ItemSync:_parselinks(link, color, name)
 		if (self.db.account[self.realm]["names"][coreid] ~= name_X) then
 			self.db.account[self.realm]["names"][coreid] = name_X
 		end
-	elseif (self.db.account[self.realm]["names"][coreid] and name_X and subid > 0) then --update name if incorrect for subitems but strip name
+	elseif (self.db.account[self.realm]["names"][coreid] and name_X and subid ~= 0) then --update name if incorrect for subitems but strip name
 	
 		if (not self.db.account[self.realm]["names"][coreid]) then
 			if (not GetItemInfo("item:"..coreid..":0:0:0:0:0:0:0")) then
@@ -712,7 +712,7 @@ function ItemSync:Scan_Prices()
 				
 				if (sVar) then
 				
-					local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
+					local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
 					coreid = tonumber(coreid)
 
 					if (coreid) then
@@ -793,7 +793,7 @@ function ItemSync:VendorScan()
 				local sVar = self:_removeNegative(link);
 				
 				if (sVar) then
-					local coreid = string.gsub(sVar, "(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)", "%1")
+					local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
 					coreid = tonumber(coreid)
 
 					if (coreid and not self.db.account[self.realm]["items"][c]) then self:_parselinks(link); end --add if not in db
