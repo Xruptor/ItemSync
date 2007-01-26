@@ -23,6 +23,7 @@ local L = AceLibrary("AceLocale-2.2"):new("FuBar_ItemSyncFu")
 
 local Tablet = AceLibrary("Tablet-2.0")
 local Crayon = AceLibrary("Crayon-2.0")
+local Gnome = AceLibrary("Metrognome-2.0")
 
 local options = {
 	type = "group",
@@ -42,9 +43,34 @@ local options = {
 ItemSyncFu.OnMenuRequest = options
 
 function ItemSyncFu:OnEnable()
+	self:TurnOff_Minimap();
+end
 
-	--self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	--self:RegisterEvent("ADDON_LOADED")
+function ItemSyncFu:TurnOff_Minimap()
+
+	if (not Gnome:Status("FubarMinimapChk")) then
+	
+		local FubarMinimapChkDone = function()
+			
+			if (ItemSyncFu.minimapFrame) then
+				ItemSyncFu.minimapFrame:Hide();
+				ItemSyncFu.minimapFrame = nil;
+				Gnome:Unregister("FubarMinimapChk");
+			end
+
+		end
+	
+		Gnome:Register("FubarMinimapChk", FubarMinimapChkDone , 0.2)
+		self:TurnOff_Minimap()
+	else
+		local avail, rate, running = Gnome:Status("FubarMinimapChk")
+
+		if (not running ) then
+			Gnome:Start("FubarMinimapChk")
+		else
+			Gnome:ChangeRate("FubarMinimapChk", 0.2)
+		end
+	end
 end
 
 function ItemSyncFu:OnTextUpdate()

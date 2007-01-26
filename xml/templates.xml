@@ -746,5 +746,11 @@
 		
 	</Frame>
 	
+	<Frame name="ItemSync_EmptyFrame" hidden="true">
+		<Scripts>
+			<OnLoad>
+			</OnLoad>
+		</Scripts>
+	</Frame>
 	
  </Ui>
