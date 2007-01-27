@@ -295,6 +295,9 @@ function ItemSync:Dialog_Add_Favorite(sFrame)
 				self:Print(self.crayon:White(ISL["Fav_DialogComplete"].." "..self.crayon:Red(ISync_DialogInfo.favname).." | ".."|cff"..self:ReturnHexColor(tonumber(sF.iteminfo.quality))..sF.iteminfo.name.."|r" ));
 			end
 			
+			--refresh the favorites window
+			self:Fav_Refresh();
+			
 			
 		end--ISync_Dialog.DoAction = function()
 		
