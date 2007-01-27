@@ -78,7 +78,46 @@
  						</OnClick>
  					</Scripts>
  				</Button>
- 				
+
+				<CheckButton name="ISync_DisplayInvalid" virtual="true">
+					<Size>
+					    <AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="165" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+					    <Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontHighlightSmall" text="">
+						    <Anchors>
+							<Anchor point="RIGHT" relativePoint="LEFT">
+							    <Offset>
+								<AbsDimension x="0" y="1"/>
+							    </Offset>
+							</Anchor>
+						    </Anchors>
+						</FontString>
+					    </Layer>
+					</Layers>
+					<Scripts>
+					    <OnLoad>
+
+					    </OnLoad>
+					    <OnClick>
+							if (ItemSync) then ItemSync:Click_Opt("SHOWINVALID",1,this:GetChecked()); end
+					    </OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+					<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+					<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+					<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+				</CheckButton>
+				
  				<CheckButton name="ISync_Tab1" inherits="ISync_TabTemplate" id="1" hidden="false">
  					<Anchors>
  						<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
@@ -755,6 +794,8 @@
  						ISync_MainFrameHeader_BoxText:SetText("ItemSync [ "..ItemSync.crayon:Colorize("A2D96F", ItemSync.version).." ]");
  						ISyncMainFrame_QuickSearchText:SetText(ISL["SearchName"]);
  						ISyncMainFrame_QuickSearchText:SetTextColor(1, 1, 1);
+ 						
+ 						ISync_DisplayInvalidText:SetText("|c00FC5252"..ISL["DisplayInvalid"].."|r");
  						
  						if(ItemSync and not ItemSync._buildtable) then 
  							ItemSync:Main_Refresh(1);

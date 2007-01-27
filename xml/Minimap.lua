@@ -21,9 +21,7 @@ end
 
 function ItemSync:MiniMap_Init()
 
-	if (not self.db.account[self.realm]["options"]["external"]) then self:Validate_Opt(); end
-
-	if (self.db.account[self.realm]["options"]["external"][2] == 1) then
+	if (self:Get_Opt("external", 2, 1)) then
 		ItemSyncMiniMapButtonFrame:Show();
 	else
 		ItemSyncMiniMapButtonFrame:Hide();

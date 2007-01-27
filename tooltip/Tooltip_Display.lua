@@ -267,7 +267,7 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 		self:Debug("Tooltip Process: "..name_X)
 	end
 	
-	if(self.db.account[self.realm]["options"]["showmoney"][3] == 1 and not chk) then
+	if(self:Get_Opt("showmoney", 3, 1) and not chk) then
 		
 		getglobal("ISync_"..tooltip:GetName().."IconTexture"):SetTexture(iconTexture_X);
 
@@ -305,7 +305,7 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 	--//---------
 			
 	--check for show price
-	if (self.db.account[self.realm]["options"]["showmoney"][1] == 1) then
+	if (self:Get_Opt("showmoney", 1, 1)) then
 	
 		if (self._lasttooltip.price < 0) then
 			
@@ -343,7 +343,7 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 	end
 	
 	--check for vendor
-	if (self.db.account[self.realm]["options"]["showmoney"][2] == 1) then
+	if (self:Get_Opt("showmoney", 2, 1)) then
 
 		if(self._lasttooltip.vendprice > 0) then
 		

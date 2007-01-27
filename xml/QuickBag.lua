@@ -108,11 +108,11 @@ function ItemSync:QuickBag_BuildIndex()
 						costOfItem = tonumber(r[2]);
 
 						--show stacked
-						if(costOfItem > 0 and itemCount > 0 and self.db.account[self.realm]["options"]["quickbag"][0] == 1) then
+						if(costOfItem > 0 and itemCount > 0 and self:Get_Opt("quickbag", 0, 1)) then
 							 costOfItem = floor(tonumber(costOfItem) * tonumber(itemCount));
 						end
 
-						if(not costOfItem or costOfItem < 1 and self.db.account[self.realm]["options"]["quickbag"][1] == 1) then
+						if(not costOfItem or costOfItem < 1 and self:Get_Opt("quickbag", 1, 1)) then
 							--do nothing cause we want to hide value for this item
 						else
 							if(not costOfItem or costOfItem < 1) then costOfItem = 0; end
@@ -157,11 +157,11 @@ function ItemSync:QuickBag_Sort()
 	if (not self._quickbagindex) then return; end
 
 	--both price and rarity
-	if (self.db.account[self.realm]["options"]["quickbag"][2] == 1 and self.db.account[self.realm]["options"]["quickbag"][3] == 1) then
+	if (self:Get_Opt("quickbag", 2, 1) and self:Get_Opt("quickbag", 3, 1)) then
 		table.sort(self._quickbagindex, ItemSync_QuickBag_SortBoth);
-	elseif (self.db.account[self.realm]["options"]["quickbag"][2] == 1) then --price
+	elseif (self:Get_Opt("quickbag", 2, 1)) then --price
 		table.sort(self._quickbagindex, ItemSync_QuickBag_SortPrice);
-	elseif (self.db.account[self.realm]["options"]["quickbag"][3] == 1) then --rarity
+	elseif (self:Get_Opt("quickbag", 3, 1)) then --rarity
 		table.sort(self._quickbagindex, ItemSync_QuickBag_SortRarity);
 	else
 		table.sort(self._quickbagindex, function(a,b) return a.name<b.name end);
@@ -274,7 +274,7 @@ function ItemSync:QuickBag_UpdateScrollFrame()
 				end
 
 				--show stacked items
-				if(self._quickbagindex[itemIndex].count > 1 and self.db.account[self.realm]["options"]["quickbag"][0] == 1) then
+				if(self._quickbagindex[itemIndex].count > 1 and self:Get_Opt("quickbag", 0, 1)) then
 					getglobal("ISync_QB_Button"..iItem.."ItemCount"):SetText(self._quickbagindex[itemIndex].count);
 					getglobal("ISync_QB_Button"..iItem.."ItemCount"):Show();
 					

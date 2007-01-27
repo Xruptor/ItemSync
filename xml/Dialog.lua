@@ -599,7 +599,7 @@ function ItemSync:Dialog_MergeDatabase()
 			self.realm = 1; --change the realm
 			self:Validate_Opt();
 			self.db.account["dboptions"]["sameserv"][1] = 1; --turn it on
-			self.db.account[self.realm]["options"]["database"][1] = 1; --tirn it on
+			self:Set_Opt("database", 1, 1); --tirn it on
 			
 			ISync_Dialog:Hide();
 			ReloadUI();
@@ -614,7 +614,7 @@ function ItemSync:Dialog_MergeDatabase()
 			self.realm = AceDB.REALM;
 			self:Validate_Opt();
 			self.db.account["dboptions"]["sameserv"][1] = 0; --turn it off
-			self.db.account[self.realm]["options"]["database"][1] = 0; --turn it off
+			self:Set_Opt("database", 1, 0); --tirn it off
 			
 			getglobal("ISync_Opt_Database_Opt1"):SetChecked(0);
 			ISync_Dialog:Hide();
@@ -681,7 +681,7 @@ function ItemSync:Dialog_SplitDatabase()
 			self.db.account[1] = nil; --delete the db entry
 			
 			self.db.account["dboptions"]["sameserv"][1] = 0; --turn it off
-			self.db.account[self.realm]["options"]["database"][1] = 0; --turn it off
+			self:Set_Opt("database", 1, 0); --tirn it off
 			
 			ISync_Dialog:Hide();
 			ReloadUI();
@@ -693,7 +693,7 @@ function ItemSync:Dialog_SplitDatabase()
 		ISync_Dialog.DontAction = function()
 			
 			self.db.account["dboptions"]["sameserv"][1] = 1; --turn it on
-			self.db.account[self.realm]["options"]["database"][1] = 1; --turn it on
+			self:Set_Opt("database", 1, 1); --tirn it on
 			getglobal("ISync_Opt_Database_Opt1"):SetChecked(1);
 			ISync_Dialog:Hide();
 		

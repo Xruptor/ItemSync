@@ -53,6 +53,14 @@ function ItemSync:Validate_Opt()
 	if (not self.db.account[self.realm]["options"]["dropdown"][1]) then 
 		self.db.account[self.realm]["options"]["dropdown"][1] = 1;
 	end
+	
+	if (not self.db.account[self.realm]["options"]["showinvalid"]) then
+		self.db.account[self.realm]["options"]["showinvalid"] = { };
+	end
+	if (not self.db.account[self.realm]["options"]["showinvalid"][1]) then 
+		self.db.account[self.realm]["options"]["showinvalid"][1] = 1;
+	end	
+	
 end
 
 function ItemSync:Load_Opt()
@@ -71,6 +79,9 @@ function ItemSync:Load_Opt()
 	
 	if (not self.db.account[self.realm]["options"]["database"]) then self:Validate_Opt(); end
 	getglobal("ISync_Opt_Database_Opt1"):SetChecked(self.db.account[self.realm]["options"]["database"][1]);
+	
+	if (not self.db.account[self.realm]["options"]["showinvalid"]) then self:Validate_Opt(); end
+	getglobal("ISync_DisplayInvalid"):SetChecked(self.db.account[self.realm]["options"]["showinvalid"][1]);
 	
 	if (self.db.account[self.realm]["options"]["external"][1] == 1) then ItemSync_CountFrame:Show(); else ItemSync_CountFrame:Hide(); end
 
@@ -95,6 +106,16 @@ function ItemSync:Click_Opt(c, n, s)
 		
 		if (n == 1 and s == 1) then ItemSync_CountFrame:Show(); elseif (n == 1 and s == 0) then ItemSync_CountFrame:Hide(); end
 		if (n == 2) then self:MiniMap_Init(); end
+		
+		if (n == 5 and s == 1) then 
+			self._buildtable = nil;
+			self:Main_Refresh(1);
+			self._buildtable = { };
+			self._buildtable.onePastEnd = 1;
+			self._buildtable._invalidCount = 0;
+			self:UpdateScrollFrame();
+		end
+		if (n == 5 and s == 0) then self:Main_Refresh(); end
 
 	elseif (c == "DATABASE") then
 	
@@ -105,16 +126,57 @@ function ItemSync:Click_Opt(c, n, s)
 		elseif (n==1 and s==0) then
 			self:Dialog_SplitDatabase();
 		end
+	
+	elseif (c == "SHOWINVALID") then
+	
+		if (not self.db.account[self.realm]["options"]["showinvalid"]) then self:Validate_Opt(); end
+		self.db.account[self.realm]["options"]["showinvalid"][n] = s;
+		
+		self:Main_Refresh() --refresh the screen if we clicked the option
 	end
 
 end
 
 function ItemSync:Check_Opt(c, n)
 	if (not c or not n) then return nil; end
+	if (not self.db.account[self.realm]["options"][c]) then
+		self:Validate_Opt();
+		self:Validate_FilterOpt();
+		self:Validate_QuickBagOpt();
+	end
 	if (not self.db.account[self.realm]["options"][c]) then return nil; end
-	if (not self.db.account[self.realm]["options"][c][n]) then return nil; end
 	if (self.db.account[self.realm]["options"][c][n] == 0) then return nil; end
-	return self.db.account[self.realm]["options"][c][n];
+	return true;
+end
+
+function ItemSync:Set_Opt(c, n, s)
+	if (not c or not n or not s) then return nil; end
+	if (not self.db.account[self.realm]["options"][c]) then
+		self:Validate_Opt();
+		self:Validate_FilterOpt();
+		self:Validate_QuickBagOpt();
+	end
+	if (not self.db.account[self.realm]["options"][c]) then
+		self.db.account[self.realm]["options"][c] = { };
+	end
+	self.db.account[self.realm]["options"][c][n] = s;
+	return true;
+end
+
+function ItemSync:Get_Opt(c, n, s)
+	if (not c or not n or not s) then return nil; end
+	if (not self.db.account[self.realm]["options"][c]) then
+		self:Validate_Opt();
+		self:Validate_FilterOpt();
+		self:Validate_QuickBagOpt();
+	end
+	if (not self.db.account[self.realm]["options"][c]) then return nil; end
+
+	if (self.db.account[self.realm]["options"][c][n] == s) then
+		return true;
+	else
+		return nil;
+	end
 end
 
 function ItemSync:ResetWindows()

@@ -105,8 +105,7 @@ function ItemSync:Main_Refresh(s)
 	FauxScrollFrame_SetOffset(ISync_MainFrame_ListScrollFrame, 0);
 	getglobal("ISync_MainFrame_ListScrollFrameScrollBar"):SetValue(0);
 	
-	if (not self.db.account[self.realm]["options"]["external"]) then self:Validate_Opt(); end
-	if (s and s==1 and self.db.account[self.realm]["options"]["external"][5] == 1) then
+	if (s and s==1 and self:Get_Opt("external", 5, 1)) then
 		if (not self._buildtable) then
 			ISync_MainFrameInfo:SetText(self.crayon:Colorize("00FF00", ISL["TotalItems"]).."    "..self.crayon:Colorize("BDFCC9", 0).."\n"..self.crayon:Colorize("FFFF66", ISL["TotalShown"]).."   "..self.crayon:Colorize("BDFCC9", 0));
 			return nil;
@@ -137,29 +136,35 @@ function ItemSync:BuildIndex()
 					
 					--update the name if incorrect [r10001]
 					local sName = GetItemInfo("item:"..k..":0:0:0:0:0:0:0");
-					if (sName) then
-						if (not self.db.account[self.realm]["names"][k]) then
-							self.db.account[self.realm]["names"][k] = sName;
-						elseif (self.db.account[self.realm]["names"][k] ~= sName) then
-							self.db.account[self.realm]["names"][k] = sName;
+					
+					if (not self:Check_Opt("showinvalid",1) and sName or self:Check_Opt("showinvalid",1)) then
+					
+						if (sName) then
+							if (not self.db.account[self.realm]["names"][k]) then
+								self.db.account[self.realm]["names"][k] = sName;
+							elseif (self.db.account[self.realm]["names"][k] ~= sName) then
+								self.db.account[self.realm]["names"][k] = sName;
+							end
+						else
+							self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
 						end
-					else
-						self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
-					end
-					---------------------------------------
-					
-					if ( ItemSync:Parse_Search(k, r, self.db.account[self.realm]["names"][k] or ISL["Unknown"]) ) then --search
-					
-						self._buildtable[iNew] = { };
-						self._buildtable[iNew].name = self.db.account[self.realm]["names"][k] or ISL["Unknown"];
-						self._buildtable[iNew].quality = string.sub(v, 1, 1);
-						self._buildtable[iNew].idcore = k;
+						---------------------------------------
 
-						if (r[11] and tonumber(r[11]) ~= 0) then self._buildtable[iNew].idchk =1; end
 
-						iNew = iNew + 1;
+						if ( ItemSync:Parse_Search(k, r, self.db.account[self.realm]["names"][k] or ISL["Unknown"]) ) then --search
+
+							self._buildtable[iNew] = { };
+							self._buildtable[iNew].name = self.db.account[self.realm]["names"][k] or ISL["Unknown"];
+							self._buildtable[iNew].quality = string.sub(v, 1, 1);
+							self._buildtable[iNew].idcore = k;
+
+							if (r[11] and tonumber(r[11]) ~= 0) then self._buildtable[iNew].idchk =1; end
+
+							iNew = iNew + 1;
+
+						end
 					
-					end
+					end--if (not self:Check_Opt("showinvalid",1) and sName or self:Check_Opt("showinvalid",1)) then
 					
 				else
 
@@ -167,32 +172,39 @@ function ItemSync:BuildIndex()
 
 					for kx, vx in pairs(q) do
 					
-						local subName = "";
-
-						if ( GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0") ) then
-							subName = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0");
-						elseif (self.db.account[self.realm]["names"][k]) then
-							subName = self.db.account[self.realm]["names"][k].." "..ISL["OfThe"];
-							self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
-						else
-							subName = ISL["Unknown"].." "..ISL["OfThe"];
-							self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
-						end
-							
-						if ( ItemSync:Parse_Search(k, r, subName) ) then --search
+						local subName = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0");
 						
-							self._buildtable[iNew] = { };
-							self._buildtable[iNew].name = subName;
-							self._buildtable[iNew].quality = string.sub(v, 1, 1);
-							self._buildtable[iNew].idcore = k;
-							self._buildtable[iNew].subid = vx;
+						if (not self:Check_Opt("showinvalid",1) and subName or self:Check_Opt("showinvalid",1)) then
 
-							if (r[11] and tonumber(r[11]) ~= 0) then self._buildtable[iNew].idchk =1; end
+							if ( subName ) then
+								if (not self.db.account[self.realm]["names"][k]) then
+									self.db.account[self.realm]["names"][k] = self:StripSubName(subName);
+								elseif (self.db.account[self.realm]["names"][k] ~= self:StripSubName(subName)) then
+									self.db.account[self.realm]["names"][k] = self:StripSubName(subName);
+								end
+							elseif (self.db.account[self.realm]["names"][k]) then
+								subName = self.db.account[self.realm]["names"][k].." "..ISL["OfThe"];
+								self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
+							else
+								subName = ISL["Unknown"].." "..ISL["OfThe"];
+								self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
+							end
 
-							iNew = iNew + 1;
+							if ( ItemSync:Parse_Search(k, r, subName) ) then --search
+
+								self._buildtable[iNew] = { };
+								self._buildtable[iNew].name = subName;
+								self._buildtable[iNew].quality = string.sub(v, 1, 1);
+								self._buildtable[iNew].idcore = k;
+								self._buildtable[iNew].subid = vx;
+
+								if (r[11] and tonumber(r[11]) ~= 0) then self._buildtable[iNew].idchk =1; end
+
+								iNew = iNew + 1;
+
+							end
 						
-						end
-					
+						end--if (not self:Check_Opt("showinvalid",1) and subName or self:Check_Opt("showinvalid",1)) then
 					end
 
 				end
@@ -498,7 +510,7 @@ function ItemSync:ButtonEnter()
 				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
 				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0");
 				
-				if (this.iteminfo.icontexture) then
+				if (this.iteminfo.icontexture and self:Get_Opt("showmoney", 3, 1)) then
 					getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
 					getglobal("ISync_GameTooltipIcon"):Show();
 				else
@@ -515,7 +527,7 @@ function ItemSync:ButtonEnter()
 				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
 				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0");
 				
-				if (this.iteminfo.icontexture) then
+				if (this.iteminfo.icontexture and self:Get_Opt("showmoney", 3, 1)) then
 					getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
 					getglobal("ISync_GameTooltipIcon"):Show();
 				else

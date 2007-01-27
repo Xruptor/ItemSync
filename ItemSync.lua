@@ -116,6 +116,10 @@ function ItemSync:OnEnable()
 	
 	--version check
 	if (not self.db.account["dboptions"]["version"][1]) then self.db.account["dboptions"]["version"][1] = self.version; end
+	if (self.db.account["dboptions"]["version"][1] ~= self.version) then
+		--do some form of update in the future
+		self.db.account["dboptions"]["version"][1] = self.version;
+	end
 	
 	--register hooks
 	self:SecureHook("ChatEdit_OnTextChanged", "TextChange")
@@ -185,9 +189,8 @@ end
 
 function ItemSync:TextChange()
 
-	if (not self.db.account[self.realm]["options"]["external"]) then self:Validate_Opt(); end
-	if (self.db.account[self.realm]["options"]["external"][3] == 0) then return nil; end
-		
+	if (not self:Check_Opt("external",3)) then return nil; end
+	
 	--code credited to Kael KC_Items and creator of type links (Jonathan Ritchie)
 	local text = this:GetText();
 	
@@ -280,9 +283,8 @@ function ItemSync:Inspect_Target(t)
 		if (not UnitIsPlayer("target")) then return nil; end --don't do anything that isn't a player
 		
 	elseif (t == "mouseover") then
-	
-		if (not self.db.account[self.realm]["options"]["external"]) then self:Validate_Opt(); end
-		if (self.db.account[self.realm]["options"]["external"][4] == 0) then return nil; end
+		
+		if (not self:Check_Opt("external",4)) then return nil; end
 
 		if (UnitIsUnit("mouseover", "player")) then return nil; end --do not do ourselves
 		if (not UnitIsPlayer("mouseover")) then return nil; end --don't do anything that isn't a player
@@ -514,8 +516,7 @@ function ItemSync:_parselinks(link, color, name)
 	end
 
 	--FILTERS
-	if (not self.db.account[self.realm]["options"]["filterrarity"]) then self:Validate_FilterOpt(); end
-	if (self.db.account[self.realm]["options"]["filterrarity"][tonumber(quality_X)] == 1) then return nil; end  --if returns true then option is on
+	if (self:Get_Opt("filterrarity", tonumber(quality_X), 1)) then return nil; end  --if returns true then option is on
 	
 	--check itemcount
 	if (not self.db.account[self.realm]["options"]["ItemCount"]) then self.db.account[self.realm]["options"]["ItemCount"] = 0;  self:UpdateItemCounter(); end

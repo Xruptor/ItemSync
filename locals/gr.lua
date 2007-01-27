@@ -57,6 +57,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["OperationComplete"] = "Fertig!",
 		["Purge_all_db"] = "Wollen Sie wirklich Ihre komplette\nDatenbank UNWIDERRUFLICH l\195\182schen?",
 		["ShowNone"] = "Keine",
+		["DisplayInvalid"] = "Display Invalid",
 		
 		--////////////////////////////////
 		--Key Bindings

@@ -40,6 +40,7 @@
 		["OperationComplete"] = "Operation Complete!",
 		["Purge_all_db"] = "Are you sure you want to\npurge the entire item database? IRREVERSIBLE!",
 		["ShowNone"] = "None",
+		["DisplayInvalid"] = "Display Invalid",
 
 		--////////////////////////////////
 		--Key Bindings
