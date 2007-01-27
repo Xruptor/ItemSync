@@ -1,11 +1,11 @@
 --[[--------------------------------------------------------------------------------
-  ItemSync German Localization
+  ItemSync German Localization (for release 26219)
 
   Author:  Derkyle
   Website: http://www.manaflux.com
   
   German Translation By The Following:
-  	 Rene Hunkel - (ui.worldofwar.net)
+  	 Rene Hunkel (Bashman) - (ui.worldofwar.net)
  	 Maischter82 - (ui.worldofwar.net)
  	 Nelson Br0adsw0rd - (ui.worldofwar.net)
  	 Marco De Luca - (ui.worldofwar.net)
@@ -39,9 +39,9 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		--OfTheCheck refers to the sub items like  Swash Buckler of the Whale
 		["OfTheCheck1"] = "des", --added two because some languages have masculine and feminine names
 		["OfTheCheck2"] = "der", --so one can be example: german  OfTheCheck1 = der OfTheCheck2 = des
-		["TotalItems"] = "Item Anzahl:",
-		["TotalShown"] = "Gezeigte Menge:",
-		["TotalInvalid"] = "Total Invalid:",
+		["TotalItems"] = "Items gesamt:",
+		["TotalShown"] = "Gezeigte:",
+		["TotalInvalid"] = "Ung\195\188ltige gesamt:",
 		["Item"] = "Item:",
 		["ItemDeleted"] = "[Item gel\195\182scht]",
 		["Reset"]="Zur\195\188cksetzen",
@@ -53,18 +53,18 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["ItemID"] = "ItemID",
 		["QuickBag"] = "QuickBag",
 		["Unknown"] = "Unbekannt",
-		["Purge"] = "Bereinigen",
-		["OperationComplete"] = "Operation komplett!",
-		["Purge_all_db"] = "Wollen Sie wirklich ihre komplette\nDatenbank UNWIDERRUFLICH l\195\182schen?",
-		["ShowNone"] = "None",
+		["Purge"] = "L\195\182schen",
+		["OperationComplete"] = "Fertig!",
+		["Purge_all_db"] = "Wollen Sie wirklich Ihre komplette\nDatenbank UNWIDERRUFLICH l\195\182schen?",
+		["ShowNone"] = "Keine",
 		
 		--////////////////////////////////
 		--Key Bindings
-		["ToggleMain"] = "Hauptfenster Umschalten",
-		["ToggleFav"] = "Favoritenfenster Umschalten",
-		["ToggleQuick"] = "QuickBagfenster Umschalten",
-		["ToggleItemID"] = "Toggle ItemID Window",
-		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
+		["ToggleMain"] = "Hauptfenster umschalten",
+		["ToggleFav"] = "Favoritenfenster umschalten",
+		["ToggleQuick"] = "QuickBag-Fenster umschalten",
+		["ToggleItemID"] = "ItemID-Fenster umschalten",
+		["ToggleItemSyncFubar"] = "ItemSync umschalten.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -78,15 +78,15 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 
 		--////////////////////////////////
 		--Invalid Item
-		["InvalidItem"] = "Gegenstand ist ung\195\188ltig",
-		["InvalidForce"] = "Dieses Item konnte im Itemcache\nnicht gefunden werden, um dies Item dennoch\nzu validieren, dr\195\188cken Sie bitte:\n(Strg + Rechtsklick)",
-		["InvalidWarning"] = "ACHTUNG: Der Autor von ItemSync\n ist nicht f\195\188r eventuelle\n Verbindungsabbr\195\188che verantwortlich.",
-		["ForceInvalid"] = "Erzwingung ung\195\188ltig",
-		["ItemForce"] = "Sind Sie sicher, dass jenes Item\nerzwungen werden soll?",
-		["ItemForceWait"] = "Ung\195\188ltige Itemvalidierung in 3 Sek. Hinweis: M\195\182glicher Verbindungsabbruch",
-		["ItemForceFail"] = "Konnte Itenm leider nicht validieren.",
-		["ItemForceSuccess"] = "Jenes Item wurde erfolgreich validiert: ",
-		["InvalidForce_Wait"] = "Bitte warten, ung\195\188ltige Item-Validierung bereits gestartet!",
+		["InvalidItem"] = "Item ist ung\195\188ltig!",
+		["InvalidForce"] = "Dieses Item konnte im Itemcache\nnicht gefunden werden, um dieses Item dennoch\nabzufragen, dr\195\188cken Sie bitte:\n(Strg + Rechtsklick)",
+		["InvalidWarning"] = "ACHTUNG: Der Autor von ItemSync\n ist nicht f\195\188r eventuelle\n Verbindungsabbr\195\188che verantwortlich!",
+		["ForceInvalid"] = "Abfrage erzwingen",
+		["ItemForce"] = "Sind Sie sicher, dass dieses Item\nabgefragt werden soll?",
+		["ItemForceWait"] = "Abfrage des ung\195\188ltigen Items in 3 Sek. Hinweis: M\195\182glicher Verbindungsabbruch",
+		["ItemForceFail"] = "Konnte Item leider nicht validieren.",
+		["ItemForceSuccess"] = "Item wurde erfolgreich validiert: ",
+		["InvalidForce_Wait"] = "Bitte warten, Item-Abfrage bereits gestartet!",
 		--////////////////////////////////
 
 		--////////////////////////////////
@@ -94,7 +94,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["SearchName"]="Namenssuche:",
 		["Location"] = "Position:",
 		["Rarity"] = "Seltenheit:",
-		["Weapon"] = "Waffen:",
+		["Weapon"] = "Waffe:",
 		["Level"] = "Level:",
 		["TradeSkill"] = "Beruf:",
 		["Armor"] = "R\195\188stung:",
@@ -102,7 +102,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["Resistance"] = "Widerstand:",
 		["ArcaneResistance"]="Arkanwiderstand",
 		["FireResistance"]="Feuerwiderstand",
-		["NatureResistance"]="Naturwiderstande",
+		["NatureResistance"]="Naturwiderstand",
 		["FrostResistance"]="Frostwiderstand",
 		["ShadowResistance"]="Schattenwiderstand",
 		--////////////////////////////////
@@ -112,40 +112,40 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["MoneyOpt_Header"] = "Tooltip-Anzeigeoptionen",
 		["MoneyOpt_1"] = "Zeige Itemverkaufspreis.",
 		["MoneyOpt_2"] = "Zeige Itemh\195\164ndlerpreis.",
-		["MoneyOpt_3"] = "Zeige Itemtextur im Tooltip.",
+		["MoneyOpt_3"] = "Zeige Itembild im Tooltip.",
 		["ExternalOpt_Header"] = "Externe Optionen",
-		["ExternalOpt_1"] = "Zeige das Item Count Fenster.",
-		["ExternalOpt_2"] = "Zeige den Minimap-Button.",
-		["ExternalOpt_3"] = "Chat-Links und autom. Vervollst\195\164ndiung.",
-		["ExternalOpt_4"] = "Erm\195\182gliche Mouseover-Betrachtung. |c00A2D96F(Verursacht vielleicht Lag)|r",
-		["ExternalOpt_5"] = "Verberge jedes Item beim \195\182ffnen von ItemSync.",
+		["ExternalOpt_1"] = "Zeige Itemz\195\164hlfenster.",
+		["ExternalOpt_2"] = "Zeige Minimap-Button.",
+		["ExternalOpt_3"] = "Chat-Links und automat. Vervollst\195\164ndigung.",
+		["ExternalOpt_4"] = "Erm\195\182gliche Mouseover-Scannen. |c00A2D96F(Evtl. Lags)|r",
+		["ExternalOpt_5"] = "Verberge alle Items beim \195\150ffnen von ItemSync.",
 		["DatabaseOpt_Header"] = "Datenbank Optionen",
-		["DatabaseOpt_1"] = "Nutze eine Datenbank f\195\188r alle Server.",
+		["DatabaseOpt_1"] = "Nutze EINE Datenbank f\195\188r ALLE Server.",
 		["AdditionalOpt_Header"] = "Zus\195\164tzliche Optionen",
 		["AdditionalOpt_1"] = "Alle Fenster zur\195\188cksetzen.",
 		["AdditionalOpt_2"] = "Datenbank optimieren.",
 		["AdditionalOpt_3"] = "Validiere ung\195\188ltige Items.",
-		["AdditionalOpt_4"] = "Item-Datenbank zur\195\188cksetzen.",
+		["AdditionalOpt_4"] = "Datenbank l\195\182schen.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Filters
-		["RarityOpt_Header"] = "Seltenheit Filtern",
+		["RarityOpt_Header"] = "Seltenheit (Qualit\195\164t) weglassen",
 		["RarityOpt_0"] = "|cff9d9d9dSchlecht|r",
 		["RarityOpt_1"] = "|cffffffffVerbreitet|r",
 		["RarityOpt_2"] = "|cff1eff00Selten|r",
 		["RarityOpt_3"] = "|cff0070ddRar|r",
 		["RarityOpt_4"] = "|cffa335eeEpisch|r",
 		["RarityOpt_5"] = "|cffff8000Legend\195\164r|r",
-		["Filters_PurgeInvalid"] = "Bereinige alle ung\195\188ltigen Items",
-		["Filters_PurgeRarity"] = "Bereinige alle ung\195\188ltigen Items nach Seltenheit",
-		["PurgeInvalid_DialogHeader"] = "Bereinige ung\195\188ltige",
-		["PurgeInvalid_DialogWarn"] = "Sind Sie sicher, dies zu bereinigen:\n",
+		["Filters_PurgeInvalid"] = "L\195\182sche alle ung\195\188ltigen Items",
+		["Filters_PurgeRarity"] = "L\195\182sche Items nach Seltenheit",
+		["PurgeInvalid_DialogHeader"] = "L\195\182sche Ung\195\188ltige",
+		["PurgeInvalid_DialogWarn"] = "Sind Sie sicher, folgende Items zu l\195\182schen:\n",
 		["PurgeInvalid_DialogWarn2"] = "[Ung\195\188ltige Items]",
-		["PurgeInvalid_DialogComplete"] = "Bereinigungsprozess komplett: [INVALID ITEMS]",
-		["PurgeRarity_DialogHeader"] = "Bereinige Seltenheit",
-		["PurgeRarity_DialogWarn"] = "Sind Sie sicher, dies zu bereinigen:\n",
-		["PurgeRarity_DialogComplete"] = "Bereinigungsprozess komplett:",
+		["PurgeInvalid_DialogComplete"] = "L\195\182schvorgang fertig: [Ung\195\188ltige Items]",
+		["PurgeRarity_DialogHeader"] = "L\195\182sche Seltenheit",
+		["PurgeRarity_DialogWarn"] = "Sind Sie sicher, folgende Items zu l\195\182schen:\n",
+		["PurgeRarity_DialogComplete"] = "Löschvorgang fertig:",
 		
 		--////////////////////////////////
 
@@ -153,14 +153,14 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		--Favorites
 		["Fav_CurrentUsr"] = "Derzeitige Auswahl:",
 		["Fav_DialogHeader"] = "Favorit hinzuf\195\188gen",
-		["Fav_DialogWarn"] = "Dieses Item, zu den derzeit ausgew\195\164hlten, Benutzer-Favoriten hinzuf\195\188gen?",
-		["Fav_DialogComplete"] = "Favorit hinzugef\195\188gt zu Benutzer:",
-		["Fav_Duplicate"] = "Item bereits in Favoriten eingetragen.",
-		["Fav_Delete"] = "Klicken um Item aus Favoriten zu entfernen.",
-		["Fav_PurgeWarning"] = "Sind Sie sicher, dass Sie die Faforiten\ndes folgenden Benutzers bereinigen wollen?",
-		["Fav_PurgeDialogComplete"] = "Favoritenbereinigungsprozess komplett:",
+		["Fav_DialogWarn"] = "Dieses Item zu den derzeit ausgew\195\164hlten Charakter-Favoriten hinzuf\195\188gen?",
+		["Fav_DialogComplete"] = "Favorit hinzugef\195\188gt zu Charakter:",
+		["Fav_Duplicate"] = "Item bereits in Favoriten vorhanden.",
+		["Fav_Delete"] = "Anklicken, um Item aus Favoriten zu entfernen.",
+		["Fav_PurgeWarning"] = "Sind Sie sicher, dass Sie die Favoriten\ndes folgenden Charakters l\195\182schen wollen?",
+		["Fav_PurgeDialogComplete"] = "L\195\182schvorgang fertig:",
 		["Fav_DeleteHeader"] = "Favoriten l\195\182schen",
-		["Fav_DeleteWarning"] = "Folgendes Item von Benutzer entfernen?",
+		["Fav_DeleteWarning"] = "Folgendes Item vom Charakter l\195\182schen?",
 		["Fav_DeleteComplete"] = "Item wurde erfolgreich aus Favoriten gel\195\182scht.",
 		--////////////////////////////////
 
@@ -168,13 +168,13 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		--ItemID
 		["ItemID_Item"] = "Item:",
 		["ItemID_Format"] = "Bsp: 12345:0:0:0:0:0:0:0 oder 12345",
-		["ItemID_Warn"] = "ACHTUNG: Der Autor von ItemSync\n ist nicht f\195\188r eventuelle\n Verbindungsabbr\195\188che verantwortlich.",
+		["ItemID_Warn"] = "ACHTUNG: Der Autor von ItemSync\n ist nicht f\195\188r eventuelle\n Verbindungsabbr\195\188che verantwortlich!\n",
 		["ItemID_Warn2"] = "BENUTZUNG AUF EIGENE GEFAHR!",
 		["ItemID_Invalid"] = "Ung\195\188ltige ItemID!",
-		["ItemID_Valid"] = "Bitte warten Sie 3 Sek. f\195\188r Item-Validierung [",
+		["ItemID_Valid"] = "Bitte warten Sie 3 Sek. f\195\188r Item-Abfrage [",
 		["ItemID_ValidYes"] = "Item-Validierung erfolgreich!",
 		["ItemID_ValidNo"] = "Item-Validierung fehlgeschlagen!",
-		["ItemID_ValidWait"] = "Bitte warten, ItemID-Validierung bereits gestartet!",
+		["ItemID_ValidWait"] = "Bitte warten, ItemID-Abfrage bereits gestartet!",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -186,27 +186,27 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 
 		--////////////////////////////////
 		--QuickBag
-		["QuickBag_ShowStack"] = "Stapelmenge zeigen",
-		["QuickBag_HideEmpty"] = "Leere Preise verbergen",
-		["QuickBag_SortPrice"] = "Nach Preis sortieren",
-		["QuickBag_SortRarity"] = "Nach Seltenheit sortieren",
+		["QuickBag_ShowStack"] = "Stapelmengen zeigen",
+		["QuickBag_HideEmpty"] = "Ohne Preis verbergen",
+		["QuickBag_SortPrice"] = "Nach Preis",
+		["QuickBag_SortRarity"] = "Nach Seltenheit",
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "Linksklick = ItemSync \195\182ffnen/schlie\195\159en",
 		["MiniMap_RightClick"] = "Rechtsklick = Minimap-Button verschieben",
-		["MiniMap_Float1"] = "Control+Shift+Right-Click = Floating Minimap Button",
-		["MiniMap_Float2"] = "Alt+Shift+Right-Click = Floating Minimap Button",
+		["MiniMap_Float1"] = "Strg+Shift+Rechtsklick = Schwebender Minimap-Button",
+		["MiniMap_Float2"] = "Alt+Shift+Rechtsklick = Schwebender Minimap-Button",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--One database
-		["OneDB_Header"] = "Datenbanken vereinigen",
+		["OneDB_Header"] = "Datenbank vereinigen",
 		["OneDB_SplitHeader"] = "Datenbank teilen",
-		["OneDB_SureFirst"] = "Sind Sie sich sicher, dass Sie ihre\n Datenbanken vereinigen wollen?",
-		["OneDB_SureSecond"] = "Sind Sie sich sicher, dass Sie ihre\n Datenbanken teilen wollen in:",
-		["OneDB_Complete"] = "Datatenbank Operation komplett!",
+		["OneDB_SureFirst"] = "Sind Sie sicher, dass Sie Ihre\n Datenbanken vereinigen wollen?",
+		["OneDB_SureSecond"] = "Sind Sie sicher, dass Sie Ihre\n Datenbank teilen wollen in:",
+		["OneDB_Complete"] = "Vorgang fertig!",
 		--////////////////////////////////
 	
 
@@ -214,108 +214,108 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		--Optimize
 		["Optimize_Header"] = "Optimieren",
 		["Optimize_InvalidHeader"] = "Validieren",
-		["Optimize_Running"] = "Optimierung",
-		["Optimize_InvalidRunning"] = "Validierung",
-		["Optimize_Complete"] = "Optimierung ist komplett",
-		["Optimize_InvalidComplete"] = "Validierung ist komplett",
-		["Optimize_Check"] = "Wollen Sie wirklich\nihre Datenbank optimieren?",
+		["Optimize_Running"] = "Optimierung...",
+		["Optimize_InvalidRunning"] = "Validierung...",
+		["Optimize_Complete"] = "Optimierung ist fertig",
+		["Optimize_InvalidComplete"] = "Validierung ist fertig",
+		["Optimize_Check"] = "Wollen Sie wirklich\nIhre Datenbank optimieren?",
 		["Optimize_InvalidCheck"] = "Wollen Sie wirklich\nung\195\188ltige Items validieren?",
 		["Optimize_No"] = "Optimierung bereitz gestartet!",
-		["Optimize_InvalidRelog"] = "Notiz: Nicht alle Items werden Validiert\nbevor Sie nicht neu einloggen.",
+		["Optimize_InvalidRelog"] = "Hinweis: Nicht alle Items werden validiert\nbevor Sie sich nicht neu einloggen.",
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
-		["Help_MainSection1"] = "|c00A2D96F(LEFT-CLICK)|r\n",
-		["Help_MainSection2"] = "(Left-Click) = Link item in chat.\n",
-		["Help_MainSection3"] = "(Shift)+(Left-Click) = Link item in chat.\n",
-		["Help_MainSection4"] = "(Control)+(Shift)+(Left-Click) = Add item to Favorites.\n",
-		["Help_MainSection5"] = "(Control)+(Left-Click) = Use item in Dressing Room.\n",
+		["Help_MainSection1"] = "|c00A2D96F(LINKSKLICK)|r\n",
+		["Help_MainSection2"] = "(Linksklick) = Verlinkt Item im Chat.\n",
+		["Help_MainSection3"] = "(Shift)+(Linksklick) = Verlinkt Item im Chat.\n",
+		["Help_MainSection4"] = "(Strg)+(Shift)+(Linksklick) = F\195\188gt Item zu Favoriten.\n",
+		["Help_MainSection5"] = "(Strg)+(Linksklick) = Item im Vorschaufenster.\n",
 		["Help_MainSection6"] = "\n",
-		["Help_MainSection7"] = "|c00A2D96F(RIGHT-CLICK)|r\n",
-		["Help_MainSection8"] = "(Control)+(Right-Click) = Force invalid item validation.\n",
-		["Help_MainSection9"] = "(Alt)+(Right-Click) = Delete item from database.\n",
+		["Help_MainSection7"] = "|c00A2D96F(RECHTSKLICK)|r\n",
+		["Help_MainSection8"] = "(Strg)+(Rechtsklick) = Fragt ung\195\188ltige Items ab.\n",
+		["Help_MainSection9"] = "(Alt)+(Rechtsklick) = L\195\182scht Item aus Datenbank.\n",
 		["Help_MainSection10"] = "\n",
-		["Help_MainSection11"] = "Total items is the amount of items stored in the database.\n",
-		["Help_MainSection12"] = "Total shown is the amount of items currently shown in the main window.\n",
-		["Help_MainSection13"] = "If you want to update your currently shown items then press the REFRESH button.\n",
+		["Help_MainSection11"] = "ITEMS GESAMT ist die Zahl der Items in der Datenbank.\n",
+		["Help_MainSection12"] = "GEZEIGTE ist die Zahl der gerade im Fenster angezeigten Items.\n",
+		["Help_MainSection13"] = "Mit AKTUALISIEREN wird die Anzeige der gerade gezeigten Items aufgefrischt.\n",
 		["Help_MainSection14"] = "\n",
-		["Help_MainSection15"] = "|c00FC5252(ITEM)|r = Invalid item.\n",
-		["Help_MainSection16"] = "|c00F3EF86(ITEM)|r = Duplicate item with [DIFFERENT] stats.\n",
+		["Help_MainSection15"] = "|c00FC5252(ITEM)|r = Ung\195\188ltiges Item.\n",
+		["Help_MainSection16"] = "|c00F3EF86(ITEM)|r = Doppeltes Item mit UNTERSCHIEDLICHEN Werten.\n",
 		["Help_MainSection17"] = "\n",
-		["Help_MainSection18"] = "Items with the same name but different classes are shown as sub-items.  They will have an arrow in front of them.\n",
+		["Help_MainSection18"] = "Items gleichen Namens (aber unterschiedlicher Gruppen) werden als Sub-Items gezeigt.  Vor diesen steht ein Pfeil.\n",
 		["Help_MainSection19"] = "\n\n",
 		["Help_OptionsSection"] = 32,
-		["Help_OptionsSection1"] = "|c00A2D96FFETCH LINKS|r\n",
-		["Help_OptionsSection2"] = "Fetch Links allows you to link items in chat using partial item names; or full names. This feature is NOT case-sensative.  ",
-		["Help_OptionsSection3"] = "You don't have to use the words in the front of the name.  You can use any part of the item name to link an item.\n\n",
-		["Help_OptionsSection4"] = "Example: [*copp*] would return the item link for [Copper Ore]\n",
-		["Help_OptionsSection5"] = "Example: [*ore*] would return the item link for [Copper Ore]\n",
-		["Help_OptionsSection6"] = "Example: [*flight*] would return the item link for [Breastplate of the Chromatic Flight]\n",
-		["Help_OptionsSection7"] = "Example: [*chrom*] would return the item link for [Breastplate of the Chromatic Flight]\n",
+		["Help_OptionsSection1"] = "|c00A2D96FCHAT-LINKS|r\n",
+		["Help_OptionsSection2"] = "Chat-Links erm\195\182glichen die Verlinkung unvollst\195\164ndiger oder vollst\195\164ndiger Itemnamen. Gro\195\159-/Kleinschreibung ist EGAL.  ",
+		["Help_OptionsSection3"] = "Der angegebene Name muss nicht von vorne anfangen; jeder Namensteil reicht f\195\188r eine Verlinkung aus.\n\n",
+		["Help_OptionsSection4"] = "Bsp: [*kupf*] verlinkt das Item [Kupfererz]\n",
+		["Help_OptionsSection5"] = "Bsp: [*erz*] verlinkt das Item [Kupfererz]\n",
+		["Help_OptionsSection6"] = "Bsp: [*schwarms*] verlinkt das Item [Brustplatte des chromatischen Drachenschwarms]\n",
+		["Help_OptionsSection7"] = "Bsp: [*chrom*] verlinkt das Item [Brustplatte des chromatischen Drachenschwarms]\n",
 		["Help_OptionsSection8"] = "\n\n",
-		["Help_OptionsSection9"] = "|c00A2D96FMOUSE INSPECT|r\n",
-		["Help_OptionsSection10"] = "Allows you to collect items from players simply by passing your mouse over them.  Note: Blizzard has limited the range in which",
-		["Help_OptionsSection11"] = " you can do this.  Also please note this feature may or may not cause lag on some computers.\n",
+		["Help_OptionsSection9"] = "|c00A2D96FMOUSEOVER-SCANNEN|r\n",
+		["Help_OptionsSection10"] = "Sammelt bereits Items w\195\164hrend man auf andere Spieler mit der Maus zeigt.  Hinweis: Blizzard hat die Reichweite daf\195\188r",
+		["Help_OptionsSection11"] = " begrenzt.  Auf manchen Rechnern KANN diese Funktion auch Lags (H\195\164nger) verursachen.\n",
 		["Help_OptionsSection12"] = "\n",
-		["Help_OptionsSection13"] = "|c00A2D96FHIDE ITEMS|r\n",
-		["Help_OptionsSection14"] = "This feature disables the loading of items in the main window each time that ItemSync is shown.  Items will only show during searches.\n",
+		["Help_OptionsSection13"] = "|c00A2D96FVERBERGE ITEMS|r\n",
+		["Help_OptionsSection14"] = "Verhindert das Laden von Items im Hauptfenster beim \195\150ffnen von ItemSync.  Items werden nur durch Suchen gezeigt.\n",
 		["Help_OptionsSection15"] = "\n",
-		["Help_OptionsSection16"] = "|c00A2D96FSAME DATABASE|r\n",
-		["Help_OptionsSection17"] = "NOTE: Use this feature at your own risk.  This feature will allow you to utilize the same database across all servers.\n",
+		["Help_OptionsSection16"] = "|c00A2D96FEINE DATENBANK|r\n",
+		["Help_OptionsSection17"] = "Hinweis: Benutzung auf eigene Gefahr!  Es wird dabei nur EINE Datenbank f\195\188r ALLE Server genutzt.\n",
 		["Help_OptionsSection18"] = "\n",
-		["Help_OptionsSection19"] = "|c00A2D96FOPTIMIZE DATABASE|r\n",
-		["Help_OptionsSection20"] = "This feature will parse through all the items and update them in the database.  This feature helps and improves the search function.\n",
-		["Help_OptionsSection21"] = "Only valid items will be parsed.\n",
+		["Help_OptionsSection19"] = "|c00A2D96FDATENBANK OPTIMIEREN|r\n",
+		["Help_OptionsSection20"] = "Analysiert und aktualisiert jedes Item in der Datenbank.  Dies verbessert die Leistung beim Suchen.\n",
+		["Help_OptionsSection21"] = "Nur g\195\188ltige Items werden analysiert.\n",
 		["Help_OptionsSection22"] = "\n",
-		["Help_OptionsSection23"] = "|c00A2D96FVALIDATE INVALID|r\n",
-		["Help_OptionsSection24"] = "NOTE: USE THIS FEATURE AT YOUR OWN RISK!\n",
+		["Help_OptionsSection23"] = "|c00A2D96FVALIDIERE UNG\195\156LTIGE|r\n",
+		["Help_OptionsSection24"] = "HINWEIS: BENUTZUNG AUF EIGENE GEFAHR!\n",
 		["Help_OptionsSection25"] = "\n",
-		["Help_OptionsSection26"] = "This feature will attempt to validate invalid items.  You may or may not disconnect during the process.  Please take note that some items",
-		["Help_OptionsSection27"] = " will not validate until you logout -> login.  Not all invalid items can be validated.\n",
+		["Help_OptionsSection26"] = "Versucht, ung\195\188ltige Items (durch Abfrage) zu validieren.  Dabei k\195\182nnte die Verbindung abbrechen.  Manche Items werden",
+		["Help_OptionsSection27"] = " erst beim n\195\164chsten Login g\195\188ltig.  Nicht alle ung\195\188ltigen Items k\195\182nnen validiert werden.\n",
 		["Help_OptionsSection28"] = "\n",
-		["Help_OptionsSection29"] = "|c00A2D96FRESET DATABASE|r\n",
-		["Help_OptionsSection30"] = "NOTE: THIS FEATURE IS IRREVERSIBLE!\n\n",
-		["Help_OptionsSection31"] = "This feature will delete all items within your database.  This will reset you back to zero items.\n",
+		["Help_OptionsSection29"] = "|c00A2D96FDATENBANK L\195\150SCHEN|r\n",
+		["Help_OptionsSection30"] = "ACHTUNG: DIES IST UNWIDERRUFLICH!\n\n",
+		["Help_OptionsSection31"] = "L\195\182scht alle Items aus der Datenbank.  Stellt den Itemz\195\164hler zur\195\188ck auf 0.\n",
 		["Help_OptionsSection32"] = "\n\n",
 		["Help_FilterSection"] = 13,
-		["Help_FilterSection1"] = "|c00A2D96FFILTERING|r\n",
-		["Help_FilterSection2"] = "ItemSync has the ability to filter out unwanted items by rarity/quality.\n",
+		["Help_FilterSection1"] = "|c00A2D96FFILTER|r\n",
+		["Help_FilterSection2"] = "ItemSync kann unerw\195\188nschte Items nach ihrer Seltenheit (d.h. Qualit\195\164t) weglassen.\n",
 		["Help_FilterSection3"] = "\n",
-		["Help_FilterSection4"] = "To filter out a rarity/quality from being recorded to the database, simply mark the corresponding [CHECKBOX] next to the rarity you wish to [FILTER OUT].\n",
+		["Help_FilterSection4"] = "Damit eine Aufnahme in die Datenbank verhindert wird, muss das entsprechende Ankreuzfeld der Seltenheit zum WEGLASSEN markiert werden.\n",
 		["Help_FilterSection5"] = "\n",
-		["Help_FilterSection6"] = "NOTE: Please remember that by placing a checkmark on a checkbox next to a rarity/quality, you are informing ItemSync to filter [OUT] any items of that rarity/quality!\n",
+		["Help_FilterSection6"] = "HINWEIS: Wird ein Kreuzchen bei der jeweiligen Seltenheit/Qualit\195\164t gemacht, wird ItemSync diese Items NICHT aufnehmen!\n",
 		["Help_FilterSection7"] = "\n",
-		["Help_FilterSection8"] = "By default ItemSync is set to record all items regardless of quality/rarity.\n",
+		["Help_FilterSection8"] = "Die Voreinstellung von ItemSync ist das Sammeln aller Items ohne Einschr\195\164nkung.\n",
 		["Help_FilterSection9"] = "\n",
-		["Help_FilterSection10"] = "|c00A2D96FPURGING|r\n",
-		["Help_FilterSection11"] = "NOTE: THIS IS IRREVERSIBLE!!!\n\n",
-		["Help_FilterSection12"] = "To purge items by either rarity/quality or invalid items, please use the corresponding options provided for you.\n",
+		["Help_FilterSection10"] = "|c00A2D96FL\195\150SCHEN|r\n",
+		["Help_FilterSection11"] = "ACHTUNG: DIES IST UNWIDERRUFLICH!\n\n",
+		["Help_FilterSection12"] = "Ein L\195\182schen von Items nach Seltenheit oder ung\195\188ltiger Items wird durch die jeweilige Option durchgef\195\188hrt.\n",
 		["Help_FilterSection13"] = "\n\n",
 		["Help_FavoritesSection"] = 16,
-		["Help_FavoritesSection1"] = "|c00A2D96FFAVORITES|r\n",
-		["Help_FavoritesSection2"] = "This feature displays all your favorite items you come across.  Please note when adding favorites make sure to select the user you wish to add to.\n",
+		["Help_FavoritesSection1"] = "|c00A2D96FFAVORITEN|r\n",
+		["Help_FavoritesSection2"] = "Zeigt alle Favoriten an, die man zuvor aufgenommen hat.  Die Favoriten werden zum derzeit ausgew\195\164hlten Charakter hinzugef\195\188gt.\n",
 		["Help_FavoritesSection3"] = "\n",
-		["Help_FavoritesSection4"] = "|c00A2D96FADDING FAVORITES|r\n",
-		["Help_FavoritesSection5"] = "(Control)+(Shift)+(Left-Click) items within the main ItemSync window to add them to your favorites.\n\n",
-		["Help_FavoritesSection6"] = "Please note that items will be added to the [CURRENTLY] selected user within the Favorites window.\n",
+		["Help_FavoritesSection4"] = "|c00A2D96FFAVORITEN HINZUF\195\156GEN|r\n",
+		["Help_FavoritesSection5"] = "(Strg)+(Shift)+(Linksklick) auf Items im Hauptfenster von ItemSync, um diese zu den Favoriten hinzuzuf\195\188gen.\n\n",
+		["Help_FavoritesSection6"] = "Diese werden in die Liste des Charakters aufgenommen, der DERZEIT im Favoritenfenster ausgew\195\164hlt ist.\n",
 		["Help_FavoritesSection7"] = "\n",
-		["Help_FavoritesSection8"] = "|c00A2D96FREMOVING FAVORITES|r\n",
-		["Help_FavoritesSection9"] = "NOTE: THIS IS IRREVERSIBLE\n\n",
-		["Help_FavoritesSection10"] = "Click on the red button (box) next to the favorite item to remove it from the list.\n",
+		["Help_FavoritesSection8"] = "|c00A2D96FFAVORITEN L\195\150SCHEN|r\n",
+		["Help_FavoritesSection9"] = "ACHTUNG: DIES IST UNWIDERRUFLICH!\n\n",
+		["Help_FavoritesSection10"] = "Zum L\195\182schen eines Items aus den Favoriten wird der rote Button (Box) daneben angeklickt.\n",
 		["Help_FavoritesSection11"] = "\n",
-		["Help_FavoritesSection12"] = "|c00A2D96F(LEFT-CLICK)|r\n",
-		["Help_FavoritesSection13"] = "(Left-Click) = Link item in chat.\n",
-		["Help_FavoritesSection14"] = "(Shift)+(Left-Click) = Link item in chat.\n",
-		["Help_FavoritesSection15"] = "(Control)+(Left-Click) = Use item in Dressing Room.\n",
+		["Help_FavoritesSection12"] = "|c00A2D96F(LINKSKLICK)|r\n",
+		["Help_FavoritesSection13"] = "(Linksklick) = Verlinkt Item im Chat.\n",
+		["Help_FavoritesSection14"] = "(Shift)+(Linksklick) = Verlinkt Item im Chat.\n",
+		["Help_FavoritesSection15"] = "(Strg)+(Linksklick) = Item im Vorschaufenster.\n",
 		["Help_FavoritesSection16"] = "\n\n",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--ItemCount Frame
-		["ItemCount_FrameHeader"] = "ItemSync ItemCount Frame",
-		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
+		["ItemCount_FrameHeader"] = "ItemSync Itemz\195\164hler",
+		["ItemCount_LeftClick"] = "Strg+Linksklick = ItemSync-Fenster umschalten",
 		--////////////////////////////////
 
 	    }--end return
@@ -377,7 +377,7 @@ if ( GetLocale() == "deDE" ) then
 			["Schmuck"]=18,
 			["Wappenrock"]=19,
 			["Hals"]=20,
-			["Thrown"]=21,
+			["Wurfwaffe"]=21,
 			--["Armbrust"]=24
 		},
 
