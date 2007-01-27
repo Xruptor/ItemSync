@@ -378,7 +378,7 @@ if ( GetLocale() == "deDE" ) then
 			["Schmuck"]=18,
 			["Wappenrock"]=19,
 			["Hals"]=20,
-			["Wurfwaffe"]=21,
+			["Thrown"]=21,
 			--["Armbrust"]=24
 		},
 
