@@ -278,6 +278,10 @@ function ItemSync:UpdateItemCounter()
 	if (self.db.account[self.realm]["options"]["ItemCount"]) then
 		ItemSync_CountFrameText:SetText(self.db.account[self.realm]["options"]["ItemCount"]);
 	end
+	
+	if (ItemSyncFu) then
+		ItemSyncFu:UpdateDisplay();
+	end
 		
 	if (not self._buildtable or not self._buildtable.onePastEnd) then return nil; end
 	

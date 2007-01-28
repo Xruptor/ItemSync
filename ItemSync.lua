@@ -137,8 +137,7 @@ function ItemSync:OnEnable()
 	self:Load_FilterOpt();
 	self:Load_QuickBagOpt();
 	self:Favorites_Load();
-	self:MiniMap_OnLoad();
-	
+
 	self._doOnce = 0;
 	self._iteminfo = { };
 	

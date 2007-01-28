@@ -48,7 +48,6 @@
 		["ToggleFav"] = "Toggle Favorites Window",
 		["ToggleQuick"] = "Toggle QuickBag Window",
 		["ToggleItemID"] = "Toggle ItemID Window",
-		["ToggleItemSyncFubar"] = "Click to toggle ItemSync.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -178,10 +177,14 @@
 
 		--////////////////////////////////
 		--MiniMap
-		["MiniMap_LeftClick"] = "Left-Click = Toggle ItemSync",
-		["MiniMap_RightClick"] = "Right-Click = Rotate Minimap Button",
-		["MiniMap_Float1"] = "Control+Shift+Right-Click = Floating Minimap Button",
-		["MiniMap_Float2"] = "Alt+Shift+Right-Click = Floating Minimap Button",
+		["MiniMap_LeftClick"] = "(Click)",
+		["MiniMap_LeftClick1"] = "Toggle ItemSync",
+		["MiniMap_LeftClickDown"] = "(Left-Click)",
+		["MiniMap_LeftClickDown1"] = "Move Minimap",
+		["MiniMap_LeftClickMouseDrag"] = "(Alt+Left-Click)",
+		["MiniMap_LeftClickMouseDrag1"] = "Free Floating Minimap",
+		["MiniMap_RightClick"] = "(Right-Click)",
+		["MiniMap_RightClick1"] = "Display Menu",
 		--////////////////////////////////
 		
 		--////////////////////////////////

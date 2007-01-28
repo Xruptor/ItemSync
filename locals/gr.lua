@@ -57,7 +57,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["OperationComplete"] = "Fertig!",
 		["Purge_all_db"] = "Wollen Sie wirklich Ihre komplette\nDatenbank UNWIDERRUFLICH l\195\182schen?",
 		["ShowNone"] = "Keine",
-		["DisplayInvalid"] = "Display Invalid",
+		["DisplayInvalid"] = "Ung\195\188ltige anzeigen",
 		
 		--////////////////////////////////
 		--Key Bindings
@@ -65,7 +65,6 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["ToggleFav"] = "Favoritenfenster umschalten",
 		["ToggleQuick"] = "QuickBag-Fenster umschalten",
 		["ToggleItemID"] = "ItemID-Fenster umschalten",
-		["ToggleItemSyncFubar"] = "ItemSync umschalten.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -146,7 +145,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["PurgeInvalid_DialogComplete"] = "L\195\182schvorgang fertig: [Ung\195\188ltige Items]",
 		["PurgeRarity_DialogHeader"] = "L\195\182sche Seltenheit",
 		["PurgeRarity_DialogWarn"] = "Sind Sie sicher, folgende Items zu l\195\182schen:\n",
-		["PurgeRarity_DialogComplete"] = "Löschvorgang fertig:",
+		["PurgeRarity_DialogComplete"] = "L\195\182schvorgang fertig:",
 		
 		--////////////////////////////////
 
@@ -195,10 +194,14 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 
 		--////////////////////////////////
 		--MiniMap
-		["MiniMap_LeftClick"] = "Linksklick = ItemSync \195\182ffnen/schlie\195\159en",
-		["MiniMap_RightClick"] = "Rechtsklick = Minimap-Button verschieben",
-		["MiniMap_Float1"] = "Strg+Shift+Rechtsklick = Schwebender Minimap-Button",
-		["MiniMap_Float2"] = "Alt+Shift+Rechtsklick = Schwebender Minimap-Button",
+		["MiniMap_LeftClick"] = "(Click)",
+		["MiniMap_LeftClick1"] = "Toggle ItemSync",
+		["MiniMap_LeftClickDown"] = "(Left-Click)",
+		["MiniMap_LeftClickDown1"] = "Move Minimap",
+		["MiniMap_LeftClickMouseDrag"] = "(Alt+Left-Click)",
+		["MiniMap_LeftClickMouseDrag1"] = "Free Floating Minimap",
+		["MiniMap_RightClick"] = "(Right-Click)",
+		["MiniMap_RightClick1"] = "Display Menu",
 		--////////////////////////////////
 		
 		--////////////////////////////////

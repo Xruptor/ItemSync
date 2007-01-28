@@ -44,8 +44,6 @@ locals\kr.lua
 ItemSync.lua
 ItemSync.xml
 
-ItemSync_Fubar.lua
-
 tooltip\Tooltip_Parse.lua
 tooltip\Tooltip_Display.lua
 tooltip\Tooltip_Templates.xml
@@ -58,6 +56,7 @@ xml\Filters.xml
 xml\Favorites.xml
 xml\ItemID.xml
 xml\QuickBag.xml
-xml\Minimap.xml
 xml\Optimize.xml
 xml\Help.xml
+
+ItemSync_Fubar.lua

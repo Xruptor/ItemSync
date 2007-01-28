@@ -105,8 +105,13 @@ function ItemSync:Click_Opt(c, n, s)
 		self.db.account[self.realm]["options"]["external"][n] = s;
 		
 		if (n == 1 and s == 1) then ItemSync_CountFrame:Show(); elseif (n == 1 and s == 0) then ItemSync_CountFrame:Hide(); end
-		if (n == 2) then self:MiniMap_Init(); end
 		
+		if (n == 2 and s == 1) then
+			if (ItemSyncFu) then ItemSyncFu:ToggleActive(true); end
+		elseif (n == 2 and s == 0) then
+			if (ItemSyncFu) then ItemSyncFu:ToggleActive(false); end
+		end
+
 		if (n == 5 and s == 1) then 
 			self._buildtable = nil;
 			self:Main_Refresh(1);

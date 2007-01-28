@@ -50,7 +50,6 @@
 		["ToggleFav"] = "즐겨찾기 메뉴 열기/닫기",
 		["ToggleQuick"] = "QuickBag 메뉴 열기/닫기",
 		["ToggleItemID"] = "아이템 ID 메뉴 열기/닫기",
-		["ToggleItemSyncFubar"] = "클릭 - ItemSync 열기/닫기",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -180,10 +179,14 @@
 
 		--////////////////////////////////
 		--MiniMap
-		["MiniMap_LeftClick"] = "왼쪽 클릭 = ItemSync 열기/닫기",
-		["MiniMap_RightClick"] = "오른쪽 클릭 = 미니맵 버튼 회전",
-		["MiniMap_Float1"] = "컨트롤+쉬프트+오른쪽 클릭 = 미니맵 버튼 이동",
-		["MiniMap_Float2"] = "알트+쉬프트+오른쪽 클릭 = 미니맵 버튼 이동",
+		["MiniMap_LeftClick"] = "(Click)",
+		["MiniMap_LeftClick1"] = "Toggle ItemSync",
+		["MiniMap_LeftClickDown"] = "(Left-Click)",
+		["MiniMap_LeftClickDown1"] = "Move Minimap",
+		["MiniMap_LeftClickMouseDrag"] = "(Alt+Left-Click)",
+		["MiniMap_LeftClickMouseDrag1"] = "Free Floating Minimap",
+		["MiniMap_RightClick"] = "(Right-Click)",
+		["MiniMap_RightClick1"] = "Display Menu",
 		--////////////////////////////////
 		
 		--////////////////////////////////

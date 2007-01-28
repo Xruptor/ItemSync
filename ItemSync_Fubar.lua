@@ -5,72 +5,45 @@
   Website: http://www.manaflux.com
 -----------------------------------------------------------------------------------]]
 
-ItemSyncFu = AceLibrary("AceAddon-2.0"):new("FuBarPlugin-2.0", "AceDB-2.0", "AceEvent-2.0")
-
-ItemSyncFu:RegisterDB("ItemSyncFuDB")
+ItemSyncFu = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceConsole-2.0", "AceDB-2.0", "FuBarPlugin-2.0")
 
 ItemSyncFu.name = "ItemSync"
 ItemSyncFu.version = ItemSync.version
 ItemSyncFu.hasIcon = "Interface\\Icons\\INV_Misc_Bag_13.png"
+ItemSyncFu.hasNoColor = true
+ItemSyncFu.defaultMinimapPosition = 294
 ItemSyncFu.clickableTooltip = false
-ItemSyncFu.cannotDetachTooltip = true
 ItemSyncFu.hideWithoutStandby = true
-ItemSyncFu.defaultPosition = "RIGHT"
-ItemSyncFu.cannotAttachToMinimap = true
-ItemSyncFu.dontCreateMinimap = true
+ItemSyncFu.independentProfile = true
+ItemSyncFu.cannotDetachTooltip = true
 
-local L = AceLibrary("AceLocale-2.2"):new("FuBar_ItemSyncFu")
+ItemSyncFu:RegisterDB("ItemSyncFuDB")
 
 local Tablet = AceLibrary("Tablet-2.0")
 local Crayon = AceLibrary("Crayon-2.0")
-local Gnome = AceLibrary("Metrognome-2.0")
 
 local options = {
 	type = "group",
 	args = {
 		show = {
 			type = "execute",
-			name = "ItemSync",
+			name = ISL["ToggleMain"],
 			desc = ISL["ToggleMain"],
 			func = function()
-				ISync_MainFrame:Show();
+				if (ISync_MainFrame:IsVisible()) then
+					ISync_MainFrame:Hide();
+				else
+					ISync_MainFrame:Show();
+				end
 			end,
 		},
 	},
 	handler = ItemSyncFu
 }
-
 ItemSyncFu.OnMenuRequest = options
 
 function ItemSyncFu:OnEnable()
-	self:TurnOff_Minimap();
-end
-
-function ItemSyncFu:TurnOff_Minimap()
-
-	if (not Gnome:Status("FubarMinimapChk")) then
-	
-		local FubarMinimapChkDone = function()
-			
-			if (ItemSyncFu.minimapFrame) then
-				ItemSyncFu.minimapFrame:Hide();
-				ItemSyncFu.minimapFrame = nil;
-				Gnome:Unregister("FubarMinimapChk");
-			end
-
-		end
-	
-		Gnome:Register("FubarMinimapChk", FubarMinimapChkDone , 0.2)
-		self:TurnOff_Minimap()
-	else
-		local avail, rate, running = Gnome:Status("FubarMinimapChk")
-
-		if (not running ) then
-			Gnome:Start("FubarMinimapChk")
-		else
-			Gnome:ChangeRate("FubarMinimapChk", 0.2)
-		end
-	end
+	--empty for right now
 end
 
 function ItemSyncFu:OnTextUpdate()
@@ -80,18 +53,27 @@ function ItemSyncFu:OnTextUpdate()
 	else
 		self:SetText(Crayon:Colorize("A2D96F", 0));
 	end
-
 end
 
 function ItemSyncFu:OnTooltipUpdate()
-	Tablet:SetHint(ISL["ToggleItemSyncFubar"])
+	
+	if (self:IsMinimapAttached()) then
+		local cat = Tablet:AddCategory("columns", 2)
+		cat:AddLine("text", ISL["MiniMap_LeftClickDown"], "text2", Crayon:Green(ISL["MiniMap_LeftClickDown1"]))
+		cat:AddLine("text", ISL["MiniMap_LeftClickMouseDrag"], "text2", Crayon:Green(ISL["MiniMap_LeftClickMouseDrag1"]))
+		cat:AddLine("text", ISL["MiniMap_RightClick"], "text2", Crayon:Green(ISL["MiniMap_RightClick1"]))
+	end
+	Tablet:SetHint(Crayon:Colorize("eda55f", ISL["MiniMap_LeftClick"]).." = "..ISL["MiniMap_LeftClick1"])
+	
 end
 
-function ItemSyncFu:OnClick()
+function ItemSyncFu:OnClick(button)
 	if (ISync_MainFrame:IsVisible()) then
 		ISync_MainFrame:Hide();
 	else
 		ISync_MainFrame:Show();
 	end
+	self:UpdateDisplay()
 end
+
 
