@@ -83,17 +83,17 @@ function ItemSync:On_DD_SearchEnable()
 			'point', "TOP",
    			'relativePoint', "BOTTOM",
 			'children', function()
-			
+
+				self.dewdrop:AddLine(
+					'text', ISL["ShowNone"],
+					'closeWhenClicked', true,
+					'tooltipTitle', "",
+					'func', function() ISync_DD_RaritySelection:SetText(""); ISync_DD_Rarity._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
+				)
+					
 				for k=0, 5, 1 do
 
 					local grabColor = ITEM_QUALITY_COLORS[k];
-			
-					self.dewdrop:AddLine(
-						'text', ISL["ShowNone"],
-						'closeWhenClicked', true,
-						'tooltipTitle', "",
-						'func', function() ISync_DD_RaritySelection:SetText(""); ISync_DD_Rarity._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
-					)
 				
 					self.dewdrop:AddLine(
 						'text', ISA["RARITY"][k],
