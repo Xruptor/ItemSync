@@ -12,7 +12,6 @@ ItemSyncFu.version = ItemSync.version
 ItemSyncFu.hasIcon = "Interface\\Icons\\INV_Misc_Bag_13.png"
 ItemSyncFu.hasNoColor = true
 ItemSyncFu.defaultMinimapPosition = 294
-ItemSyncFu.clickableTooltip = false
 ItemSyncFu.hideWithoutStandby = true
 ItemSyncFu.independentProfile = true
 ItemSyncFu.cannotDetachTooltip = true
