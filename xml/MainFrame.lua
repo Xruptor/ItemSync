@@ -216,7 +216,7 @@ function ItemSync:BuildIndex()
 	q = nil;
 	r = nil;
 	
-	if ( self.db.account[self.realm]["options"]["ItemCount"] ~= (iNew-1)) then
+	if ( self.db.account[self.realm]["options"]["ItemCount"] < (iNew-1)) then
 		self.db.account[self.realm]["options"]["ItemCount"] = (iNew-1);
 		self:UpdateItemCounter();
 	
