@@ -791,7 +791,11 @@
   				</OnLoad>
   				<OnShow>
  						PlaySound("igMainMenuOpen");
- 						ISync_MainFrameHeader_BoxText:SetText("ItemSync [ "..ItemSync.crayon:Colorize("A2D96F", ItemSync.version).." ]");
+ 						
+ 						if (ItemSync) then
+ 							ISync_MainFrameHeader_BoxText:SetText("ItemSync [ "..ItemSync.crayon:Colorize("A2D96F", ItemSync.version).." ]");
+ 						end
+ 						
  						ISyncMainFrame_QuickSearchText:SetText(ISL["SearchName"]);
  						ISyncMainFrame_QuickSearchText:SetTextColor(1, 1, 1);
  						
