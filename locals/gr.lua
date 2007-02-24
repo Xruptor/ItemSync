@@ -1,5 +1,8 @@
+-- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
+-- Version: r$Revision: 26541 $
+
 --[[--------------------------------------------------------------------------------
-  ItemSync German Localization (for release 26219)
+  ItemSync German Localization
 
   Author:  Derkyle
   Website: http://www.manaflux.com
@@ -61,10 +64,10 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		
 		--////////////////////////////////
 		--Key Bindings
-		["ToggleMain"] = "Hauptfenster umschalten",
-		["ToggleFav"] = "Favoritenfenster umschalten",
-		["ToggleQuick"] = "QuickBag-Fenster umschalten",
-		["ToggleItemID"] = "ItemID-Fenster umschalten",
+		["ToggleMain"] = "Hauptfenster zeigen",
+		["ToggleFav"] = "Favoritenfenster zeigen",
+		["ToggleQuick"] = "QuickBag-Fenster zeigen",
+		["ToggleItemID"] = "ItemID-Fenster zeigen",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -194,14 +197,14 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 
 		--////////////////////////////////
 		--MiniMap
-		["MiniMap_LeftClick"] = "(Click)",
-		["MiniMap_LeftClick1"] = "Toggle ItemSync",
-		["MiniMap_LeftClickDown"] = "(Left-Click)",
-		["MiniMap_LeftClickDown1"] = "Move Minimap",
-		["MiniMap_LeftClickMouseDrag"] = "(Alt+Left-Click)",
-		["MiniMap_LeftClickMouseDrag1"] = "Free Floating Minimap",
-		["MiniMap_RightClick"] = "(Right-Click)",
-		["MiniMap_RightClick1"] = "Display Menu",
+		["MiniMap_LeftClick"] = "(Linksklick)",
+		["MiniMap_LeftClick1"] = "ItemSync \195\182ffnen",
+		["MiniMap_LeftClickDown"] = "(Linksklick halten)",
+		["MiniMap_LeftClickDown1"] = "Button verschieben",
+		["MiniMap_LeftClickMouseDrag"] = "(Alt+Linksklick halten)",
+		["MiniMap_LeftClickMouseDrag1"] = "Button frei verschieben",
+		["MiniMap_RightClick"] = "(Rechtsklick)",
+		["MiniMap_RightClick1"] = "Men\195\188 anzeigen",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -319,7 +322,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		--////////////////////////////////
 		--ItemCount Frame
 		["ItemCount_FrameHeader"] = "ItemSync Itemz\195\164hler",
-		["ItemCount_LeftClick"] = "Strg+Linksklick = ItemSync-Fenster umschalten",
+		["ItemCount_LeftClick"] = "Strg+Linksklick = ItemSync \195\182ffnen",
 		--////////////////////////////////
 
 	    }--end return

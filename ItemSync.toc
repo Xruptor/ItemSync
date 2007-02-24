@@ -2,6 +2,7 @@
 ## Interface: 20003
 ## Title: ItemSync |cff7fff7f -Ace2-|r
 ## Notes: ItemSync the happy item gatherer and toolkit.
+## Notes-deDE: ItemSync, das fr\195\182hliche Itemsammler-Werkzeug. 
 ## Version: r$Revision$
 ## Author: Derkyle
 ## eMail: derkyle@gmail.com

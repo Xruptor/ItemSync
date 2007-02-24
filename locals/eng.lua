@@ -1,3 +1,6 @@
+-- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
+-- Version: r$Revision: 26541 $
+
 --[[--------------------------------------------------------------------------------
   ItemSync English Localization
 
