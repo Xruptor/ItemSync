@@ -455,6 +455,7 @@ function ItemSync:BagUpdate()
 		local BagUpdateDone = function()
 			self:ScanInv();
 			self:Debug("Bag Update")
+			self.gnome:Unregister("BagUpdate");
 		end
 	
 		self.gnome:Register("BagUpdate", BagUpdateDone , 3)
@@ -480,6 +481,7 @@ function ItemSync:InvenUpdate()
 			self:ScanInv()
 			self:Inspect_Target("player")
 			self:Debug("Inven Update")
+			self.gnome:Unregister("InvenUpdate");
 		end
 	
 		self.gnome:Register("InvenUpdate", InvenUpdateDone , 2)
