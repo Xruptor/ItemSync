@@ -319,6 +319,23 @@ function ItemSync:Inspect_Target(t)
 		self._mousechk.iCount = (self._mousechk.iCount or 0) + 1; --increment for our current item
 	end
 	
+	--first lets check if the only thing that changed was ammo.  If this was the case then we want
+	--to ignore the scanning of equipment and or bags
+	local ammo_link = GetInventoryItemLink('player', 0) --0 slot is the ammo slot
+	local ammo_count = GetInventoryItemCount('player', 0) --0 slot is the ammo slot
+	
+	--if ammo count is different then they fired, save new count and ignore check
+	if (ammo_link and tonumber(ammo_count) and tonumber(ammo_count) > 0) then
+		if (ammo_link == self.ammo_link and ammo_count ~= self.ammo_count) then
+			self.ammo_link = ammo_link;
+			self.ammo_count = ammo_count;
+			return nil;
+		else
+			self.ammo_link = ammo_link;
+			self.ammo_count = ammo_count;
+		end
+	end
+	
 	for i = 1, 19, 1 do --scan their items
 		local link = GetInventoryItemLink(t, i);
 		if( link ) then
@@ -357,6 +374,23 @@ function ItemSync:ScanInv()
 	self:Debug("Inven Scan")
 	
 	local bagid, size, slotid, link;
+	
+	--first lets check if the only thing that changed was ammo.  If this was the case then we want
+	--to ignore the scanning of equipment and or bags
+	local ammo_link = GetInventoryItemLink('player', 0) --0 slot is the ammo slot
+	local ammo_count = GetInventoryItemCount('player', 0) --0 slot is the ammo slot
+	
+	--if ammo count is different then they fired, save new count and ignore check
+	if (ammo_link and tonumber(ammo_count) and tonumber(ammo_count) > 0) then
+		if (ammo_link == self.ammo_link and ammo_count ~= self.ammo_count) then
+			self.ammo_link = ammo_link;
+			self.ammo_count = ammo_count;
+			return nil;
+		else
+			self.ammo_link = ammo_link;
+			self.ammo_count = ammo_count;
+		end
+	end
 	
 	for bagid=0,NUM_BAG_FRAMES,1 do
 	
