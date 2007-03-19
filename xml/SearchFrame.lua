@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync SearchFrame Core
@@ -565,7 +563,7 @@ function ItemSync:Parse_Search(c, r, n)
 		if (ISync_Search_Resist5:GetChecked() and not j[5]) then return nil; end
 
 	end
-
+	
 	return 1; --return yes if all passes
 
 end

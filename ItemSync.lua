@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync
@@ -433,10 +431,12 @@ function ItemSync:BagUpdate()
 			local link = GetInventoryItemLink("player", invID)
 			if (link) then
 			
-				local sVar = self:_removeNegative(link);
-				if (not sVar) then return nil; end
+-- kirson				local sVar = self:_removeNegative(link);
+-- kirson				if (not sVar) then return nil; end
+			local sVar = ItemSync:_getItemString(link) -- kirson
+			if (not sVar) then return nil; end
 
-				local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+				local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
 				if (not tonumber(coreid)) then return nil; end
 				
 				local _,_,_,_,_,_,subtype = GetItemInfo(tonumber(coreid)) 
@@ -514,8 +514,8 @@ function ItemSync:_split(s,p,n)
 	    end
 	    return unpack(l)
 end
-
-function ItemSync:_removeNegative(l)
+--[[ kirson
+	function ItemSync:_removeNegative(l)
 	--this function is used to remove the last portion of the itemid with the large numbers and replace it with zero
 	
 	--special thanks to Kaelten for some advice =)
@@ -526,19 +526,102 @@ function ItemSync:_removeNegative(l)
 	sVar = sVar.."0"; --add a zero at the end since we stripped it
 	return sVar;
 end
+]]
+
+--kirson New format function
+function ItemSync:_getItemString(link)
+	-- return just the itemstring
+	local sVar = string.match(link, "([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)")
+	if (not sVar) then return nil; end
+	return sVar;
+end
+
+function ItemSync:_purgeSubidMissingSfactor(coreid, r)
+	if (not coreid or not r) then return nil; end
+	if (r[13] and not strfind(r[13], "º")) then
+		self.db.account[self.realm]["items"][coreid] = nil; --delete item but not stored name
+		self.db.account[self.realm]["options"]["ItemCount"] = self.db.account[self.realm]["options"]["ItemCount"] - 1
+	else
+		local savestring;
+		local qy = {self:_split(r[13], "º")}
+		local pqy = 0
+		local pqys = 0
+		for ky, vy in pairs(qy) do
+-- kirson split subid and sfactor around ø
+			pqy = pqy + 1
+			local vysfactor = 0
+			local vyp = strfind(vy, "ø")
+			if (vyp) then
+				vysfactor = strsub(vy, vyp+1)
+				vy = strsub(vy, 1, vyp-1)
+			end
+
+			if (tonumber(vy)  and tonumber(vy) ~= 0) then
+				if (tonumber(vy) > 0) then		
+					if (not savestring) then
+						savestring = vy.."ø"..vysfactor;
+						pqys = pqys +1
+					else
+						savestring = savestring.."º"..vy.."ø"..vysfactor; --add it
+						pqys = pqys +1
+					end
+				else
+					if (not tonumber(vysfactor) == 0) then
+						if (not savestring) then
+							savestring = vy.."ø"..vysfactor;
+							pqys = pqys +1
+						else
+							savestring = savestring.."º"..vy.."ø"..vysfactor; --add it
+							pqys = pqys +1
+						end
+					end	
+				end
+			end
+
+		qy = nil;
+		end
+		if (not savestring) then --delete it if we have no more subs
+			self.db.account[self.realm]["items"][coreid] = nil; --delete item but not stored name
+		else
+			local sVar = ""
+			r[13] = savestring; --save the edited string
+
+			for k, v in pairs(r) do --rebuild the string and store it
+			sVar = sVar..v.."°"
+			end
+
+			sVar = string.sub(sVar, 1, string.len(sVar) - 1) --strip off the extra ° at the end
+			self.db.account[self.realm]["items"][coreid] = sVar --store it into database
+
+		end
+		self.db.account[self.realm]["options"]["ItemCount"] = self.db.account[self.realm]["options"]["ItemCount"] - pqy + pqys
+		self:UpdateItemCounter();
+	end
+end
 
 function ItemSync:_parselinks(link, color, name)
 	if (not link) then return nil; end
 
-	local sVar = self:_removeNegative(link);
+-- kirson	local sVar = self:_removeNegative(link);
+	local sVar = ItemSync:_getItemString(link) -- kirson
+
 	if (not sVar) then return nil; end
-	
-	local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
-	local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
-	local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
-	
+
+	local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
+	local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:%8")
+	local subid = string.match(sVar, "[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:([-0-9]+):[-0-9]+")
+
 	coreid = tonumber(coreid);
 	subid = tonumber(subid);
+
+	-- kirson sfactor is the 8th position of an itemstring reduced to the subid multiplier for items with a negative subid
+	local sfactor = 0
+	
+	if (subid and subid < 0) then
+	   sfactor = string.match(sVar, "[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:([-0-9]+)")
+	   sfactor = bit.band(tonumber(sfactor), 65535)
+	end
+
 	if (not coreid or not regid) then return nil; end
 
 	local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X  = GetItemInfo("item:"..regid)
@@ -570,7 +653,8 @@ function ItemSync:_parselinks(link, color, name)
 			self:UpdateItemCounter();
 
 		else
-			self.db.account[self.realm]["items"][coreid] = quality_X.."°0°0°0°0°0°0°"..minLevel_X.."°0°0°0°0°"..subid
+-- kirson add ..ø..sfactor to subid when storing subitems
+			self.db.account[self.realm]["items"][coreid] = quality_X.."°0°0°0°0°0°0°"..minLevel_X.."°0°0°0°0°"..subid.."ø"..sfactor
 			if (not GetItemInfo("item:"..coreid..":0:0:0:0:0:0:0")) then
 				self.db.account[self.realm]["names"][coreid] = self:StripSubName(name_X)
 			else
@@ -589,12 +673,13 @@ function ItemSync:_parselinks(link, color, name)
 			local q = {self:_split(r[13], "º")}
 			
 			for k, v in pairs(q) do
-				if (tonumber(v) == subid) then
+-- kirson  add .."ø"..sfactor to subid to compare to new r[13] format
+				if (v == subid.."ø"..sfactor) then
 					return nil;
 				end
 			end
-			
-			self.db.account[self.realm]["items"][coreid] = self.db.account[self.realm]["items"][coreid].."º"..subid
+			-- kirson add .."ø"..sfactor to subid when storing subitems
+			self.db.account[self.realm]["items"][coreid] = self.db.account[self.realm]["items"][coreid].."º"..subid.."ø"..sfactor
 			if (not self.db.account[self.realm]["names"][coreid]) then
 				if (not GetItemInfo("item:"..coreid..":0:0:0:0:0:0:0")) then
 					self.db.account[self.realm]["names"][coreid] = self:StripSubName(name_X)
@@ -694,7 +779,8 @@ function ItemSync:HexReturnQuality(hex)
 	return color;
 end
 
-function ItemSync:_ItemCache(link, coreid, subid)
+-- kirson add sfactor to arguments
+function ItemSync:_ItemCache(link, coreid, subid, sfactor)
 	
 	if (not link) then return nil; end
 	if (strfind(link, ":") and not strfind(link, "item:")) then link = "item:" .. link; end
@@ -707,6 +793,8 @@ function ItemSync:_ItemCache(link, coreid, subid)
 	
 	self._iteminfo.coreid =	coreid;
 	self._iteminfo.subid =	subid;
+-- kirson add sfactor to _iteminfo
+   	self._iteminfo.sfactor = sfactor;
 	self._iteminfo.name = name_X;
 	self._iteminfo.linkClick = link_X;
 	self._iteminfo.link = link;
@@ -720,14 +808,16 @@ function ItemSync:_ItemCache(link, coreid, subid)
 	return link;
 end
 		
-function ItemSync:ReturnHyperlink(coreid, subid)
+-- kirson add sfactor to arguments
+function ItemSync:ReturnHyperlink(coreid, subid, sfactor)
 	
 	if (not coreid) then return nil; end
 	if (not subid) then subid = 0; end
+-- kirson  check sfactor and set to 0 if missing
+	if (not sfactor) then sfactor = 0; end
+	local link = "item:"..coreid..":0:0:0:0:0:"..subid..":"..sfactor;
 	
-	local link = "item:"..coreid..":0:0:0:0:0:"..subid..":0";
-	
-	if (not self:_ItemCache(link, coreid, subid) ) then return nil; end
+	if (not self:_ItemCache(link, coreid, subid, sfactor) ) then return nil; end
 	if (not	self._iteminfo.quality or not self._iteminfo.link or not self._iteminfo.name or not self._iteminfo.linkClick) then return nil; end
 	
 	--local color = "|cff" .. self:ReturnHexColor(self._iteminfo.quality);
@@ -741,17 +831,16 @@ end
 
 function ItemSync:Scan_Prices()
 	self:SecureHook("SetTooltipMoney")
-	
 	for bag=0,NUM_BAG_FRAMES do
 		for slot=1,GetContainerNumSlots(bag) do
 		    local link = GetContainerItemLink(bag, slot);
 			if (link and link ~= "") then
 			
-				local sVar = self:_removeNegative(link);
+-- kirson				local sVar = self:_removeNegative(link);
 				
+				local sVar = link  -- kirson				
 				if (sVar) then
-				
-					local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+					local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
 					coreid = tonumber(coreid)
 
 					if (coreid) then
@@ -799,7 +888,7 @@ function ItemSync:SavePrice(c, p)
 	local r = {self:_split(self.db.account[self.realm]["items"][c], "°")}
 	
 	if (not r or not r[2]) then return nil; end
-	if (r[2] == p) then return nil; end --don't save the same price twice
+	if (r[2] == p) then return nil; end --don't save the same price twice---
 	r[2] = p --set the price
 	
 	local sVar = ""
@@ -829,13 +918,14 @@ function ItemSync:VendorScan()
 		
 			if (link) then
 			
-				local sVar = self:_removeNegative(link);
-				
+-- kirson				local sVar = self:_removeNegative(link);
+				local sVar = ItemSync:_getItemString(link) -- kirson
+				if (not sVar) then return nil; end	
 				if (sVar) then
-					local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+					local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9%-]+:[-0-9]+")
 					coreid = tonumber(coreid)
 
-					if (coreid and not self.db.account[self.realm]["items"][c]) then self:_parselinks(link); end --add if not in db
+					if (coreid and not self.db.account[self.realm]["items"][coreid]) then self:_parselinks(link); end --add if not in db
 
 					if (link and quantity and price) then
 

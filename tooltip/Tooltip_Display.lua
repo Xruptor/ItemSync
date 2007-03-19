@@ -1,3 +1,4 @@
+
 --[[--------------------------------------------------------------------------------
   ItemSync Tooltip Display Core
 
@@ -227,16 +228,27 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 	local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X  = GetItemInfo(link)
 	if (not name_X) then return nil; end
 
-	local sVar = self:_removeNegative(link);
+-- kirson	local sVar = self:_removeNegative(link);
+-- kirson	if (not sVar) then return nil; end
+	
+	local sVar = ItemSync:_getItemString(link) -- kirson
 	if (not sVar) then return nil; end
-
-	local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+	
+	local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
 	local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
-	local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
-
+	local subid = string.match(sVar, "[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:([-0-9]+):[-0-9]+")
+	
 	coreid = tonumber(coreid);
 	subid = tonumber(subid);
 	
+	-- kirson sfactor is the 8th position of an itemstring reduced to the subid multiplier for items with a negative subid
+	local sfactor = 0
+	
+	if (subid and subid < 0) then
+	   sfactor = string.match(sVar, "[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:([-0-9]+)")
+	   sfactor = bit.band(tonumber(sfactor), 65535)
+	end
+	   
 	if (not name_X or not sVar or not coreid or not subid) then return nil; end
 	if (not self.db.account[self.realm]["items"][coreid]) then return nil; end
 
@@ -249,6 +261,8 @@ function ItemSync:Process_Tooltip(tooltip,link,qty,chk)
 		
 		self._lasttooltip.coreid = coreid;
 		self._lasttooltip.subid = subid;
+-- kirson adding sfactor to _lasttooltip
+		self._lasttooltip.sfactor = sfactor;
 		self._lasttooltip.price = tonumber(r[2]) or -1;
 		self._lasttooltip.priceqty = (tonumber(r[2]) * qty) or -1;
 		self._lasttooltip.vendprice = tonumber(r[9]) or -1;

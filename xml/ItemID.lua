@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync ItemID Core
@@ -33,8 +31,16 @@ function ItemSync:ItemID_Search()
 		local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
 		local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
 		local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
-	
-		self:ItemID_Start("item:"..sVar,coreid,subid);
+
+-- kirson sfactor is the reduced subitem multiplier for negative subids
+		local sfactor = 0
+		if tonumber(subid) < 0 then
+		   sfactor = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%8")
+		   sfactor = bit.band(tonumber(sfactor), 65535);
+		end
+
+-- kirson pass sfactor as the 4th arguement
+		self:ItemID_Start("item:"..sVar,coreid,subid,sfactor);
 		
 	
 	else
@@ -45,7 +51,8 @@ function ItemSync:ItemID_Search()
 
 end
 
-function ItemSync:ItemID_Start(link, coreid, subid)
+-- kirson added sfactor arguement for passthrough
+function ItemSync:ItemID_Start(link, coreid, subid, sfactor)
 	
 	if (not link or not coreid or not subid) then
 		self:Print(self.crayon:Colorize("A2D96F", ISL["ItemID_Invalid"]));
@@ -70,11 +77,13 @@ function ItemSync:ItemID_Start(link, coreid, subid)
 	
 	self:Print(self.crayon:Colorize("FC5252", ISL["ItemID_Valid"])..self.crayon:White(link)..self.crayon:Colorize("FC5252", "]"));
 	
-	self:ItemID_StartShow(link, coreid, subid, frame); --now send
+-- kirson pass sfactor as 4th argument, change reflected at function as well
+	self:ItemID_StartShow(link, coreid, subid, sfactor, frame); --now send
 	
 end
 
-function ItemSync:ItemID_StartShow(link, coreid, subid, frame)
+-- kirson added sfactor as 4th arguement for passthrough
+function ItemSync:ItemID_StartShow(link, coreid, subid, sfactor, frame)
 	
 	if (not link or not coreid or not frame or not subid) then return nil; end
 	
@@ -84,14 +93,15 @@ function ItemSync:ItemID_StartShow(link, coreid, subid, frame)
 			local linkold = link;
 			local oldcore = coreid;
 			local oldsub = subid;
+			local oldsfactor = sfactor;
 			local oldframe = frame;
 			
-			if ( self:ReturnHyperlink(oldcore, oldsub) ) then
+			if ( self:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemID_ValidYes"]));
-				self:Print(self:ReturnHyperlink(oldcore, oldsub));
+				self:Print(self:ReturnHyperlink(oldcore, oldsub, oldsfactor));
 				
 				--blizzard really screwed up with negatives so we have to parse two different ways
-				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub), "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
+				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub, oldsfactor), "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
 					if(item) then
 						self:_parselinks(item, color, name);
 					end
@@ -107,7 +117,8 @@ function ItemSync:ItemID_StartShow(link, coreid, subid, frame)
 		end
 	
 		self.gnome:Register("ItemIDValidWait", ItemIDValidChkDone , 3)
-		self:ItemID_StartShow(link, coreid, subid, frame);
+-- kirson add sfactor ass 4th arguement
+		self:ItemID_StartShow(link, coreid, subid, sfactor, frame);
 	else
 		local avail, rate, running = self.gnome:Status("ItemIDValidWait")
 

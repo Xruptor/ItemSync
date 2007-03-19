@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync QuickBag Core
@@ -87,17 +85,27 @@ function ItemSync:QuickBag_BuildIndex()
 
 		    if (link) then
 
-			local sVar = self:_removeNegative(link);
-			
+-- kirson			local sVar = self:_removeNegative(link);
+			local sVar = ItemSync:_getItemString(link) -- kirson
+			if (not sVar) then return nil; end
 			if (sVar) then
 			
-				local coreid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1")
+				local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
 				local regid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%1:0:0:0:0:0:%7:0")
 				local subid = string.gsub(sVar, "([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+):([-0-9]+)", "%7")
 
 				coreid = tonumber(coreid);
 				subid = tonumber(subid);
+			
+				-- kirson sfactor is the 8th position of an itemstring reduced to the subid multiplier for items with a negative subid
+				local sfactor = 0
 
+				if (subid and subid < 0) then
+				   sfactor = string.match(sVar, "[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:([-0-9]+)")
+				   sfactor = bit.band(tonumber(sfactor), 65535)
+				end
+
+				
 				if(self.db.account[self.realm]["items"][coreid]) then
 
 					r = {self:_split(self.db.account[self.realm]["items"][coreid], "°")}
@@ -131,6 +139,7 @@ function ItemSync:QuickBag_BuildIndex()
 							self._quickbagindex[iNew].link = sVar;
 							self._quickbagindex[iNew].coreID = coreid;
 							self._quickbagindex[iNew].subID = subid;
+							self._quickbagindex[iNew].sfactor = sfactor;
 
 							iNew = iNew + 1;
 

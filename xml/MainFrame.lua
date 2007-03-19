@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync MainFrame Core
@@ -174,7 +172,18 @@ function ItemSync:BuildIndex()
 					q = {self:_split(r[13], "º")}
 
 					for kx, vx in pairs(q) do
-					
+-- kirson split subid "v" and sfactor "vsfactor" around ø
+   		  				local vxsfactor = 0
+   		  				local vxp = strfind(vx, "ø")
+   		  				if (vxp) then
+							vxsfactor = strsub(vx, vxp+1)
+							vx = strsub(vx, 1, vxp-1)
+							if (tonumber(vx) < 0 and tonumber(vxsfactor) == 0) then
+								ItemSync:_purgeSubidMissingSfactor(k, r)
+								vx = 0
+							end
+						end
+						
 						local subName = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0");
 						
 						if (not self:Check_Opt("showinvalid",1) and subName or self:Check_Opt("showinvalid",1)) then
@@ -192,14 +201,16 @@ function ItemSync:BuildIndex()
 								subName = ISL["Unknown"].." "..ISL["OfThe"];
 								self._buildtable._invalidCount = self._buildtable._invalidCount + 1;
 							end
-
-							if ( ItemSync:Parse_Search(k, r, subName) ) then --search
+							
+							if ( ItemSync:Parse_Search(k, r, subName) and vx ~= 0) then --search
 
 								self._buildtable[iNew] = { };
 								self._buildtable[iNew].name = subName;
 								self._buildtable[iNew].quality = string.sub(v, 1, 1);
 								self._buildtable[iNew].idcore = k;
 								self._buildtable[iNew].subid = vx;
+-- kirson 	add sfactor to _buildtable[iNew]
+								self._buildtable[iNew].sfactor = vxsfactor;
 
 								if (r[11] and tonumber(r[11]) ~= 0) then self._buildtable[iNew].idchk =1; end
 
@@ -405,7 +416,8 @@ local LAST_SHOWN		= 1;
 						end
 					
 					else
-						local sGName = GetItemInfo("item:"..self._buildtable[itemIndex].idcore..":0:0:0:0:0:"..self._buildtable[itemIndex].subid..":0");
+-- kirson add sfactor to item check
+						local sGName = GetItemInfo("item:"..self._buildtable[itemIndex].idcore..":0:0:0:0:0:"..self._buildtable[itemIndex].subid..":"..self._buildtable[itemIndex].sfactor);
 						
 						if (sGName) then --check to see if it's valid
 							
@@ -528,11 +540,13 @@ function ItemSync:ButtonEnter()
 
 			end
 		else
-			if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0")) then
+-- kirson add sfactor to item check
+			if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor)) then
 			
 				ISync_MainFrame.TooltipButton = this:GetID();
 				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0");
+-- kirson add sfactor to link to retreive proper item stats
+				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor);
 				
 				if (this.iteminfo.icontexture and self:Get_Opt("showmoney", 3, 1)) then
 					getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
@@ -562,7 +576,8 @@ function ItemSync:ButtonEnter()
 		if (not this.iteminfo.subid) then
 			GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:0:0"), 0, 0, 0);
 		else
-			GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0"), 0, 0, 0);
+-- kirson add sfactor to tooltip for proper reference
+			GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor), 0, 0, 0);
 		end
 		
 
@@ -641,7 +656,8 @@ function ItemSync:ForceClick()
 	if (not frame.iteminfo.subid) then
 		link = "item:"..frame.iteminfo.idcore..":0:0:0:0:0:0:0";
 	else
-		link = "item:"..frame.iteminfo.idcore..":0:0:0:0:0:"..frame.iteminfo.subid..":0";
+-- kirson add sfactor to link
+		link = "item:"..frame.iteminfo.idcore..":0:0:0:0:0:"..frame.iteminfo.subid..":".. frame.iteminfo.sfactor;
 	end
 
 	if (not link) then return nil; end
@@ -654,11 +670,12 @@ function ItemSync:ForceClick()
 	self:Print(self.crayon:Colorize("FC5252", ISL["ItemForceWait"]));
 	
 	self._canScroll = 1; --[r10001] added to prevent scrolling of window while validating
-	self:ForceClick_Wait(link, frame.iteminfo.idcore, frame.iteminfo.subid, frame); --now send
+	self:ForceClick_Wait(link, frame.iteminfo.idcore, frame.iteminfo.subid, sfactor, frame); --now send
 	
 end
 
-function ItemSync:ForceClick_Wait(link, coreid, subid, frame)
+-- kirson  add sfactor as 4th argument for passthrough
+function ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame)
 	
 	if (not link or not coreid or not frame) then self._canScroll = nil; return nil; end
 	
@@ -668,11 +685,15 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, frame)
 			local linkold = link;
 			local oldcore = coreid;
 			local oldsub = subid;
+-- kirson add oldsfactor for passthrough
+			local oldsfactor = sfactor;
 			local oldframe = frame;
+
 			
 			if ( self:ReturnHyperlink(oldcore, oldsub) ) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemForceSuccess"]));
-				self:Print(self:ReturnHyperlink(oldcore, oldsub));
+-- kirson add sfactor as argument 3
+				self:Print(self:ReturnHyperlink(oldcore, oldsub, oldsfactor));
 				
 				--now change the bar to reflect the new changes
 				if (oldframe and oldframe.barname) then
@@ -703,7 +724,8 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, frame)
 		end
 	
 		self.gnome:Register("ForceClickWait", ForceClickChkDone , 3)
-		self:ForceClick_Wait(link, coreid, subid, frame);
+-- kirson add sfactor as 4th arguement
+		self:ForceClick_Wait(link, coreid, subid, sfactor, frame);
 	else
 		local avail, rate, running = self.gnome:Status("ForceClickWait")
 

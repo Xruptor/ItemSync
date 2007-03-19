@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Dialog Core
@@ -257,24 +255,32 @@ function ItemSync:Dialog_Add_Favorite(sFrame)
 
 						for kx, vx in pairs(r) do
 
+-- kirson split subid and sfactor around ø 
+							local vxsfactor = 0
+							local vxp = strfind(vx, "ø")
+							if (vxp) then
+								vxsfactor = strsub(vx, vxp+1)
+								vx = strsub(vx, 1, vxp-1)
+							end
+							
 							if (tonumber(vx) and tonumber(vx) == tonumber(sF.iteminfo.subid)) then
 								ISync_Dialog:Hide();
 								self:Print(self.crayon:Colorize("A2D96F", ISL["Fav_Duplicate"]));
 								return nil;
 							end
 						end							
-
-						saveSlot = saveSlot.."º"..sF.iteminfo.subid; --add it
-	
+-- kirson add .."ø"..sF.iteminfo.sfactor to sF.iteminfo.subid
+						saveSlot = saveSlot.."º"..sF.iteminfo.subid .."ø"..sF.iteminfo.sfactor; --add it
 					elseif (not r) then
-						
-						saveSlot = sF.iteminfo.subid; --add marker at end
+-- kirson add .."ø"..sF.iteminfo.sfactor to sF.iteminfo.subid						
+						saveSlot = sF.iteminfo.subid.."ø"..sF.iteminfo.sfactor; --add marker at end
 					end
 					
 					r = nil;
 					
 				else
-					saveSlot = sF.iteminfo.subid; --add marker at end
+-- kirson add .."ø"..sF.iteminfo.sfactor to sF.iteminfo.subid					
+					saveSlot = sF.iteminfo.subid.."ø"..sF.iteminfo.sfactor; --add marker at end
 				end
 			
 			else
@@ -395,13 +401,22 @@ function ItemSync:Dialog_Delete_Fav(sFrame)
 					if (r) then
 
 						for kx, vx in pairs(r) do
-
+-- kirson split subid and sfactor around ø 
+							local vxsfactor = 0
+							local vxp = strfind(vx, "ø")
+							if (vxp) then
+								vxsfactor = strsub(vx, vxp+1)
+								vx = strsub(vx, 1, vxp-1)
+							end
+							
 							if (tonumber(vx) and tonumber(vx) ~= tonumber(sF.iteminfo.subid)) then
 								
 								if (not savestring) then
-									savestring = vx;
+-- kirson rejoin vx and vxsfactor for storage									
+									savestring = vx.."ø"..vxsfactor;
 								else
-									savestring = savestring.."º"..vx; --add it
+-- kirson rejoin vx and vxsfactor for storage
+									savestring = savestring.."º"..vx.."ø"..vxsfactor; --add it
 								end
 							end
 						end
@@ -493,13 +508,22 @@ function ItemSync:Dialog_Delete_Item(sFrame, sItemIndex)
 						local q = {self:_split(r[13], "º")}
 						
 						for kx, vx in pairs(q) do
+-- kirson split subid and sfactor around ø
+							local vxsfactor = 0
+							local vxp = strfind(vx, "ø")
+							if (vxp) then
+								vxsfactor = strsub(vx, vxp+1)
+								vx = strsub(vx, 1, vxp-1)
+							end
 
 							if (tonumber(vx) and tonumber(vx) ~= tonumber(sF.iteminfo.subid)) then
 								
 								if (not savestring) then
-									savestring = vx;
+-- kirson rejoin vx and vxsfactor for storage
+									savestring = vx.."ø"..vxsfactor;
 								else
-									savestring = savestring.."º"..vx; --add it
+-- kirson rejoin vx and vxsfactor for storage
+									savestring = savestring.."º"..vx.."ø"..vxsfactor; --add it
 								end
 							end
 						end
@@ -726,6 +750,7 @@ function ItemSync:Dialog_Reset_ItemDB()
 			
 			self.db.account[self.realm]["items"] = nil;
 			self.db.account[self.realm]["items"] = { };
+			self.db.account[self.realm]["options"]["ItemCount"] = 0
 
 			ISync_Dialog:Hide();
 			self:Main_Refresh();
