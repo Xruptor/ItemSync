@@ -1,5 +1,3 @@
--- Id: $Id: ItemSync.toc 26541 2007-01-30 00:14:59Z kergoth $
--- Version: r$Revision: 26541 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Favorites Core
@@ -91,8 +89,7 @@ function ItemSync:Fav_BuildIndex()
 		local r = { };
 		
 		for k, v in pairs(self.db.account[self.realm]["favorites"][ISync_Favorites_DropDownSelection:GetText()]) do
-			
-			if (tonumber(v) and tonumber(v) == 0) then
+		   if (tonumber(v) and tonumber(v) == 0) then
 				
 				local subName = "";
 				local name_X, link_X, quality_X  = GetItemInfo("item:"..k..":0:0:0:0:0:0:0");
@@ -120,8 +117,16 @@ function ItemSync:Fav_BuildIndex()
 
 				for kx, vx in pairs(r) do
 
+-- kirson split subid "v" and sfactor "vsfactor" around ø
+					local vxsfactor = 0
+					local vxp = strfind(vx, "ø")
+					if (vxp) then
+						vxsfactor = strsub(vx, vxp+1)
+						vx = strsub(vx, 1, vxp-1)
+					end
 					local subName = "";
-					local name_X, link_X, quality_X  = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0");
+-- kirson add vxsfactor for check
+					local name_X, link_X, quality_X  = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":"..vxsfactor);
 
 					if ( name_X ) then
 						subName = name_X;
@@ -138,6 +143,8 @@ function ItemSync:Fav_BuildIndex()
 					self._favbuildtable[iNew].quality = quality_X;
 					self._favbuildtable[iNew].idcore = k;
 					self._favbuildtable[iNew].subid = vx;
+-- kirson add sfactor to favbuildtable[iNew]
+					self._favbuildtable[iNew].sfactor =vxsfactor;
 
 					iNew = iNew + 1;
 				end
@@ -193,7 +200,8 @@ local LAST_SHOWN		= 1;
 				local lastName;
 				if (self._favbuildtable[itemIndex-1]) then lastName = self._favbuildtable[itemIndex-1].name; end --get last name
 
-				local sGName = GetItemInfo("item:"..self._favbuildtable[itemIndex].idcore..":0:0:0:0:0:"..self._favbuildtable[itemIndex].subid..":0");
+-- kirson probably unneeded but add sfactor in the check
+				local sGName = GetItemInfo("item:"..self._favbuildtable[itemIndex].idcore..":0:0:0:0:0:"..self._favbuildtable[itemIndex].subid..":"..self._favbuildtable[itemIndex].sfactor);
 
 				if (sGName) then --check to see if it's valid
 					
@@ -234,6 +242,7 @@ local LAST_SHOWN		= 1;
 
 					FavItemObj.iteminfo = self._favbuildtable[itemIndex];
 
+--kirson left sfactor out as all subitems share the same texture, technically subitem could be set to 0 here as well
 						--add icon texture
 						_, _, _, _, _, _, _, _, _, FavItemObj.iteminfo.icontexture  = GetItemInfo("item:"..self._favbuildtable[itemIndex].idcore..":0:0:0:0:0:"..self._favbuildtable[itemIndex].subid..":0");
 
@@ -289,11 +298,13 @@ function ItemSync:Fav_ButtonEnter()
 	--fix the color with the scrolling
 	if (not this.invalid) then
 		
-		if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0")) then
+-- kirson add sfactor into check
+		if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor)) then
 
 			ISync_MainFrame.TooltipButton = this:GetID();
 			GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-			GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0");
+-- kirson add sfactor to retreive proper item stats
+			GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor);
 
 			if (this.iteminfo.icontexture) then
 				getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
@@ -313,7 +324,8 @@ function ItemSync:Fav_ButtonEnter()
 
 		GameTooltip:AddLine(self.crayon:Colorize("FF0000", ISL["InvalidItem"]), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
-		GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":0"), 0, 0, 0);
+-- kirson add sfactor to properly reflect the item
+		GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
 		
 		GameTooltip:Show();
@@ -332,13 +344,16 @@ function ItemSync:Fav_ButtonClick(sButton)
 	
 
 		if( ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+-- kirson pass this.iteminfo.sfactor as 3rd arguement
+			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 			
 		elseif( IsShiftKeyDown() and ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+-- kirson pass this.iteminfo.sfactor as 3rd arguement
+			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 			
 		elseif( IsControlKeyDown() and not this.invalid) then
-			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+-- kirson pass this.iteminfo.sfactor as 3rd arguement, more for consistancy than needed as subitems share textures
+			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 		end
 		
 	elseif (sButton == "RightButton") then
