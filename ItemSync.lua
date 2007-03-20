@@ -514,19 +514,13 @@ function ItemSync:_split(s,p,n)
 	    end
 	    return unpack(l)
 end
---[[ kirson
-	function ItemSync:_removeNegative(l)
-	--this function is used to remove the last portion of the itemid with the large numbers and replace it with zero
-	
-	--special thanks to Kaelten for some advice =)
-	local sVar = string.match(l,"([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:)");
-	
-	if (not sVar) then return nil; end
-	
-	sVar = sVar.."0"; --add a zero at the end since we stripped it
-	return sVar;
+
+--this function will be removed in the future.  There are some modders that are using it.
+--it now uses Kirson's new function
+function ItemSync:_removeNegative(l)
+	return self:_getItemString(l);
 end
-]]
+
 
 --kirson New format function
 function ItemSync:_getItemString(link)
