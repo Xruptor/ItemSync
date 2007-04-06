@@ -190,34 +190,49 @@ end
 function ItemSync:TextChange()
 
 	if (not self:Check_Opt("external",3)) then return nil; end
-	
+
 	--code credited to Kael KC_Items and creator of type links (Jonathan Ritchie)
 	local text = this:GetText();
-	
+
 	if (not(strfind(text, "^/script") or strfind(text, "^/dump"))) then
 		text = string.gsub(text, "%[%*(.-)%*%]", self.SetTextLink);
+		text = string.gsub(text, "([|]?[h]?)%[(.-)%]([|]?[h]?)", self.SetExactTextLink);
 		this:SetText(text);
-
 	end
 end
 
 function ItemSync.SetTextLink(n)
-	local link = ItemSync:GetTextLink(n);
+	local link = ItemSync:GetTextLink(n, false);
 	if (link) then return link; else return nil; end
 end
 
-function ItemSync:GetTextLink(text)
+function ItemSync.SetExactTextLink(head, txt, tail)
+	if (head ~= "|h" and tail ~= "|h") then -- only linkify things text that isn't linked already
+		local link = ItemSync:GetTextLink(txt, true);
+		if (link) then return link; end
+	end
+	return head.."["..txt.."]"..tail;
+end
+
+function ItemSync:GetTextLink(text, exact)
+
+	local matchFound = false;
 
 	if(not self.db.account[self.realm]["names"]) then return nil; end
 
 	for k, v in pairs(self.db.account[self.realm]["names"]) do
-	
-		if(strfind(string.lower(v), string.lower(text))) then
-			local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X  = GetItemInfo("item:"..k..":0:0:0:0:0:0:0")
-				
-			if(name_X and link_X) then
+
+		if exact then
+			matchFound = (string.lower(v) == string.lower(text));
+		else
+			matchFound = (strfind(string.lower(v), string.lower(text)));
+		end
+
+		if matchFound then
+			local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X = GetItemInfo("item:"..k..":0:0:0:0:0:0:0")
+
+			if (name_X and link_X) then
 				return link_X;
-			
 			end
 		end
 	end
