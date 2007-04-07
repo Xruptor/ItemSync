@@ -109,6 +109,7 @@ function ItemSync:Fav_BuildIndex()
 				self._favbuildtable[iNew].quality = quality_X;
 				self._favbuildtable[iNew].idcore = k;
 				self._favbuildtable[iNew].subid = 0;
+				self._favbuildtable[iNew].sfactor = 0;
 
 				iNew = iNew + 1;
 					
@@ -144,7 +145,7 @@ function ItemSync:Fav_BuildIndex()
 					self._favbuildtable[iNew].idcore = k;
 					self._favbuildtable[iNew].subid = vx;
 -- kirson add sfactor to favbuildtable[iNew]
-					self._favbuildtable[iNew].sfactor =vxsfactor;
+					self._favbuildtable[iNew].sfactor = vxsfactor or 0;
 
 					iNew = iNew + 1;
 				end
