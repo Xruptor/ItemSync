@@ -14,7 +14,6 @@
 ## OptionalDeps: Ace2, Metrognome, DewdropLib, CrayonLib, TabletLib, FuBarPlugin-2.0, FuBar
 ## SavedVariables: ISyncDB, ItemSyncFuDB
 
-
 libs\AceLibrary\AceLibrary.lua
 libs\AceOO-2.0\AceOO-2.0.lua
 
