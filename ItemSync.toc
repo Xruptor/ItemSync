@@ -37,6 +37,7 @@ xml\templates.xml
 locals\eng.lua
 locals\fr.lua
 locals\gr.lua
+locals\tw.lua
 locals\cn.lua
 locals\kr.lua
 
