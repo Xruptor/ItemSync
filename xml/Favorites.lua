@@ -292,7 +292,7 @@ local LAST_SHOWN		= 1;
 end
 
 
-function ItemSync:Fav_ButtonEnter()
+function ItemSync:Fav_ButtonEnter(arg1)
 
 	if(not this.iteminfo) then return nil; end
 	

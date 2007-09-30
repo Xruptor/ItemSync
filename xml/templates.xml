@@ -109,7 +109,7 @@
 					if (ItemSync) then ItemSync:ButtonClick(arg1); end
 				</OnClick>
 				<OnEnter>
-					if (ItemSync) then ItemSync:ButtonEnter(); end
+					if (ItemSync) then ItemSync:ButtonEnter(arg1); end
 				</OnEnter>
 				<OnLeave>
 					if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -187,7 +187,7 @@
 				<OnClick>
 				</OnClick>
 			</Scripts>
-   						
+
    			</Button>
 		</Frames>
 	</Frame>
@@ -205,7 +205,7 @@
 				if (ItemSync) then ItemSync:Fav_ButtonClick(arg1); end
 			</OnClick>
 			<OnEnter>
-				if (ItemSync) then ItemSync:Fav_ButtonEnter(); end
+				if (ItemSync) then ItemSync:Fav_ButtonEnter(arg1); end
 			</OnEnter>
 			<OnLeave>
 				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -242,8 +242,8 @@
 			</Layer>
 		</Layers>
 	</Button>
-	
-	
+
+
 	<Frame name="ISync_FavoritesRemItem_ButtonTemplate" virtual="true">
 		<Size>
 		    <AbsDimension x="90" y="16"/>
@@ -289,8 +289,8 @@
    			</Button>
 		</Frames>
 	</Frame>
-	
-	
+
+
 	<CheckButton name="ISync_TabTemplate" virtual="true" hidden="true">
 		<Size>
 			<AbsDimension x="32" y="32"/>
@@ -327,8 +327,8 @@
 		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
 		<CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD"/>
 	</CheckButton>
-	
-	
+
+
 	<Button name="ISync_DD_Template" virtual="true">
 			<Size>
 				<AbsDimension x="160" y="26"/>
@@ -446,8 +446,8 @@
 				</OnLeave>
 			</Scripts>
 	</Button>
-		
-		
+
+
 	<EditBox name="ISync_SearchBoxTemplate" letters="256" historyLines="0" virtual="true" autoFocus="false">
 		<Size>
 			<AbsDimension x="200" y="20"/>
@@ -492,7 +492,7 @@
 				this:ClearFocus()
 			</OnEscapePressed>
 			<OnEnterPressed>
-				
+
 				if (this:GetName() == "ISyncMainFrame_QuickSearch") then
 					ISync_SearchFrameName_Search:SetText("");
 				elseif (this:GetName() == "ISync_SearchFrameName_Search") then
@@ -500,7 +500,7 @@
 				end
 
 				if (ItemSync) then ItemSync:Main_Refresh(); end
-				
+
 			</OnEnterPressed>
 			<OnClick>this:SetFocus();</OnClick>
 			<OnLeave></OnLeave>
@@ -508,10 +508,8 @@
 		</Scripts>
 		<FontString inherits="ChatFontNormal"/>
 	</EditBox>
-	
-	
-	
-	
+
+
 	<Button name="ISync_QuickBagButtonTemplate" hidden="true" virtual="true">
 		<Size>
 			<AbsDimension x="350"  y="27"/>
@@ -658,7 +656,7 @@
 			<OnLeave>
 				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
 			</OnLeave>
-			
+
 		</Scripts>
 		<HighlightTexture name="$parentHighlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
 			<Size>
@@ -674,9 +672,8 @@
 			<TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
 		</HighlightTexture>
 	</Button>
-	
-	
-	
+
+
 	<Frame name="ItemSync_CountFrame" toplevel="true" enableMouse="true" movable = "true" parent="UIParent" hidden="false">
 		<Size>
 			<AbsDimension x="75" y="27"/>
@@ -709,9 +706,9 @@
 				</FontString>
 
 			</Layer>
-			
+
 			<Layer level="OVERLAY">
-			
+
 				<Texture name="$parent_Bag" file="Interface\Icons\INV_Misc_Bag_13.png" hidden="false">
 					<Size>
 						<AbsDimension x="16" y="16"/>
@@ -724,9 +721,9 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-			
+
 			</Layer>
-					
+
 		</Layers>
 
 		<Frames>
@@ -743,14 +740,14 @@
 			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(arg1); end</OnMouseUp>
 			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
 		</Scripts>
-		
+
 	</Frame>
-	
+
 	<Frame name="ItemSync_EmptyFrame" hidden="true">
 		<Scripts>
 			<OnLoad>
 			</OnLoad>
 		</Scripts>
 	</Frame>
-	
+
  </Ui>

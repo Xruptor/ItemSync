@@ -229,9 +229,9 @@ function ItemSync:GetTextLink(text, exact)
 		end
 
 		if matchFound then
-			local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X = GetItemInfo("item:"..k..":0:0:0:0:0:0:0")
+			local link_X = select(2, GetItemInfo("item:"..k..":0:0:0:0:0:0:0"))
 
-			if (name_X and link_X) then
+			if (link_X) then
 				return link_X;
 			end
 		end
@@ -438,10 +438,11 @@ end
 function ItemSync:BagUpdate()
 	
 	if(arg1) then --we want to ignore any events in which the bag is ammo / to prevent lag
-		if (not tonumber(arg1)) then return nil; end
-		if (tonumber(arg1) < 1 or tonumber(arg1) > 11) then return nil; end --may need to fix this later
+		local arg1num = tonumber(arg1)
+		if (not arg1num) then return nil; end
+		if (arg1num < 1 or arg1num > 11) then return nil; end --may need to fix this later
 		
-		local invID = ContainerIDToInventoryID(tonumber(arg1));
+		local invID = ContainerIDToInventoryID(arg1num);
 		if (invID) then
 			local link = GetInventoryItemLink("player", invID)
 			if (link) then
@@ -454,7 +455,7 @@ function ItemSync:BagUpdate()
 				local coreid = string.match(sVar, "([-0-9]+):[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+")
 				if (not tonumber(coreid)) then return nil; end
 				
-				local _,_,_,_,_,_,subtype = GetItemInfo(tonumber(coreid)) 
+				local subtype = select(7, GetItemInfo(tonumber(coreid)) )
 				if (subtype) then
 					if (ISA["BAGS"][subtype]) then --it's an ammo bag so lets ignore it
 						self._bagIsAmmo = 1;
@@ -541,7 +542,7 @@ end
 function ItemSync:_getItemString(link)
 	-- return just the itemstring
 	local sVar = string.match(link, "([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)")
-	if (not sVar) then return nil; end
+--	if (not sVar) then return nil; end	--Unnecessary
 	return sVar;
 end
 

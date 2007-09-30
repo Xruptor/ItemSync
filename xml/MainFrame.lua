@@ -514,7 +514,7 @@ local LAST_SHOWN		= 1;
 
 end
 
-function ItemSync:ButtonEnter()
+function ItemSync:ButtonEnter(arg1)
 
 	if(not this.iteminfo) then return nil; end
 	
@@ -596,16 +596,16 @@ function ItemSync:ButtonClick(sButton)
 	
 
 		if( ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 			
 		elseif( IsShiftKeyDown() and ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 			
 		elseif( IsControlKeyDown() and IsShiftKeyDown()) then
 			self:Dialog_Add_Favorite(this:GetName());
 			
 		elseif( IsControlKeyDown() and not this.invalid) then
-			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid) );
+			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
 		end
 		
 	elseif (sButton == "RightButton") then
@@ -690,7 +690,7 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame)
 			local oldframe = frame;
 
 			
-			if ( self:ReturnHyperlink(oldcore, oldsub) ) then
+			if ( self:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemForceSuccess"]));
 -- kirson add sfactor as argument 3
 				self:Print(self:ReturnHyperlink(oldcore, oldsub, oldsfactor));
