@@ -116,9 +116,9 @@ function ItemSync:SetHyperlink(tooltip, link)
 	
 	--[r10001]
 	if (EnhTooltip) then
-		local name_X, link_X, quality_X, itemLevel_X, minLevel_X, class_X, subclass_X, maxStack_X, equipType_X, iconTexture_X  = GetItemInfo(link)
+		local name_X, link_X, quality_X  = GetItemInfo(link)
 		if (name_X) then
-			EnhTooltip.TooltipCall(tooltip, name_X, link_X, quality_X, 1,nil,1);
+			EnhTooltip.TooltipCall(tooltip, name_X, link_X, quality_X, 1, nil, 1, nil, nil);
 		end
 	end
 
