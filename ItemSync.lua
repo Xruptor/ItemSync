@@ -348,7 +348,9 @@ function ItemSync:Inspect_Target(t)
 			self.ammo_count = ammo_count;
 		end
 	end
-	
+
+	NotifyInspect(t);
+
 	for i = 1, 19, 1 do --scan their items
 		local link = GetInventoryItemLink(t, i);
 		if( link ) then
