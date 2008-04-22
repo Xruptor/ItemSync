@@ -182,14 +182,14 @@
 
 		--////////////////////////////////
 		--MiniMap
-		["MiniMap_LeftClick"] = "(Click)",
-		["MiniMap_LeftClick1"] = "Toggle ItemSync",
-		["MiniMap_LeftClickDown"] = "(Left-Click)",
-		["MiniMap_LeftClickDown1"] = "Move Minimap",
-		["MiniMap_LeftClickMouseDrag"] = "(Alt+Left-Click)",
-		["MiniMap_LeftClickMouseDrag1"] = "Free Floating Minimap",
-		["MiniMap_RightClick"] = "(Right-Click)",
-		["MiniMap_RightClick1"] = "Display Menu",
+		["MiniMap_LeftClick"] = "(클릭)",
+		["MiniMap_LeftClick1"] = "ItemSync 토글",
+		["MiniMap_LeftClickDown"] = "(왼쪽 클릭)",
+		["MiniMap_LeftClickDown1"] = "미니맵 이동",
+		["MiniMap_LeftClickMouseDrag"] = "(Alt+왼쪽 클릭)",
+		["MiniMap_LeftClickMouseDrag1"] = "미니맵 자유 이동",
+		["MiniMap_RightClick"] = "(오른쪽 클릭)",
+		["MiniMap_RightClick1"] = "메뉴 표시",
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -309,6 +309,32 @@
 		["ItemCount_LeftClick"] = "컨트롤+왼쪽 클릭 = ItemSync 열기/닫기",
 		--////////////////////////////////
 		
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "메인창 토글",
+	    	["Toggle Favorites Frame"] = "즐겨찾기창 토글",
+	    	["Toggle ItemID Frame"] = "아이템ID창 토글",
+	    	["Toggle QuickBag Frame"] = "빠른가방창 토글",
+		--////////////////////////////////
+
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "디버그",
+	    	["Turns display of debugging text on and off."] = "디버깅 메세지를 키거나 끕니다.",
+	    	["Show"] = "표시",
+	    	["Open the ItemSync window."] = "ItemSync창을 엽니다.",
+	    	["Itemid"] = "아이템ID",
+	    	["Open the ItemID window."] = "아이템ID창을 엽니다.",
+	    	["Quickbag"] = "빠른가방",
+	    	["Open the QuickBag window."] = "빠른가방창을 엽니다.",
+	    	["Favorites"] = "즐겨찾기",
+	    	["Open the Favorites window."] = "즐겨찾기창을 엽니다.",
+	    	["Search"] = "검색",
+		["Do a search for an item by keywords."] = "키워드로 아이템을 검색합니다.",
+	    	["<partial item name>"] = "<아이템의 부분적인 이름>",
+	    	["Reset Window"] = "창 초기화",
+	    	["Resets all ItemSync windows."] = "모든 ItemSync 창을 초기화 합니다.",
+		--////////////////////////////////
 
 	    }--end return
 	    

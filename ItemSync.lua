@@ -7,10 +7,10 @@
 -----------------------------------------------------------------------------------]]
 
 BINDING_HEADER_ITEMSYNC = "ItemSync";
-BINDING_NAME_ITEMSYNC = "Toggle Main Frame";
-BINDING_NAME_FAVORITES = "Toggle Favorites Frame";
-BINDING_NAME_ITEMID = "Toggle ItemID Frame";
-BINDING_NAME_QUICKBAG = "Toggle QuickBag Frame";
+BINDING_NAME_ITEMSYNC = ISL["Toggle Main Frame"];
+BINDING_NAME_FAVORITES = ISL["Toggle Favorites Frame"];
+BINDING_NAME_ITEMID = ISL["Toggle ItemID Frame"];
+BINDING_NAME_QUICKBAG = ISL["Toggle QuickBag Frame"];
 
 ItemSync = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceModuleCore-2.0", "AceHook-2.1", "AceDebug-2.0", "AceConsole-2.0", "AceDB-2.0")
 
@@ -26,8 +26,8 @@ function ItemSync:OnInitialize()
 		type="group", 
 		args = {
 			debug = {
-				name = "Debug", type = 'toggle', order = 1,
-				desc = "Turns display of debugging text on and off.",
+				name = ISL["Debug"], type = 'toggle', order = 1,
+				desc = ISL["Turns display of debugging text on and off."],
 				get = function() return self.db.profile.debug end,
 				set = function(v) 
 					self.db.profile.debug = v
@@ -35,37 +35,37 @@ function ItemSync:OnInitialize()
 				end,
 			},
 			show = {
-				name = "Show", type = 'execute', order = 2,
-				desc = "Open the ItemSync window.",
+				name = ISL["Show"], type = 'execute', order = 2,
+				desc = ISL["Open the ItemSync window."],
 				func = function()
 					ISync_MainFrame:Show();
 				end	
 			},
 			itemid = {
-				name = "Itemid", type = 'execute', order = 3,
-				desc = "Open the ItemID window.",
+				name = ISL["Itemid"], type = 'execute', order = 3,
+				desc = ISL["Open the ItemID window."],
 				func = function()
 					ISync_ItemIDFrame:Show();
 				end	
 			},
 			quickbag = {
-				name = "Quickbag", type = 'execute', order = 4,
-				desc = "Open the QuickBag window.",
+				name = ISL["Quickbag"], type = 'execute', order = 4,
+				desc = ISL["Open the QuickBag window."],
 				func = function()
 					ISync_QuickBagFrame:Show();
 				end	
 			},
 			favorites = {
-				name = "Favorites", type = 'execute', order = 5,
-				desc = "Open the Favorites window.",
+				name = ISL["Favorites"], type = 'execute', order = 5,
+				desc = ISL["Open the Favorites window."],
 				func = function()
 					ISync_Favorites:Show();
 				end	
 			},
 			search = {
-				name = "Search", type = 'text', order = 6,
-			    	desc = 'Do a search for an item by keywords.',
-			    	usage = "<partial item name>",
+				name = ISL["Search"], type = 'text', order = 6,
+			    	desc = ISL["Do a search for an item by keywords."],
+			    	usage = ISL["<partial item name>"],
 				get = false,
 				set = function(v)
 					ISyncMainFrame_QuickSearch:SetText("");
@@ -77,8 +77,8 @@ function ItemSync:OnInitialize()
 				end,
 			},
 			resetwindow = {
-				name = "Reset Window", type = 'execute', order = 7,
-				desc = "Resets all ItemSync windows.",
+				name = ISL["Reset Window"], type = 'execute', order = 7,
+				desc = ISL["Resets all ItemSync windows."],
 				func = function()
 					self:ResetWindows();
 				end	
@@ -180,7 +180,7 @@ function ItemSync:OnEnable()
 	
 	tinsert(UISpecialFrames, "ISync_MainFrame"); --add to special frames (to close when pressing esc)
 	
-	self:Print("Version [ "..self.crayon:Colorize("A2D96F", self.version).." ] has been loaded.") --print load version
+--	self:Print("Version [ "..self.crayon:Colorize("A2D96F", self.version).." ] has been loaded.") --print load version
 end
 
 function ItemSync:OnDisable()

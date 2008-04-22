@@ -307,8 +307,34 @@
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
 		
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "Toggle Main Frame",
+	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		--////////////////////////////////
 
-	    }--end return
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "Debug",
+	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+	    	["Show"] = "Show",
+	    	["Open the ItemSync window."] = "Open the ItemSync window.",
+	    	["Itemid"] = "Itemid",
+	    	["Open the ItemID window."] = "Open the ItemID window.",
+	    	["Quickbag"] = "Quickbag",
+	    	["Open the QuickBag window."] = "Open the QuickBag window.",
+	    	["Favorites"] = "Favorites",
+	    	["Open the Favorites window."] = "Open the Favorites window.",
+	    	["Search"] = "Search",
+		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
+	    	["<partial item name>"] = "<partial item name>",
+	    	["Reset Window"] = "Reset Window",
+	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		--////////////////////////////////
+
+		}--end return
 	    
 	end
 	)--end function
