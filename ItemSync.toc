@@ -42,12 +42,12 @@ libs\Crayon-2.0\Crayon-2.0.lua
 
 xml\templates.xml
 
-locals\eng.lua
-locals\fr.lua
-locals\gr.lua
-locals\tw.lua
-locals\cn.lua
-locals\kr.lua
+locals\enUS.lua
+locals\deDE.lua
+locals\frFR.lua
+locals\koKR.lua
+locals\zhCN.lua
+locals\zhTW.lua
 
 ItemSync.lua
 ItemSync.xml

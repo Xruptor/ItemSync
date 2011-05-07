@@ -1,5 +1,5 @@
-﻿-- Id: $Id$
--- Version: r$Revision$
+﻿-- Id: $Id: kr.lua 72 2008-04-22 15:05:09Z next96 $
+-- Version: r$Revision: 72 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Korean Localization

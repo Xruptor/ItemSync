@@ -1,5 +1,5 @@
-﻿-- Id: $Id$
--- Version: r$Revision$
+﻿-- Id: $Id: tw.lua 65 2007-04-26 14:10:09Z mcc $
+-- Version: r$Revision: 65 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇

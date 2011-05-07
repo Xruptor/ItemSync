@@ -1,45 +1,62 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: fr.lua 64 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 64 $
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Chinese Localization
+  ItemSync French Localization
 
   Author:  Derkyle
   Website: http://www.manaflux.com
+  
+  French Translation By The Following:
+ 	 lefou - (ui.worldofwar.net)
+ 	 
 -----------------------------------------------------------------------------------]]
 
+	-- é: C3 A9  - \195\169
+	-- ê: C3 AA  - \195\170
+	-- à: C3 A0  - \195\160
+	-- î: C3 AE  - \195\174
+	-- è: C3 A8  - \195\168
+	-- ë: C3 AB  - \195\171
+	-- ô: C3 B4  - \195\180
+	-- û: C3 BB  - \195\187
+	-- â: C3 A2  - \195\162
+	-- ç: C3 A7  - \185\167
+	--
+	-- ': E2 80 99  - \226\128\153
+
 	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("zhCN", function()
+	ISL:RegisterTranslations("frFR", function()
 	
 	    return {
-	    	["No"] = "No",
-	    	["Yes"] = "Yes",
-		["Sell"] = "Sell for ",
-		["Vendor"] = "Vendor for ",
-		["NoSellP"] = "No Sell Price",
-		["ReqSearch1"] = "Requires (.+)",
-		["ReqSearch2"] = "Level (%d+)",
+	    	["No"] = "Non",
+	    	["Yes"] = "Oui",
+		["Sell"] = "Vendu pour ",
+		["Vendor"] = "Vendeur pour ",
+		["NoSellP"] = "Pas de Prix de Vente",
+		["ReqSearch1"] = "Requis (.+)",
+		["ReqSearch2"] = "Niveau (%d+)",
 		["ReqSearch3"] = "(.+) %((%d+)%)",
-		["Help"] = "[Help]",
-		["OfThe"] = "of ???",
+		["Help"] = "[Aide]",
+		["OfThe"] = "du/de la ???",
 		--OfTheCheck refers to the sub items like  Swash Buckler of the Whale
-		["OfTheCheck1"] = "of the", --added two because some languages have masculine and feminine names
-		["OfTheCheck2"] = "of the", --so one can be example: german  OfTheCheck1 = der OfTheCheck2 = des
-		["TotalItems"] = "Total Items:",
-		["TotalShown"] = "Total Shown:",
+		["OfTheCheck1"] = "du", --added two because some languages have masculine and feminine names
+		["OfTheCheck2"] = "de la", --so one can be example: german  OfTheCheck1 = der OfTheCheck2 = des
+		["TotalItems"] = "Total des objets:",
+		["TotalShown"] = "Total vu:",
 		["TotalInvalid"] = "Total Invalid:",
-		["Item"] = "Item:",
-		["ItemDeleted"] = "[Item Deleted]",
-		["Reset"]="Reset",
-		["Refresh"] = "Refresh",
-		["Search"] = "Search",
+		["Item"] = "Objet:",
+		["ItemDeleted"] = "[Objet Supprim\195\169]",
+		["Reset"]="RaZ",
+		["Refresh"] = "Rafraichir",
+		["Search"] = "Recherche",
 		["Options"] = "Options",
-		["Filters"] = "Filters",
-		["Favorites"] = "Favorites",
+		["Filters"] = "Filtres",
+		["Favorites"] = "Favoris",
 		["ItemID"] = "ItemID",
 		["QuickBag"] = "QuickBag",
-		["Unknown"] = "Unknown",
-		["Purge"] = "Purge",
+		["Unknown"] = "Inconnu",
+		["Purge"] = "Purger",
 		["OperationComplete"] = "Operation Complete!",
 		["Purge_all_db"] = "Are you sure you want to\npurge the entire item database? IRREVERSIBLE!",
 		["ShowNone"] = "None",
@@ -55,16 +72,16 @@
 		
 		--////////////////////////////////
 		--Special Cases
-		["Crossbow"] = "Crossbow",
-		["Thrown"] = "Thrown",
-		["Gun"] = "Gun",
-		["Wand"] = "Wand",
-		"|c00FF0000WARNING: The creator of ItemSync is not\n responsible for any disconnections that\n may occur!|r\n|c00A2D96FUSE AT YOUR OWN RISK!|r";
+		["Crossbow"] = "Arbal\195\168te",
+		["Thrown"] = "Armes de jet",
+		["Gun"] = "Armes \195\160 feu",
+		["Wand"] = "Baguette",
+		"|c00FF0000WARNING: Le cr\195\169ateur d'ItemSync n'est pas\n responsable des d\195\169sconnections qui\n peuvent survenir!|r\n|c00A2D96FUTILISEZ A VOS RISQUES!|r";
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Invalid Item
-		["InvalidItem"] = "Item Invalid",
+		["InvalidItem"] = "Objets Invalide",
 		["InvalidForce"] = "This item could not be found\nin the item cache, to forcefully\nvalidate this item press:\n(CTRL + Right Click)",
 		["InvalidWarning"] = "Warning: The creator of ItemSync\ncannot be held accountable for\nany disconnections that may occur.",
 		["ForceInvalid"] = "Force Invalid",
@@ -77,68 +94,68 @@
 
 		--////////////////////////////////
 		--Search Feature
-		["SearchName"]="Search by Name:",
-		["Location"] = "Location:",
-		["Rarity"] = "Rarity:",
-		["Weapon"] = "Weapon:",
-		["Level"] = "Level:",
+		["SearchName"]="Recherche par nom:",
+		["Location"] = "Emplacement:",
+		["Rarity"] = "Raret\195\169:",
+		["Weapon"] = "Arme:",
+		["Level"] = "Niveau:",
 		["TradeSkill"] = "Tradeskill:",
-		["Armor"] = "Armor:",
-		["Shield"] = "Shield:",
-		["Resistance"] = "Resistance:",
-		["ArcaneResistance"]="Arcane Resistance",
-		["FireResistance"]="Fire Resistance",
-		["NatureResistance"]="Nature Resistance",
-		["FrostResistance"]="Frost Resistance",
-		["ShadowResistance"]="Shadow Resistance",
+		["Armor"] = "Armure:",
+		["Shield"] = "Bouclier:",
+		["Resistance"] = "R\195\169sistance:",
+		["ArcaneResistance"]="R\195\169sistance aux Arcanes",
+		["FireResistance"]="R\195\169sistance au Feu",
+		["NatureResistance"]="R\195\169sistance \195\160 la Nature",
+		["FrostResistance"]="R\195\169sistance au Givre",
+		["ShadowResistance"]="R\195\169sistance \195\160 l'Ombre",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Options
-		["MoneyOpt_Header"] = "Tooltip Display Options",
-		["MoneyOpt_1"] = "Display item sell price.",
-		["MoneyOpt_2"] = "Display item vendor price.",
-		["MoneyOpt_3"] = "Display item texture on tooltip.",
-		["ExternalOpt_Header"] = "External Options",
-		["ExternalOpt_1"] = "Display the item count frame.",
-		["ExternalOpt_2"] = "Display the minimap button.",
+		["MoneyOpt_Header"] = "Option d'affichage dans les bulles",
+		["MoneyOpt_1"] = "Affiche le prix de vente dans les bulles.",
+		["MoneyOpt_2"] = "Affiche le prix du vendeur dans les bulles.",
+		["MoneyOpt_3"] = "Affiche l'icone des objets dans les bulles.",
+		["ExternalOpt_Header"] = "Options Externes",
+		["ExternalOpt_1"] = "Affiche le d\195\169nombrement des objets.",
+		["ExternalOpt_2"] = "Affiche le bouton sur la minimap.",
 		["ExternalOpt_3"] = "Enable the use of Fetch Links.",
-		["ExternalOpt_4"] = "Enable MouseOver inspect. |c00A2D96F(May cause lag)|r",
+		["ExternalOpt_4"] = "Activé l'inspection MouseOver. |c00A2D96F(Peux causser du lag)|r",
 		["ExternalOpt_5"] = "Hide all items when opening ItemSync.",
-		["DatabaseOpt_Header"] = "Database Options",
-		["DatabaseOpt_1"] = "Use the same database across servers.",
-		["AdditionalOpt_Header"] = "Additional Options",
+		["DatabaseOpt_Header"] = "Options de la base de donn\195\169",
+		["DatabaseOpt_1"] = "Utiliser la même base de donn\195\169 pour tous les serveurs.",
+		["AdditionalOpt_Header"] = "Options additionelle",
 		["AdditionalOpt_1"] = "Reset all windows.",
-		["AdditionalOpt_2"] = "Optimize the databse.",
-		["AdditionalOpt_3"] = "Validate invalid items.",
+		["AdditionalOpt_2"] = "Optimiser la base de donn\195\169.",
+		["AdditionalOpt_3"] = "Valider les objets invalide.",
 		["AdditionalOpt_4"] = "Reset item database.",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Filters
-		["RarityOpt_Header"] = "Filter By Rarity",
-		["RarityOpt_0"] = "|cff9d9d9dPoor|r",
-		["RarityOpt_1"] = "|cffffffffCommon|r",
-		["RarityOpt_2"] = "|cff1eff00Uncommon|r",
+		["RarityOpt_Header"] = "Filtre par Rarit\195\169",
+		["RarityOpt_0"] = "|cff9d9d9dPauvre|r",
+		["RarityOpt_1"] = "|cffffffffCourant|r",
+		["RarityOpt_2"] = "|cff1eff00Inabituel|r",
 		["RarityOpt_3"] = "|cff0070ddRare|r",
-		["RarityOpt_4"] = "|cffa335eeEpic|r",
-		["RarityOpt_5"] = "|cffff8000Legendary|r",
-		["Filters_PurgeInvalid"] = "Purge All Invalid Items",
-		["Filters_PurgeRarity"] = "Purge All Items By Rarity",
-		["PurgeInvalid_DialogHeader"] = "Purge Invalid",
-		["PurgeInvalid_DialogWarn"] = "Are you sure you want to PURGE all:\n",
-		["PurgeInvalid_DialogWarn2"] = "[INVALID ITEMS]",
-		["PurgeInvalid_DialogComplete"] = "Purge process complete: [INVALID ITEMS]",
-		["PurgeRarity_DialogHeader"] = "Purge Rarity",
-		["PurgeRarity_DialogWarn"] = "Are you sure you want to PURGE all:\n",
-		["PurgeRarity_DialogComplete"] = "Purge process complete:",
+		["RarityOpt_4"] = "|cffa335eeEpique|r",
+		["RarityOpt_5"] = "|cffff8000L\195\169gendaire|r",
+		["Filters_PurgeInvalid"] = "Purger tous les objets invalide",
+		["Filters_PurgeRarity"] = "Purger tous les objets par raret\195\169",
+		["PurgeInvalid_DialogHeader"] = "Purger les Invalide",
+		["PurgeInvalid_DialogWarn"] = "Etes-vous sur de vouloir tous PURGER:\n",
+		["PurgeInvalid_DialogWarn2"] = "[Objets invalide]",
+		["PurgeInvalid_DialogComplete"] = "Processus de Purge termin\195\169: [OBJETS INVALIDE]",
+		["PurgeRarity_DialogHeader"] = "Purge Raret\195\169",
+		["PurgeRarity_DialogWarn"] = "Etes-vous sur de vouloir tous PURGER:\n",
+		["PurgeRarity_DialogComplete"] = "Processus de Purge termin\195\169:",
 		
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "Current Selection:",
-		["Fav_DialogHeader"] = "Add Favorite",
+		["Fav_DialogHeader"] = "Ajouter aux Favoris",
 		["Fav_DialogWarn"] = "Add item to current selected users favorites?",
 		["Fav_DialogComplete"] = "Favorite added to user:",
 		["Fav_Duplicate"] = "Item is already stored in favorites.",
@@ -152,30 +169,30 @@
 
 		--////////////////////////////////
 		--ItemID
-		["ItemID_Item"] = "item:",
-		["ItemID_Format"] = "Example: 12345:0:0:0:0:0:0:0 or 12345",
+		["ItemID_Item"] = "Objet:",
+		["ItemID_Format"] = "Exemple: 12345:0:0:0:0:0:0:0 or 12345",
 		["ItemID_Warn"] = "WARNING: The creator of ItemSync is not\n responsible for any disconnections that\n may occur!\n",
 		["ItemID_Warn2"] = "USE AT YOUR OWN RISK!",
-		["ItemID_Invalid"] = "Invalid ItemID!",
-		["ItemID_Valid"] = "Please wait 3 seconds for item validation [",
-		["ItemID_ValidYes"] = "Item validation successful!",
-		["ItemID_ValidNo"] = "Item validation failed!",
+		["ItemID_Invalid"] = "ItemID Invalide!",
+		["ItemID_Valid"] = "Attendez 3 seconds pour la validation de l'objet [",
+		["ItemID_ValidYes"] = "Validation r\195\169ussi!",
+		["ItemID_ValidNo"] = "Validation \195\169chou\195\169!",
 		["ItemID_ValidWait"] = "Please wait ItemID validation already in progress!",
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Delete Item
-		["DeleteItem_Header"] = "Delete Item",
-		["DeleteItem_Warn"] = "Are you sure you want to delete\nthe following item from the DATABASE?",
-		["DeleteItem_DeleteComplete"] = "Item has been successfully deleted.",
+		["DeleteItem_Header"] = "Supprimer l'Objets",
+		["DeleteItem_Warn"] = "Etes-vous sur de vouloir supprimer\nl'objet suivant de la BDD?",
+		["DeleteItem_DeleteComplete"] = "Suppresion de l'objet r\195\169ussi.",
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "Show Stacked Total",
 		["QuickBag_HideEmpty"] = "Hide Empty Prices",
-		["QuickBag_SortPrice"] = "Sort by Price",
-		["QuickBag_SortRarity"] = "Sort by Rarity",
+		["QuickBag_SortPrice"] = "Trier par Prix",
+		["QuickBag_SortRarity"] = "Trier par Raret\195\169",
 		--////////////////////////////////
 
 		--////////////////////////////////
@@ -306,15 +323,16 @@
 		["ItemCount_FrameHeader"] = "ItemSync ItemCount Frame",
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
-
-
+		
+		
+		
 	    }--end return
 	    
 	end
 	)--end function
 
 
-if ( GetLocale() == "zhCN" ) then
+if ( GetLocale() == "frFR" ) then
 
 	--array type
 	ISA = {
@@ -322,8 +340,8 @@ if ( GetLocale() == "zhCN" ) then
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
-			["Name"]=1,
-			["Rarity"]=2,
+			["Nom"]=1,
+			["Raret\195\169"]=2,
 		},
 		--////////////////////////////////
 	
@@ -331,12 +349,12 @@ if ( GetLocale() == "zhCN" ) then
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
 		["BAGS"] = { 
-			["Enchanting Bag"]=1,
-			["Engineering Bag"]=1,
-			["Herb Bag"]=1,
-			["Soul Bag"]=1,
-			["Ammo Pouch"]=1,
-			["Quiver"]=1,
+			["Sac d'enchanteur"]=1,
+			["Boite \195\170 Outils"]=1,
+			["Sac d'herbes"]=1,
+			["Sac d'\195\162me"]=1,
+			["Giberne"]=1,
+			["Carquois"]=1,
 			["Gem Bag"]=1,
 			
 		},
@@ -345,109 +363,109 @@ if ( GetLocale() == "zhCN" ) then
 		--////////////////////////////////
 		--Weapon Location
 		["WL"] = { 
-			["Held In Off-hand"]=1,
-			["Back"]=2,
-			["One-Hand"]=3,
-			["Two-Hand"]=4,
-			["Off Hand"]=5,
-			["Wrist"]=6,
-			["Chest"]=7,
-			["Legs"]=8,
-			["Feet"]=9,
-			["Shirt"]=10,
-			["Ranged"]=11,
-			["Main Hand"]=12,
-			["Waist"]=13,
-			["Head"]=14,
-			["Gun"]=15,
-			["Finger"]=16,
-			["Hands"]=17,
-			["Shoulder"]=18,
-			["Wand"]=19,
-			["Trinket"]=20,
+			["Tenu(e) en main gauche"]=1,
+			["Dos"]=2,
+			["A une main"]=3,
+			["Deux mains"]=4,
+			["Main gauche"]=5,
+			["Poignets"]=6,
+			["Torse"]=7,
+			["Jambes"]=8,
+			["Pieds"]=9,
+			["Chemise"]=10,
+			["A distance"]=11,
+			["Main droite"]=12,
+			["Taille"]=13,
+			["T\195\170te"]=14,
+			["Armes \195\160 feu"]=15,
+			["Doigt"]=16,
+			["Mains"]=17,
+			["Epaule"]=18,
+			["Baguette"]=19,
+			["Bijou"]=20,
 			["Tabard"]=21,
-			["Neck"]=22,
-			["Thrown"]=23,
-			["Crossbow"]=24
+			["Cou"]=22,
+			["Armes de jet"]=23,
+			["Arbal\195\168te"]=24
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
-			["Axe"]=1,
-			["Bow"]=2,
-			["Dagger"]=3,
-			["Mace"]=4,
-			["Staff"]=5,
-			["Sword"]=6,
-			["Gun"]=7,
-			["Wand"]=8,
-			["Thrown"]=9,
-			["Polearm"]=10,
-			["Fist Weapon"]=11,
-			["Crossbow"]=12
+			["Hache"]=1,
+			["Arc"]=2,
+			["Dague"]=3,
+			["Masse"]=4,
+			["Baton"]=5,
+			["Ep\195\169"]=6,
+			["Armes \195\160 feu"]=7,
+			["Baguette"]=8,
+			["Armes de jet"]=9,
+			["Armes d'hast"]=10,
+			["Arme de pugilat"]=11,
+			["Arbal\195\168te"]=12
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Tradeskills
 		["TS"] = { 
-			["Alchemy"]=1,
-			["Blacksmithing"]=2,
-			["Cooking"]=3,
-			["Enchanting"]=4,
-			["Engineering"]=5,
-			["Leatherworking"]=6,
-			["Tailoring"]=7,
-			["Jewelcrafting"]=8
+			["Alchimie"]=1,
+			["Forge"]=2,
+			["Cuisine"]=3,
+			["Enchantement"]=4,
+			["Ing\195\169nierie"]=5,
+			["Travail du cuir"]=6,
+			["Couture"]=7,
+			["Joaillerie"]=8
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Armor Types
 		["AT"] = { 
-			["Cloth"]=1,
-			["Leather"]=2,
-			["Mail"]=3,
-			["Plate"]=4
+			["Tissu"]=1,
+			["Cuir"]=2,
+			["Mailles"]=3,
+			["Plaques"]=4
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
-			["Buckler"]=1,
-			["Shield"]=2
+			["Targe"]=1,
+			["Bouclier"]=2
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Armor Resistances
 		["AR"] = { 
-			["Arcane Resistance"]=1,
-			["Fire Resistance"]=2,
-			["Nature Resistance"]=3,
-			["Frost Resistance"]=4,
-			["Shadow Resistance"]=5
+			["R\195\169sistance aux Arcanes"]=1,
+			["R\195\169sistance au Feu"]=2,
+			["R\195\169sistance \195\160 la Nature"]=3,
+			["R\195\169sistance au Givre"]=4,
+			["R\195\169sistance \195\160 l'Ombre"]=5
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Armor Rarity
 		["RARITY"] = { 
-			["Poor"]=0,
-			["Common"]=1,
-			["Uncommon"]=2,
+			["Pauvre"]=0,
+			["Courant"]=1,
+			["Inhabituel"]=2,
 			["Rare"]=3,
-			["Epic"]=4,
-			["Legendary"]=5,
-			[0]="Poor",
-			[1]="Common",
-			[2]="Uncommon",
+			["Epique"]=4,
+			["L\195\169gendaire"]=5,
+			[0]="Pauvre",
+			[1]="Courant",
+			[2]="Inhabituel",
 			[3]="Rare",
-			[4]="Epic",
-			[5]="Legendary"
+			[4]="Epique",
+			[5]="L\195\169gendaire"
 		},
 		--////////////////////////////////
 		
