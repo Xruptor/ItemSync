@@ -48,6 +48,8 @@ locals\frFR.lua
 locals\koKR.lua
 locals\zhCN.lua
 locals\zhTW.lua
+locals\esES.lua
+locals\ruRU.lua
 
 ItemSync.lua
 ItemSync.xml
