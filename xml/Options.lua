@@ -223,8 +223,8 @@ end
 --[r10001]
 --ItemSync:ItemCount_OnEnter
 
-function ItemSync:ItemCount_OnEnter()
-    GameTooltip:SetOwner(this, "ANCHOR_LEFT");
+function ItemSync:ItemCount_OnEnter(frame, motion)
+    GameTooltip:SetOwner(frame, "ANCHOR_LEFT");
     GameTooltip:SetText("[ "..self.crayon:Colorize("A2D96F", ISL["ItemCount_FrameHeader"]).." ]");
     GameTooltip:AddLine(self.crayon:White(ISL["ItemCount_LeftClick"]));
     GameTooltip:Show();
@@ -234,7 +234,7 @@ end
 --[r10001]
 --ItemSync:ItemCount_OnMouseUp
 
-function ItemSync:ItemCount_OnMouseUp(s)
+function ItemSync:ItemCount_OnMouseUp(self, s)
 	if (IsControlKeyDown() and s and s == "LeftButton") then
 		if (ISync_MainFrame:IsVisible()) then
 			ISync_MainFrame:Hide();

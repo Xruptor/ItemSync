@@ -61,7 +61,7 @@
  					</Layers>
  					<Scripts>
  						<OnLoad>
- 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 							getglobal(self:GetName() .. "Text"):SetText(ISL["Help"]);
  						</OnLoad>
  						<OnClick>
  							if (ItemSync) then ItemSync:Show_Help(2); end
@@ -69,7 +69,7 @@
  					</Scripts>
  				</Button>
  				
-				<Frame name="ISync_Opt_ShowMoney" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Opt_ShowMoney" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="75"/>
 					</Size>
@@ -126,7 +126,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",1,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",1,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -144,7 +144,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",2,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",2,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -162,7 +162,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",3,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("SHOWMONEY",3,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -172,9 +172,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["MoneyOpt_Header"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["MoneyOpt_Header"]);
 							
 							ISync_Opt_ShowMoney_Opt1Text:SetText(ISL["MoneyOpt_1"]);
 							ISync_Opt_ShowMoney_Opt2Text:SetText(ISL["MoneyOpt_2"]);
@@ -184,7 +184,7 @@
 				</Frame>
 				
 				
-				<Frame name="ISync_Opt_External" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Opt_External" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="115"/>
 					</Size>
@@ -259,7 +259,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",1,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",1,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -277,7 +277,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",2,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",2,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -295,7 +295,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",3,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",3,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -313,7 +313,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",4,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",4,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -331,7 +331,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",5,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("EXTERNAL",5,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -339,9 +339,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["ExternalOpt_Header"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["ExternalOpt_Header"]);
 							
 							ISync_Opt_External_Opt1Text:SetText(ISL["ExternalOpt_1"]);
 							ISync_Opt_External_Opt2Text:SetText(ISL["ExternalOpt_2"]);
@@ -353,7 +353,7 @@
 				</Frame>
 				
 
-				<Frame name="ISync_Opt_Database" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Opt_Database" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="35"/>
 					</Size>
@@ -392,7 +392,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_Opt("DATABASE",1,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_Opt("DATABASE",1,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -400,9 +400,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["DatabaseOpt_Header"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["DatabaseOpt_Header"]);
 							
 							ISync_Opt_Database_Opt1Text:SetText(ISL["DatabaseOpt_1"]);
 						</OnLoad>
@@ -410,7 +410,7 @@
 				</Frame>
 				
 				
-				<Frame name="ISync_Opt_Additional" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Opt_Additional" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="107"/>
 					</Size>
@@ -580,9 +580,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["AdditionalOpt_Header"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["AdditionalOpt_Header"]);
 							
 							ISync_Opt_Additional_Opt1Text:SetText(ISL["AdditionalOpt_1"]);
 							ISync_Opt_Additional_Opt2Text:SetText(ISL["AdditionalOpt_2"]);

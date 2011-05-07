@@ -45,7 +45,7 @@
  			</Layers>
 			<Frames>
 	
-				<Frame name="ISync_QuickBagFrame_HeaderBox" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+				<Frame name="ISync_QuickBagFrame_HeaderBox" inherits="OptionsBoxTemplate" enableMouse="true" >
 					<Size>
 						<AbsDimension x="395" y="30"/>
 					</Size>
@@ -71,17 +71,17 @@
 					</Layers>
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(1.0, 128/256, 0.0, 0.7);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(1.0, 128/256, 0.0, 0.7);
 						</OnLoad>
 						<OnMouseDown>
-							if( arg1 == "LeftButton" ) then
+							if( button == "LeftButton" ) then
 								GameTooltip:Hide();
-								getglobal(this:GetParent():GetName()):StartMoving();
+								getglobal(self:GetParent():GetName()):StartMoving();
 							end
 						</OnMouseDown>
 						<OnMouseUp>
-							getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+							getglobal(self:GetParent():GetName()):StopMovingOrSizing();
 						</OnMouseUp>
 					</Scripts>
 				</Frame>
@@ -126,7 +126,7 @@
 					</Layers>
 					<Scripts>
 					    <OnClick>
-						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",0,this:GetChecked()); end
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",0,self:GetChecked()); end
 					    </OnClick>
 					</Scripts>
 					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
@@ -164,7 +164,7 @@
 					</Layers>
 					<Scripts>
 					    <OnClick>
-						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",1,this:GetChecked()); end
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",1,self:GetChecked()); end
 					    </OnClick>
 					</Scripts>
 					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
@@ -201,7 +201,7 @@
 					</Layers>
 					<Scripts>
 					    <OnClick>
-						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",2,this:GetChecked()); end
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",2,self:GetChecked()); end
 					    </OnClick>
 					</Scripts>
 					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
@@ -238,7 +238,7 @@
 					</Layers>
 					<Scripts>
 					    <OnClick>
-						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",3,this:GetChecked()); end
+						if (ItemSync) then ItemSync:Click_QuickBagOpt("QUICKBAG",3,self:GetChecked()); end
 					    </OnClick>
 					</Scripts>
 					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
@@ -426,7 +426,7 @@
 						</Layers>
 						<Scripts>
 							<OnVerticalScroll>
-								FauxScrollFrame_OnVerticalScroll(16, ItemSync.QuickBag_UpdateScrollFrame);
+								FauxScrollFrame_OnVerticalScroll(self, offset, 16, ItemSync.QuickBag_UpdateScrollFrame);
 							</OnVerticalScroll>
 						</Scripts>
 					</ScrollFrame>
@@ -448,9 +448,9 @@
 					PlaySound("igBackPackClose");
 
 				</OnHide>
-		     		<OnMouseDown> this:StartMoving();  </OnMouseDown>
-		      		<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
-		      		<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+		     		<OnMouseDown> self:StartMoving();  </OnMouseDown>
+		      		<OnMouseUp>  self:StopMovingOrSizing(); </OnMouseUp>
+		      		<OnDragStop> self:StopMovingOrSizing(); </OnDragStop>
 			</Scripts>
 	</Frame>
 

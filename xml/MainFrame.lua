@@ -24,19 +24,21 @@ function ItemSync:On_DD_MainEnable()
 						'text', k,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() 
+						'func', function(this, button) 
 							
 							--[r10001] store last dropdown selection
-							if (not self.db.account[self.realm]["options"]["dropdown"]) then self:Validate_Opt(); end
+							if (not self.db.account[self.realm]["options"]["dropdown"]) then ItemSync:Validate_Opt(); end
 							self.db.account[self.realm]["options"]["dropdown"][1] = v;
 
-							ISync_MainFrame_DropDownSelection:SetText(this.text:GetText());
+
+							ISync_MainFrame_DropDownSelection:SetText(k);
+							--ISync_MainFrame_DropDownSelection:SetText(self.text:GetText());
 							PlaySound("igMainMenuOptionCheckBoxOn");
 
 							FauxScrollFrame_SetOffset(ISync_MainFrame_ListScrollFrame, 0);
 							getglobal("ISync_MainFrame_ListScrollFrameScrollBar"):SetValue(0);
-							self:BuildIndex();
-							self:UpdateScrollFrame();
+							ItemSync:BuildIndex();
+							ItemSync:UpdateScrollFrame();
 		
 						end
 					)
@@ -85,9 +87,9 @@ function ItemSync:On_DD_MainEnable()
 end
 
 function ItemSync:Main_Refresh(s)
-
+	
 	--[r10001] set dropdown if stored, and doesn't match
-	if (not self.db.account[self.realm]["options"]["dropdown"]) then self:Validate_Opt(); end
+	if (not self.db.account[self.realm]["options"]["dropdown"]) then ItemSync:Validate_Opt(); end
 
 		for k, v in pairs(ISA["SORTING"]) do
 			
@@ -106,7 +108,7 @@ function ItemSync:Main_Refresh(s)
 	FauxScrollFrame_SetOffset(ISync_MainFrame_ListScrollFrame, 0);
 	getglobal("ISync_MainFrame_ListScrollFrameScrollBar"):SetValue(0);
 	
-	if (s and s==1 and self:Get_Opt("external", 5, 1)) then
+	if (s and s==1 and ItemSync:Get_Opt("external", 5, 1)) then
 		if (not self._buildtable) then
 			ISync_MainFrameInfo:SetText(self.crayon:Colorize("00FF00", ISL["TotalItems"]).."    "..self.crayon:Colorize("BDFCC9", 0).."\n"..self.crayon:Colorize("FFFF66", ISL["TotalShown"]).."   "..self.crayon:Colorize("BDFCC9", 0));
 			return nil;
@@ -129,7 +131,7 @@ function ItemSync:BuildIndex()
 		
 		for k, v in pairs(self.db.account[self.realm]["items"]) do
 			
-			r = {self:_split(v, "°")}
+			r = {ItemSync:_split(v, "°")}
 			
 			if (r) then
 				
@@ -138,7 +140,7 @@ function ItemSync:BuildIndex()
 					--update the name if incorrect [r10001]
 					local sName = GetItemInfo("item:"..k..":0:0:0:0:0:0:0");
 					
-					if (not self:Check_Opt("showinvalid",1) and sName or self:Check_Opt("showinvalid",1)) then
+					if (not ItemSync:Check_Opt("showinvalid",1) and sName or ItemSync:Check_Opt("showinvalid",1)) then
 					
 						if (sName) then
 							if (not self.db.account[self.realm]["names"][k]) then
@@ -169,7 +171,7 @@ function ItemSync:BuildIndex()
 					
 				else
 
-					q = {self:_split(r[13], "º")}
+					q = {ItemSync:_split(r[13], "º")}
 
 					for kx, vx in pairs(q) do
 -- kirson split subid "v" and sfactor "vsfactor" around ø
@@ -186,13 +188,13 @@ function ItemSync:BuildIndex()
 						
 						local subName = GetItemInfo("item:"..k..":0:0:0:0:0:"..vx..":0");
 						
-						if (not self:Check_Opt("showinvalid",1) and subName or self:Check_Opt("showinvalid",1)) then
+						if (not ItemSync:Check_Opt("showinvalid",1) and subName or ItemSync:Check_Opt("showinvalid",1)) then
 
 							if ( subName ) then
 								if (not self.db.account[self.realm]["names"][k]) then
-									self.db.account[self.realm]["names"][k] = self:StripSubName(subName);
-								elseif (self.db.account[self.realm]["names"][k] ~= self:StripSubName(subName)) then
-									self.db.account[self.realm]["names"][k] = self:StripSubName(subName);
+									self.db.account[self.realm]["names"][k] = ItemSync:StripSubName(subName);
+								elseif (self.db.account[self.realm]["names"][k] ~= ItemSync:StripSubName(subName)) then
+									self.db.account[self.realm]["names"][k] = ItemSync:StripSubName(subName);
 								end
 							elseif (self.db.account[self.realm]["names"][k]) then
 								subName = self.db.account[self.realm]["names"][k].." "..ISL["OfThe"];
@@ -232,7 +234,7 @@ function ItemSync:BuildIndex()
 	
 	if ( self.db.account[self.realm]["options"]["ItemCount"] < (iNew-1)) then
 		self.db.account[self.realm]["options"]["ItemCount"] = (iNew-1);
-		self:UpdateItemCounter();
+		ItemSync:UpdateItemCounter();
 	
 	end
 
@@ -313,7 +315,9 @@ local ISYNC_HEIGHT 		= 16;
 local ISYNC_SHOWN 		= 23;
 local LAST_SHOWN		= 1;
 	
-	if (not self) then self = ItemSync; end --for some reason we lose this upon scroll
+	if self == ISync_MainFrame_ListScrollFrame then self = ItemSync; --we get only the srollframe while scrolling
+	elseif (not self) then self = ItemSync; --for some reason we lose this upon scroll 
+	end 
 	
 	--Added [r10001] (don't scroll if we are validating an item)
 	if (self._canScroll) then return nil; end
@@ -321,8 +325,7 @@ local LAST_SHOWN		= 1;
 	if( not self._buildtable or not self._buildtable.onePastEnd) then
 		 ItemSync:BuildIndex();
 	end
-	
-	--double check
+			--double check
 	if(not self._buildtable.onePastEnd) then return nil; end
 
 	local frameText; --[r10001]
@@ -367,12 +370,16 @@ local LAST_SHOWN		= 1;
 							end
 							
 							--we have to force the color or else the color stays with the mouse if they use the mouse wheel
-							IMItemObj:SetText(self.crayon:Colorize(self:ReturnHexColor(self._buildtable[itemIndex].quality), self._buildtable[itemIndex].name));
+							IMItemObj:SetText(self.crayon:Colorize(ItemSync:ReturnHexColor(self._buildtable[itemIndex].quality), self._buildtable[itemIndex].name));
 							
 
 							local grabColor = ITEM_QUALITY_COLORS[tonumber(self._buildtable[itemIndex].quality)];
 							if( grabColor) then
-								IMItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+								IMItemObj:SetNormalFontObject("GameFontNormal"); -- Font prüfen
+								local font = IMItemObj:GetNormalFontObject();
+								font:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+								IMItemObj:SetNormalFontObject(font);
+								-- IMItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
 								IMItemObj.r = grabColor.r;
 								IMItemObj.g = grabColor.g;
 								IMItemObj.b = grabColor.b;
@@ -429,14 +436,18 @@ local LAST_SHOWN		= 1;
 							else
 								IMItemObj_Text:SetPoint( "LEFT",  19, 1 );
 								IMItemObj_Indexed:Hide();
-								IMItemObj:SetText(self.crayon:Colorize(self:ReturnHexColor(self._buildtable[itemIndex].quality), sGName));
+								IMItemObj:SetText(self.crayon:Colorize(ItemSync:ReturnHexColor(self._buildtable[itemIndex].quality), sGName));
 							end
 							
 
 
 							local grabColor = ITEM_QUALITY_COLORS[tonumber(self._buildtable[itemIndex].quality)];
 							if( grabColor) then
-								IMItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+								IMItemObj:SetNormalFontObject("GameFontNormal");  -- Font prüfen
+								local font = IMItemObj:GetNormalFontObject();
+								font:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+								IMItemObj:SetNormalFontObject(font);
+								-- IMItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
 								IMItemObj.r = grabColor.r;
 								IMItemObj.g = grabColor.g;
 								IMItemObj.b = grabColor.b;
@@ -514,48 +525,48 @@ local LAST_SHOWN		= 1;
 
 end
 
-function ItemSync:ButtonEnter(arg1)
+function ItemSync:ButtonEnter(self, motion)
 
-	if(not this.iteminfo) then return nil; end
-	
+	if(not self.iteminfo) then return nil; end
+	local this = ItemSync; -- we don't have variable Itemsync in self !!!
 	--fix the color with the scrolling
-	if (not this.invalid) then
+	if (not self.invalid) then
 		
-		if (not this.iteminfo.subid) then
+		if (not self.iteminfo.subid) then
 		
-			if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0")) then
+			if (GetItemInfo("item:"..self.iteminfo.idcore..":0:0:0:0:0:0:0")) then
 			
-				ISync_MainFrame.TooltipButton = this:GetID();
-				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0");
+				ISync_MainFrame.TooltipButton = self:GetID();
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetHyperlink("item:"..self.iteminfo.idcore..":0:0:0:0:0:0:0");
 				
-				if (this.iteminfo.icontexture and self:Get_Opt("showmoney", 3, 1)) then
-					getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
+				if (self.iteminfo.icontexture and this:Get_Opt("showmoney", 3, 1)) then
+					getglobal("ISync_GameTooltipIconTexture"):SetTexture(self.iteminfo.icontexture);
 					getglobal("ISync_GameTooltipIcon"):Show();
 				else
 					getglobal("ISync_GameTooltipIcon"):Hide();
 				end
 				
-				ItemSync:Parse(this.iteminfo.idcore, "item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0");
+				this:Parse(self.iteminfo.idcore, "item:"..self.iteminfo.idcore..":0:0:0:0:0:0:0");
 
 			end
 		else
 -- kirson add sfactor to item check
-			if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor)) then
+			if (GetItemInfo("item:"..self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor)) then
 			
-				ISync_MainFrame.TooltipButton = this:GetID();
-				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+				ISync_MainFrame.TooltipButton = self:GetID();
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 -- kirson add sfactor to link to retreive proper item stats
-				GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor);
+				GameTooltip:SetHyperlink("item:"..self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor);
 				
-				if (this.iteminfo.icontexture and self:Get_Opt("showmoney", 3, 1)) then
-					getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
+				if (self.iteminfo.icontexture and ItemSync:Get_Opt("showmoney", 3, 1)) then
+					getglobal("ISync_GameTooltipIconTexture"):SetTexture(self.iteminfo.icontexture);
 					getglobal("ISync_GameTooltipIcon"):Show();
 				else
 					getglobal("ISync_GameTooltipIcon"):Hide();
 				end
 				
-				ItemSync:Parse(this.iteminfo.idcore, "item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0"); --we don't want subid
+				this:Parse(self.iteminfo.idcore, "item:"..self.iteminfo.idcore..":0:0:0:0:0:0:0"); --we don't want subid
 				
 			end
 		end
@@ -563,21 +574,21 @@ function ItemSync:ButtonEnter(arg1)
 		
 	else --item is invalid
 
-		ISync_MainFrame.TooltipButton = this:GetID();
-		GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+		ISync_MainFrame.TooltipButton = self:GetID();
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 
-		GameTooltip:AddLine(self.crayon:Colorize("FF0000", ISL["InvalidItem"]), 0, 0, 0);
+		GameTooltip:AddLine(this.crayon:Colorize("FF0000", ISL["InvalidItem"]), 0, 0, 0); 
 		GameTooltip:AddLine(" ", 0, 0, 0);
-		GameTooltip:AddLine(self.crayon:Colorize("A2D96F", ISL["InvalidForce"]), 0, 0, 0);
+		GameTooltip:AddLine(this.crayon:Colorize("A2D96F", ISL["InvalidForce"]), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
-		GameTooltip:AddLine(self.crayon:Colorize("FC5252", ISL["InvalidWarning"]), 0, 0, 0);
+		GameTooltip:AddLine(this.crayon:Colorize("FC5252", ISL["InvalidWarning"]), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
 		
-		if (not this.iteminfo.subid) then
-			GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:0:0"), 0, 0, 0);
+		if (not self.iteminfo.subid) then
+			GameTooltip:AddLine(this.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..this.crayon:Colorize("BDFCC9", self.iteminfo.idcore..":0:0:0:0:0:0:0"), 0, 0, 0);
 		else
 -- kirson add sfactor to tooltip for proper reference
-			GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor), 0, 0, 0);
+			GameTooltip:AddLine(this.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..this.crayon:Colorize("BDFCC9", self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor), 0, 0, 0);
 		end
 		
 
@@ -588,37 +599,40 @@ function ItemSync:ButtonEnter(arg1)
 	
 end
 
-function ItemSync:ButtonClick(sButton)
+function ItemSync:ButtonClick(self, sButton, down)
 	
-	if(not this.iteminfo) then return nil; end
-
+	-- ISynctext("MF-601 sButton =" ,sButton)
+	if(not self.iteminfo) then return nil; end
+	
+	local this = ItemSync; -- we don't have variable Itemsync in self !!!
 	if (sButton == "LeftButton") then
-	
-
-		if( ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+		-- Rework ChatFrameEditbox funktioniert nicht mehr bzw. neu ChatEdit_GetActiveWindow ab 3.3.5
+		local ChatFrameEditBox = (ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow()) or ChatFrameEditBox
 			
-		elseif( IsShiftKeyDown() and ChatFrameEditBox:IsVisible() and not this.invalid) then
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+		if( ChatFrameEditBox and ChatFrameEditBox:IsVisible() and not self.invalid) then
+			ChatFrameEditBox:Insert( this:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
+			
+		elseif( IsShiftKeyDown() and ChatFrameEditBox and ChatFrameEditBox:IsVisible() and not self.invalid) then
+			ChatFrameEditBox:Insert( this:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
 			
 		elseif( IsControlKeyDown() and IsShiftKeyDown()) then
-			self:Dialog_Add_Favorite(this:GetName());
+			this:Dialog_Add_Favorite(self:GetName());
 			
-		elseif( IsControlKeyDown() and not this.invalid) then
-			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+		elseif( IsControlKeyDown() and not self.invalid) then
+			DressUpItemLink( this:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
 		end
 		
 	elseif (sButton == "RightButton") then
 	
-		if (IsControlKeyDown() and this.invalid and this.iteminfo) then --if invalid
+		if (IsControlKeyDown() and self.invalid and self.iteminfo) then --if invalid
 		
-			ISync_ItemPopup.barname = this:GetName();
-			ISync_ItemPopup.iteminfo = this.iteminfo;
+			ISync_ItemPopup.barname = self:GetName();
+			ISync_ItemPopup.iteminfo = self.iteminfo;
 			
 			ISync_ItemPopupHeaderText:SetText(ISL["ForceInvalid"]);
 
-			ISync_ItemPopupInfo:SetText(self.crayon:Colorize("FC5252", ISL["ItemForce"]));
-			ISync_ItemPopupItemText:SetText(self.crayon:Colorize(self:ReturnHexColor(this.iteminfo.quality), this.iteminfo.name));
+			ISync_ItemPopupInfo:SetText(this.crayon:Colorize("FC5252", ISL["ItemForce"]));
+			ISync_ItemPopupItemText:SetText(this.crayon:Colorize(ItemSync:ReturnHexColor(self.iteminfo.quality), self.iteminfo.name));
 
 			ISync_ItemPopupNoButton:SetText(ISL["No"]);
 			ISync_ItemPopupYesButton:SetText(ISL["Yes"]);
@@ -627,9 +641,9 @@ function ItemSync:ButtonClick(sButton)
 			 
 			ISync_ItemPopup:Show();
 		
-		elseif (IsAltKeyDown() and this.iteminfo) then --delete item
+		elseif (IsAltKeyDown() and self.iteminfo) then --delete item
 			
-			self:Dialog_Delete_Item(this:GetName(), this.itemIndex);
+			this:Dialog_Delete_Item(self:GetName(), self.itemIndex);
 		
 		end
 	
@@ -637,14 +651,15 @@ function ItemSync:ButtonClick(sButton)
 		
 end
 
-function ItemSync:ForceClick()
+function ItemSync:ForceClick(self)
 	
-	local frame = getglobal(this:GetParent():GetName())
+	local frame = getglobal(self:GetParent():GetName())
 	if (not frame) then return nil; end
 	
+	local this = ItemSync; -- we don't have variable Itemsync in self !!!
 	--check for previously running checks
-	if (self.gnome:Status("ForceClickWait")) then
-		self:Print(self.crayon:Colorize("FC5252", ISL["InvalidForce_Wait"]));
+	if (this.gnome:Status("ForceClickWait")) then
+		this:Print(this.crayon:Colorize("FC5252", ISL["InvalidForce_Wait"]));
 		return nil;
 	end
 	
@@ -667,10 +682,10 @@ function ItemSync:ForceClick()
 	GameTooltip:Show();
 	GameTooltip:Hide();
 	
-	self:Print(self.crayon:Colorize("FC5252", ISL["ItemForceWait"]));
+	this:Print(this.crayon:Colorize("FC5252", ISL["ItemForceWait"]));
 	
 	self._canScroll = 1; --[r10001] added to prevent scrolling of window while validating
-	self:ForceClick_Wait(link, frame.iteminfo.idcore, frame.iteminfo.subid, sfactor, frame); --now send
+	ItemSync:ForceClick_Wait(link, frame.iteminfo.idcore, frame.iteminfo.subid, sfactor, frame); --now send
 	
 end
 
@@ -690,16 +705,16 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame)
 			local oldframe = frame;
 
 			
-			if ( self:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
+			if ( ItemSync:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemForceSuccess"]));
 -- kirson add sfactor as argument 3
-				self:Print(self:ReturnHyperlink(oldcore, oldsub, oldsfactor));
+				self:Print(ItemSync:ReturnHyperlink(oldcore, oldsub, oldsfactor));
 				
 				--now change the bar to reflect the new changes
 				if (oldframe and oldframe.barname) then
 					local itemBar = getglobal(oldframe.barname);
 					if (itemBar) then
-						itemBar:SetText(self.crayon:Colorize(self:ReturnHexColor(self._iteminfo.quality), self._iteminfo.name));
+						itemBar:SetText(self.crayon:Colorize(ItemSync:ReturnHexColor(self._iteminfo.quality), self._iteminfo.name));
 						itemBar.iteminfo.quality = self._iteminfo.quality;
 						itemBar.iteminfo.name = self._iteminfo.name;
 						itemBar.invalid = nil;
@@ -713,7 +728,7 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame)
 					end	
 				end
 
-				self:Parse(self._iteminfo.coreid, self._iteminfo.link);
+				ItemSync:Parse(self._iteminfo.coreid, self._iteminfo.link);
 				
 			else
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemForceFail"]));
@@ -725,7 +740,7 @@ function ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame)
 	
 		self.gnome:Register("ForceClickWait", ForceClickChkDone , 3)
 -- kirson add sfactor as 4th arguement
-		self:ForceClick_Wait(link, coreid, subid, sfactor, frame);
+		ItemSync:ForceClick_Wait(link, coreid, subid, sfactor, frame);
 	else
 		local avail, rate, running = self.gnome:Status("ForceClickWait")
 

@@ -31,7 +31,8 @@ function ItemSync:Favorites_Load()
 						'tooltipTitle', "",
 						'func', function() 
 
-							ISync_Favorites_DropDownSelection:SetText(this.text:GetText());
+							ISync_Favorites_DropDownSelection:SetText(k);
+							--ISync_Favorites_DropDownSelection:SetText(self.text:GetText());
 							PlaySound("igMainMenuOptionCheckBoxOn");
 
 							self:Fav_Refresh();		
@@ -172,8 +173,10 @@ function ItemSync:Fav_UpdateScrollFrame()
 local ISYNC_HEIGHT 		= 16;
 local ISYNC_SHOWN 		= 23;
 local LAST_SHOWN		= 1;
-	
-	if (not self) then self = ItemSync; end --for some reason we lose this upon scroll
+
+	if self == ISync_Favorites_ListScrollFrame then self = ItemSync; --we get only the srollframe while scrolling
+	elseif (not self) then self = ItemSync; --for some reason we lose this upon scroll 
+	end
 	
 	if( not self._favbuildtable or not self._favbuildtable.onePastEnd) then
 		 ItemSync:Fav_BuildIndex();
@@ -229,7 +232,11 @@ local LAST_SHOWN		= 1;
 							
 					local grabColor = ITEM_QUALITY_COLORS[tonumber(self._favbuildtable[itemIndex].quality)];
 					if( grabColor) then
-						FavItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+						FavItemObj:SetNormalFontObject("GameFontNormal"); -- Font prüfen
+						local font = FavItemObj:GetNormalFontObject();
+						font:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
+						FavItemObj:SetNormalFontObject(font);
+						--FavItemObj:SetTextColor(grabColor.r, grabColor.g, grabColor.b);
 						FavItemObj.r = grabColor.r;
 						FavItemObj.g = grabColor.g;
 						FavItemObj.b = grabColor.b;
@@ -292,41 +299,41 @@ local LAST_SHOWN		= 1;
 end
 
 
-function ItemSync:Fav_ButtonEnter(arg1)
+function ItemSync:Fav_ButtonEnter(self, button)
 
-	if(not this.iteminfo) then return nil; end
+	if(not self.iteminfo) then return nil; end
 	
 	--fix the color with the scrolling
-	if (not this.invalid) then
+	if (not self.invalid) then
 		
 -- kirson add sfactor into check
-		if (GetItemInfo("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor)) then
+		if (GetItemInfo("item:"..self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor)) then
 
-			ISync_MainFrame.TooltipButton = this:GetID();
-			GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+			ISync_MainFrame.TooltipButton = self:GetID();
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 -- kirson add sfactor to retreive proper item stats
-			GameTooltip:SetHyperlink("item:"..this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor);
+			GameTooltip:SetHyperlink("item:"..self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor);
 
-			if (this.iteminfo.icontexture) then
-				getglobal("ISync_GameTooltipIconTexture"):SetTexture(this.iteminfo.icontexture);
+			if (self.iteminfo.icontexture) then
+				getglobal("ISync_GameTooltipIconTexture"):SetTexture(self.iteminfo.icontexture);
 				getglobal("ISync_GameTooltipIcon"):Show();
 			else
 				getglobal("ISync_GameTooltipIcon"):Hide();
 			end
 
-			ItemSync:Parse(this.iteminfo.idcore, "item:"..this.iteminfo.idcore..":0:0:0:0:0:0:0"); --we don't want subid
+			ItemSync:Parse(self.iteminfo.idcore, "item:"..self.iteminfo.idcore..":0:0:0:0:0:0:0"); --we don't want subid
 
 		end
 		
 	else --item is invalid
 
-		ISync_MainFrame.TooltipButton = this:GetID();
-		GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+		ISync_MainFrame.TooltipButton = self:GetID();
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 
 		GameTooltip:AddLine(self.crayon:Colorize("FF0000", ISL["InvalidItem"]), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
 -- kirson add sfactor to properly reflect the item
-		GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", this.iteminfo.idcore..":0:0:0:0:0:"..this.iteminfo.subid..":"..this.iteminfo.sfactor), 0, 0, 0);
+		GameTooltip:AddLine(self.crayon:Colorize("00FF00", ISL["ItemID"]..":").." "..self.crayon:Colorize("BDFCC9", self.iteminfo.idcore..":0:0:0:0:0:"..self.iteminfo.subid..":"..self.iteminfo.sfactor), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
 		
 		GameTooltip:Show();
@@ -337,24 +344,26 @@ function ItemSync:Fav_ButtonEnter(arg1)
 end
 
 
-function ItemSync:Fav_ButtonClick(sButton)
+function ItemSync:Fav_ButtonClick(self, sButton, down)
 
-	if(not this.iteminfo) then return nil; end
+	if(not self.iteminfo) then return nil; end
 
 	if (sButton == "LeftButton") then
 	
-
-		if( ChatFrameEditBox:IsVisible() and not this.invalid) then
+		-- Rework ChatFrameEditbox funktioniert nicht mehr bzw. neu ChatEdit_GetActiveWindow ab 3.3.5
+		local ChatFrameEditBox = (ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow()) or ChatFrameEditBox
+		
+		if( ChatFrameEditBox and ChatFrameEditBox:IsVisible() and not self.invalid) then
 -- kirson pass this.iteminfo.sfactor as 3rd arguement
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+			ChatFrameEditBox:Insert( ItemSync:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
 			
-		elseif( IsShiftKeyDown() and ChatFrameEditBox:IsVisible() and not this.invalid) then
+		elseif( IsShiftKeyDown() and ChatFrameEditBox and ChatFrameEditBox:IsVisible() and not self.invalid) then
 -- kirson pass this.iteminfo.sfactor as 3rd arguement
-			ChatFrameEditBox:Insert( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+			ChatFrameEditBox:Insert( ItemSync:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
 			
-		elseif( IsControlKeyDown() and not this.invalid) then
+		elseif( IsControlKeyDown() and not self.invalid) then
 -- kirson pass this.iteminfo.sfactor as 3rd arguement, more for consistancy than needed as subitems share textures
-			DressUpItemLink( self:ReturnHyperlink(this.iteminfo.idcore, this.iteminfo.subid, this.iteminfo.sfactor) );
+			DressUpItemLink( ItemSync:ReturnHyperlink(self.iteminfo.idcore, self.iteminfo.subid, self.iteminfo.sfactor) );
 		end
 		
 	elseif (sButton == "RightButton") then
@@ -364,21 +373,22 @@ function ItemSync:Fav_ButtonClick(sButton)
 	
 end
 
-function ItemSync:Fav_DeleteButton(sFrame, opt)
-
+function ItemSync:Fav_DeleteButton(self, sFrame, opt)
+	
+	local this = ItemSync; -- we don't have variable Itemsync in self !!!
 	if (opt == 1) then
 	
-		ISync_MainFrame.TooltipButton = this:GetID();
-		GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+		ISync_MainFrame.TooltipButton = self:GetID();
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 
-		GameTooltip:AddLine(self.crayon:Colorize("A2D96F", ISL["Fav_Delete"]), 0, 0, 0);
+		GameTooltip:AddLine(this.crayon:Colorize("A2D96F", ISL["Fav_Delete"]), 0, 0, 0); --error:crayon == nil value 
 		GameTooltip:AddLine(" ", 0, 0, 0);
 		
 		local sT = getglobal("ISync_FavoritesItem"..sFrame:GetID());
 		
 		if (not sT) then return nil; end
 		
-		GameTooltip:AddLine(self.crayon:Colorize(sT.getColor, sT:GetText()), 0, 0, 0);
+		GameTooltip:AddLine(this.crayon:Colorize(sT.getColor, sT:GetText()), 0, 0, 0);
 		GameTooltip:AddLine(" ", 0, 0, 0);
 		
 		GameTooltip:Show();
@@ -389,7 +399,7 @@ function ItemSync:Fav_DeleteButton(sFrame, opt)
 		local sT = getglobal("ISync_FavoritesItem"..sFrame:GetID());
 		
 		if (not sT) then return nil; end
-		self:Dialog_Delete_Fav(sT);
+		this:Dialog_Delete_Fav(sT);
 	end
 
 end

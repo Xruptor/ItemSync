@@ -40,7 +40,8 @@ function ItemSync:On_DD_SearchEnable()
 						'text', v,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() ISync_DD_LocationSelection:SetText(this.text:GetText()); ISync_DD_Location._svalue = ISA["WL"][this.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						'func', function() ISync_DD_LocationSelection:SetText(v); ISync_DD_Location._svalue = ISA["WL"][v]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						--'func', function() ISync_DD_LocationSelection:SetText(self.text:GetText()); ISync_DD_Location._svalue = ISA["WL"][self.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
 					)
 					
 				end
@@ -92,7 +93,7 @@ function ItemSync:On_DD_SearchEnable()
 					'func', function() ISync_DD_RaritySelection:SetText(""); ISync_DD_Rarity._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
 				)
 					
-				for k=0, 5, 1 do
+				for k=0, 7, 1 do
 
 					local grabColor = ITEM_QUALITY_COLORS[k];
 				
@@ -105,8 +106,10 @@ function ItemSync:On_DD_SearchEnable()
 						'tooltipTitle', "",
 						'func', function()
 
-							ISync_DD_RaritySelection:SetText(this.text:GetText());
-							ISync_DD_Rarity._svalue = ISA["RARITY"][this.text:GetText()];
+							ISync_DD_RaritySelection:SetText(ISA["RARITY"][k]);
+							ISync_DD_Rarity._svalue = ISA["RARITY"][ISA["RARITY"][k]];
+							--ISync_DD_RaritySelection:SetText(self.text:GetText());
+							--ISync_DD_Rarity._svalue = ISA["RARITY"][self.text:GetText()];
 							
 							local grabColor_but = ITEM_QUALITY_COLORS[ISync_DD_Rarity._svalue];
 							ISync_DD_RaritySelection:SetTextColor(grabColor_but.r, grabColor_but.g, grabColor_but.b);
@@ -174,7 +177,8 @@ function ItemSync:On_DD_SearchEnable()
 						'text', v,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() ISync_DD_WeaponSelection:SetText(this.text:GetText()); ISync_DD_Weapon._svalue = ISA["WT"][this.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						'func', function() ISync_DD_WeaponSelection:SetText(v); ISync_DD_Weapon._svalue = ISA["WT"][v]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						--'func', function() ISync_DD_WeaponSelection:SetText(self.text:GetText()); ISync_DD_Weapon._svalue = ISA["WT"][self.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
 					)
 					
 				end
@@ -239,7 +243,8 @@ function ItemSync:On_DD_SearchEnable()
 						'text', v,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() ISync_DD_TradeskillSelection:SetText(this.text:GetText()); ISync_DD_Tradeskill._svalue = ISA["TS"][this.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						'func', function() ISync_DD_TradeskillSelection:SetText(v); ISync_DD_Tradeskill._svalue = ISA["TS"][v]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						--'func', function() ISync_DD_TradeskillSelection:SetText(self.text:GetText()); ISync_DD_Tradeskill._svalue = ISA["TS"][self.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
 					)
 					
 				end
@@ -304,7 +309,8 @@ function ItemSync:On_DD_SearchEnable()
 						'text', v,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() ISync_DD_ArmorSelection:SetText(this.text:GetText()); ISync_DD_Armor._svalue = ISA["AT"][this.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						'func', function() ISync_DD_ArmorSelection:SetText(v); ISync_DD_Armor._svalue = ISA["AT"][v]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						--'func', function() ISync_DD_ArmorSelection:SetText(self.text:GetText()); ISync_DD_Armor._svalue = ISA["AT"][self.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
 					)
 					
 				end
@@ -369,7 +375,8 @@ function ItemSync:On_DD_SearchEnable()
 						'text', v,
 						'closeWhenClicked', true,
 						'tooltipTitle', "",
-						'func', function() ISync_DD_ShieldSelection:SetText(this.text:GetText()); ISync_DD_Shield._svalue = ISA["ST"][this.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						'func', function() ISync_DD_ShieldSelection:SetText(v); ISync_DD_Shield._svalue = ISA["ST"][v]; PlaySound("igMainMenuOptionCheckBoxOn");end
+						--'func', function() ISync_DD_ShieldSelection:SetText(self.text:GetText()); ISync_DD_Shield._svalue = ISA["ST"][self.text:GetText()]; PlaySound("igMainMenuOptionCheckBoxOn");end
 					)
 					
 				end
@@ -421,7 +428,7 @@ function ItemSync:On_DD_SearchEnable()
 					'func', function() ISync_DD_LevelSelection:SetText(""); ISync_DD_Level._svalue = nil; PlaySound("igMainMenuOptionCheckBoxOn");end
 				)
 				
-				for k=0, 13, 1 do
+				for k=0, 16, 1 do
 
 					self.dewdrop:AddLine(
 						'text', ISA["LEVEL"][k],
@@ -429,8 +436,10 @@ function ItemSync:On_DD_SearchEnable()
 						'tooltipTitle', "",
 						'func', function()
 
-							ISync_DD_LevelSelection:SetText(this.text:GetText());
-							ISync_DD_Level._svalue = ISA["LEVEL"][this.text:GetText()];
+							ISync_DD_LevelSelection:SetText(ISA["LEVEL"][k]);
+							ISync_DD_Level._svalue = ISA["LEVEL"][ISA["LEVEL"][k]];
+							--ISync_DD_LevelSelection:SetText(self.text:GetText());
+							--ISync_DD_Level._svalue = ISA["LEVEL"][self.text:GetText()];
 							
 							PlaySound("igMainMenuOptionCheckBoxOn");
 						end

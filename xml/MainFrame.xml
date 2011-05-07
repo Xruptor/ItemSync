@@ -71,7 +71,7 @@
  					</Layers>
  					<Scripts>
  						<OnLoad>
- 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 							getglobal(self:GetName() .. "Text"):SetText(ISL["Help"]);
  						</OnLoad>
  						<OnClick>
  							if (ItemSync) then ItemSync:Show_Help(1); end
@@ -108,7 +108,7 @@
 
 					    </OnLoad>
 					    <OnClick>
-							if (ItemSync) then ItemSync:Click_Opt("SHOWINVALID",1,this:GetChecked()); end
+							if (ItemSync) then ItemSync:Click_Opt("SHOWINVALID",1,self:GetChecked()); end
 					    </OnClick>
 					</Scripts>
 					<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
@@ -679,13 +679,13 @@
  					</Layers>
  					<Scripts>
  						<OnVerticalScroll>
- 							FauxScrollFrame_OnVerticalScroll(16, ItemSync.UpdateScrollFrame);
+ 							FauxScrollFrame_OnVerticalScroll(self, offset, 16, ItemSync.UpdateScrollFrame);
  						</OnVerticalScroll>
  					</Scripts>
  				</ScrollFrame>
  				
  
- 				<Frame name="ISyncMainFrame_QuickSearchBox" inherits="OptionFrameBoxTemplate">
+ 				<Frame name="ISyncMainFrame_QuickSearchBox" inherits="OptionsBoxTemplate">
  					<Size>
  						<AbsDimension x="335" y="50"/>
  					</Size>
@@ -750,8 +750,8 @@
  
  					<Scripts>
  						<OnLoad>
- 							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
- 							this:SetBackdropColor(0.15, 0.15, 0.15);
+ 							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+ 							self:SetBackdropColor(0.15, 0.15, 0.15);
  						</OnLoad>
  					</Scripts>
 				</Frame>
@@ -769,7 +769,7 @@
  					</Anchors>
  					<Scripts>
  						<OnLoad>
- 							this:SetText(ISL["Refresh"]);
+ 							self:SetText(ISL["Refresh"]);
  						</OnLoad>
  						<OnClick>
  							if (ItemSync) then ItemSync:ResetSearch(); ItemSync:Main_Refresh(); end
@@ -921,7 +921,7 @@
  				</Anchors>
  				<Scripts>
  					<OnClick>
- 						if (ItemSync) then ItemSync:ForceClick(); end
+ 						if (ItemSync) then ItemSync:ForceClick(self); end
 						ISync_ItemPopup:Hide();
  					</OnClick>
  				</Scripts>

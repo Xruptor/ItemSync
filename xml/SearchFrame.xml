@@ -119,7 +119,7 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if (this:GetChecked()) then
+							if (self:GetChecked()) then
 							    PlaySound("igMainMenuOptionCheckBoxOn");
 							else
 							    PlaySound("igMainMenuOptionCheckBoxOff");
@@ -142,7 +142,7 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if (this:GetChecked()) then
+							if (self:GetChecked()) then
 							    PlaySound("igMainMenuOptionCheckBoxOn");
 							else
 							    PlaySound("igMainMenuOptionCheckBoxOff");
@@ -164,7 +164,7 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if (this:GetChecked()) then
+							if (self:GetChecked()) then
 							    PlaySound("igMainMenuOptionCheckBoxOn");
 							else
 							    PlaySound("igMainMenuOptionCheckBoxOff");
@@ -186,7 +186,7 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if (this:GetChecked()) then
+							if (self:GetChecked()) then
 							    PlaySound("igMainMenuOptionCheckBoxOn");
 							else
 							    PlaySound("igMainMenuOptionCheckBoxOff");
@@ -208,7 +208,7 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if (this:GetChecked()) then
+							if (self:GetChecked()) then
 							    PlaySound("igMainMenuOptionCheckBoxOn");
 							else
 							    PlaySound("igMainMenuOptionCheckBoxOff");
@@ -217,7 +217,7 @@
 					</Scripts>
 				</CheckButton>
 
-				<Frame name="ISync_SearchFrame_NameBox" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_SearchFrame_NameBox" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="60"/>
 					</Size>
@@ -282,8 +282,8 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
 						</OnLoad>
 					</Scripts>
 				</Frame>

@@ -84,7 +84,7 @@
  					</Layers>
  					<Scripts>
  						<OnLoad>
- 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 							getglobal(self:GetName() .. "Text"):SetText(ISL["Help"]);
  						</OnLoad>
  						<OnClick>
 							if (ItemSync) then ItemSync:Show_Help(4); end
@@ -597,7 +597,7 @@
 					<Scripts>
 						<OnVerticalScroll>
 							if(ItemSync) then
-								FauxScrollFrame_OnVerticalScroll(16, ItemSync.Fav_UpdateScrollFrame);
+								FauxScrollFrame_OnVerticalScroll(self, offset, 16, ItemSync.Fav_UpdateScrollFrame);
 							end
 						</OnVerticalScroll>
 					</Scripts>
@@ -618,7 +618,7 @@
 					</Anchors>
 					<Scripts>
 						<OnLoad>
-							this:SetText(ISL["Refresh"]);
+							self:SetText(ISL["Refresh"]);
 						</OnLoad>
 						<OnClick>
 							if (ItemSync) then ItemSync:Fav_Refresh(); end
@@ -639,7 +639,7 @@
  					</Anchors>
 					<Scripts>
 						<OnLoad>
-							this:SetText(ISL["Purge"]);
+							self:SetText(ISL["Purge"]);
 						</OnLoad>
 						<OnClick>
 							if (ItemSync) then ItemSync:Dialog_Purge_Fav(); end

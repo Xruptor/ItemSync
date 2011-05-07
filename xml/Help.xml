@@ -30,7 +30,7 @@
 			</Layers>
 			<Frames>
 
-			<Frame name="$parentHeader_Box" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+			<Frame name="$parentHeader_Box" inherits="OptionsBoxTemplate" enableMouse="true" >
 				<Size>
 					<AbsDimension x="335" y="30"/>
 				</Size>
@@ -57,17 +57,17 @@
 				<Scripts>
 					<OnLoad>
 
-						this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-						this:SetBackdropColor(1, 1, 0, 0.7);
+						self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						self:SetBackdropColor(1, 1, 0, 0.7);
 					</OnLoad>
 					<OnMouseDown>
-						if( arg1 == "LeftButton" ) then
+						if( button == "LeftButton" ) then
 							GameTooltip:Hide();
-							getglobal(this:GetParent():GetName()):StartMoving();
+							getglobal(self:GetParent():GetName()):StartMoving();
 						end
 					</OnMouseDown>
 					<OnMouseUp>
-						getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+						getglobal(self:GetParent():GetName()):StopMovingOrSizing();
 					</OnMouseUp>
 				</Scripts>
 			</Frame>
@@ -103,7 +103,7 @@
    						</Anchors>
    						<Scripts>
    							<OnShow>
-   								this:UpdateScrollChildRect();
+   								self:UpdateScrollChildRect();
    							</OnShow>
    						</Scripts>
    						<ScrollChild>
@@ -146,9 +146,9 @@
 			</OnLoad>
 			<OnShow>PlaySound("igMainMenuOpen");</OnShow>
 			<OnHide>PlaySound("igMainMenuClose"); </OnHide>
-			<OnMouseDown> this:StartMoving();  </OnMouseDown>
-			<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
-			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+			<OnMouseDown> self:StartMoving();  </OnMouseDown>
+			<OnMouseUp>  self:StopMovingOrSizing(); </OnMouseUp>
+			<OnDragStop> self:StopMovingOrSizing(); </OnDragStop>
 		</Scripts>
 	
 	</Frame>

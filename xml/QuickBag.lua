@@ -233,9 +233,11 @@ end
 
 function ItemSync:QuickBag_UpdateScrollFrame()
 
-	local iItem;
+		local iItem;
 
-	if (not self) then self = ItemSync; end --for some reason we lose this upon scroll
+	if self == ISync_QuickBag_ScrollFrame then self = ItemSync; --we get only the srollframe while scrolling
+	elseif (not self) then self = ItemSync;  --for some reason we lose this upon scroll
+	end
 	if (not ISync_QuickBagFrame:IsVisible()) then return; end
 	if (not self._quickbagindex) then self:QuickBag_BuildIndex(); end --make sure
 	if (not self._quickbagindex or not self._quickbagindex.onePastEnd) then return nil; end
@@ -320,16 +322,16 @@ function ItemSync:QuickBag_UpdateScrollFrame()
 end
 
 
-function ItemSync:QuickBag_ItemEnter()
+function ItemSync:QuickBag_ItemEnter(self, motion)
 
 	local iItem,sFrame
 
-	if(this.itemInfo) then
-		iItem = this.itemInfo;
-		sFrame = this;
-	elseif(this:GetParent():GetName() and getglobal(this:GetParent():GetName()).itemInfo) then
-		iItem = getglobal(this:GetParent():GetName()).itemInfo;
-		sFrame = getglobal(this:GetParent():GetName());
+	if(self.itemInfo) then
+		iItem = self.itemInfo;
+		sFrame = self;
+	elseif(self:GetParent():GetName() and getglobal(self:GetParent():GetName()).itemInfo) then
+		iItem = getglobal(self:GetParent():GetName()).itemInfo;
+		sFrame = getglobal(self:GetParent():GetName());
 	else
 		return nil;
 	end
@@ -358,22 +360,22 @@ function ItemSync:QuickBag_ItemEnter()
 			getglobal("ISync_GameTooltipIcon"):Hide();
 		end
 				
-		self:Parse(iItem.coreID, "item:"..iItem.link); --parse the tooltip
+		ItemSync:Parse(iItem.coreID, "item:"..iItem.link); --parse the tooltip
 
 	end
 		
 end
 
-function ItemSync:QuickBag_ItemClick(sButton)
+function ItemSync:QuickBag_ItemClick(self, sButton, down)
 
 	local iItem,sFrame
 
-	if(this.itemInfo) then
-		iItem = this.itemInfo;
-		sFrame = this;
-	elseif(this:GetParent():GetName() and getglobal(this:GetParent():GetName()).itemInfo) then
-		iItem = getglobal(this:GetParent():GetName()).itemInfo;
-		sFrame = getglobal(this:GetParent():GetName());
+	if(self.itemInfo) then
+		iItem = self.itemInfo;
+		sFrame = self;
+	elseif(self:GetParent():GetName() and getglobal(self:GetParent():GetName()).itemInfo) then
+		iItem = getglobal(self:GetParent():GetName()).itemInfo;
+		sFrame = getglobal(self:GetParent():GetName());
 	else
 		return nil;
 	end
@@ -384,7 +386,10 @@ function ItemSync:QuickBag_ItemClick(sButton)
 	
 		if IsShiftKeyDown() then
 		
-		    if ChatFrameEditBox:IsVisible() then
+		    -- Rework ChatFrameEditbox funktioniert nicht mehr bzw. neu ChatEdit_GetActiveWindow ab 3.3.5
+			local ChatFrameEditBox = (ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow()) or ChatFrameEditBox
+			
+			if ChatFrameEditBox and ChatFrameEditBox:IsVisible() then
 			local link = GetContainerItemLink(iItem.bag, iItem.slot);
 			if link then ChatFrameEditBox:Insert(link); end
 		    end

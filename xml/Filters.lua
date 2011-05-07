@@ -23,7 +23,7 @@ function ItemSync:On_DD_FiltersEnable()
    			'relativePoint', "BOTTOM",
 			'children', function()
 			
-				for k=0, 5, 1 do
+				for k=0, 7, 1 do
 
 					local grabColor = ITEM_QUALITY_COLORS[k];
 			
@@ -36,8 +36,10 @@ function ItemSync:On_DD_FiltersEnable()
 						'tooltipTitle', "",
 						'func', function()
 
-							ISync_Filters_Rarity_DropDownSelection:SetText(this.text:GetText());
-							ISync_Filters_Rarity_DropDown._svalue = ISA["RARITY"][this.text:GetText()];
+							ISync_Filters_Rarity_DropDownSelection:SetText(ISA["RARITY"][k]);
+							ISync_Filters_Rarity_DropDown._svalue = ISA["RARITY"][ISA["RARITY"][k]];
+							--ISync_Filters_Rarity_DropDownSelection:SetText(self.text:GetText());
+							--ISync_Filters_Rarity_DropDown._svalue = ISA["RARITY"][self.text:GetText()];
 							
 							local grabColor_but = ITEM_QUALITY_COLORS[ISync_Filters_Rarity_DropDown._svalue];
 							ISync_Filters_Rarity_DropDownSelection:SetTextColor(grabColor_but.r, grabColor_but.g, grabColor_but.b);

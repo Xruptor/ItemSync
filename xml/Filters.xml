@@ -61,7 +61,7 @@
  					</Layers>
  					<Scripts>
  						<OnLoad>
- 							getglobal(this:GetName() .. "Text"):SetText(ISL["Help"]);
+ 							getglobal(self:GetName() .. "Text"):SetText(ISL["Help"]);
  						</OnLoad>
  						<OnClick>
  							if (ItemSync) then ItemSync:Show_Help(3); end
@@ -69,7 +69,7 @@
  					</Scripts>
  				</Button>
  				
-				<Frame name="ISync_Filters_Rarity" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Filters_Rarity" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="135"/>
 					</Size>
@@ -154,7 +154,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",0,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",0,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -171,7 +171,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",1,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",1,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -189,7 +189,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",2,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",2,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -206,7 +206,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",3,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",3,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -223,7 +223,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",4,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",4,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -240,7 +240,7 @@
 							</Anchors>
 							<Scripts>
 								<OnClick>
-									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",5,this:GetChecked()); end
+									if (ItemSync) then ItemSync:Click_FilterOpt("FILTERRARITY",5,self:GetChecked()); end
 								</OnClick>
 							</Scripts>
 						</CheckButton>
@@ -250,9 +250,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["RarityOpt_Header"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["RarityOpt_Header"]);
 							
 							
 							ISync_Filters_Rarity0Text:SetText(ISL["RarityOpt_0"]);
@@ -268,7 +268,7 @@
 				</Frame>
 				
 				
-				<Frame name="ISync_Filters_InvalidPurge" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Filters_InvalidPurge" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="40"/>
 					</Size>
@@ -306,16 +306,16 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["Filters_PurgeInvalid"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["Filters_PurgeInvalid"]);
 						</OnLoad>
 					</Scripts>
 				</Frame>
 
 
 
-				<Frame name="ISync_Filters_RarityPurge" inherits="OptionFrameBoxTemplate">
+				<Frame name="ISync_Filters_RarityPurge" inherits="OptionsBoxTemplate">
 					<Size>
 						<AbsDimension x="335" y="60"/>
 					</Size>
@@ -363,9 +363,9 @@
 
 					<Scripts>
 						<OnLoad>
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(0.15, 0.15, 0.15);
-							getglobal(this:GetName().."Title"):SetText(ISL["Filters_PurgeRarity"]);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(0.15, 0.15, 0.15);
+							getglobal(self:GetName().."Title"):SetText(ISL["Filters_PurgeRarity"]);
 						</OnLoad>
 					</Scripts>
 				</Frame>

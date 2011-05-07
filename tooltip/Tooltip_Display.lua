@@ -15,7 +15,8 @@ function ItemSync:OnTooltipEnable()
 	
 	self:SecureHook(GameTooltip, "SetAuctionItem", "SetAuctionItem")
 	self:SecureHook(GameTooltip, "SetBagItem", "SetBagItem")
-	self:SecureHook(GameTooltip, "SetCraftItem", "SetCraftItem")
+--	SetCraftItem ist jetzt in SetTradeSkillItem enthalten
+--	self:SecureHook(GameTooltip, "SetCraftItem", "SetCraftItem") 
 	self:SecureHook(GameTooltip, "SetHyperlink", "SetHyperlink")
 	self:SecureHook(GameTooltip, "SetInventoryItem", "SetInventoryItem")
 	self:SecureHook(GameTooltip, "SetLootItem", "SetLootItem")
@@ -28,12 +29,12 @@ function ItemSync:OnTooltipEnable()
 	
 end
 
-function ItemSync:GameTooltip_OnHide()
+function ItemSync:GameTooltip_OnHide(self)
 
-	if(this:GetName() == "GameTooltip") then --we only want to deal with the gametooltip
+	if(self:GetName() == "GameTooltip") then --we only want to deal with the gametooltip
 		getglobal("ISync_GameTooltipIcon"):Hide();
 		getglobal("ISync_MoneyTooltip"):Hide();
-		GameTooltip_ClearMoney();
+		GameTooltip_ClearMoney(self);
 		
 		--[r10001]
 		if (EnhTooltip) then
@@ -128,13 +129,23 @@ end
 
 function ItemSync:SetInventoryItem(tooltip, type, slot)
 
-	local link = (type) and GetInventoryItemLink(type, slot) or GetContainerItemLink(BANK_CONTAINER,this:GetID());
+	-- This is only for testing:
+	-- if GetInventoryItemLink(type, slot) == nil then ISynctext("Check", "nil") else ISynctext("Check", "ok"); end
+	
+	-- The function is not called from Bankframe and Characterframe
+	-- This is not working, because we dont have the frame in 'self':
+		-- local link = (type) and GetInventoryItemLink(type, slot) or GetContainerItemLink(BANK_CONTAINER,self:GetID());
+	-- This is working, but we loose the tooltip (for example in Characterframe), when slot is empty.
+		-- local link = (type) and GetInventoryItemLink(type, slot) or GetContainerItemLink(BANK_CONTAINER,BankFrame:GetID()) or GetContainerItemLink(CHARACTER_INFO,CharacterFrame:GetID());
+	-- Therfore we will made the check only like this, but we need to check this again later:
+	local link = (type) and GetInventoryItemLink(type, slot);
 	local _, qty;
 
 	if(type) then
 		qty = GetInventoryItemCount(type, slot);
 	else
-		_, qty = GetContainerItemInfo(BANK_CONTAINER,this:GetID());
+		-- Maybe this is not working too, we never run to here
+		_, qty = GetContainerItemInfo(BANK_CONTAINER,self:GetID());
 	end
 	
 	self:Process_Tooltip(tooltip,link,qty,1);

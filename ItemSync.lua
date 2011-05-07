@@ -14,6 +14,14 @@ BINDING_NAME_QUICKBAG = ISL["Toggle QuickBag Frame"];
 
 ItemSync = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceModuleCore-2.0", "AceHook-2.1", "AceDebug-2.0", "AceConsole-2.0", "AceDB-2.0")
 
+function ISynctext(msg, txt)
+	if( DEFAULT_CHAT_FRAME and msg ~= nil) then 
+		if txt == nil then txt = "nil" end
+		DEFAULT_CHAT_FRAME:AddMessage( "|cffffcc00ItemSync:|cff0000ff "..msg.." "..txt)
+	end
+end -- chattext()
+
+
 function ItemSync:OnInitialize()
 
 	local defaults = {
@@ -180,7 +188,7 @@ function ItemSync:OnEnable()
 	
 	tinsert(UISpecialFrames, "ISync_MainFrame"); --add to special frames (to close when pressing esc)
 	
---	self:Print("Version [ "..self.crayon:Colorize("A2D96F", self.version).." ] has been loaded.") --print load version
+	self:Print("Version ["..self.crayon:Colorize("A2D96F", self.version).."] has been loaded.") --print load version
 end
 
 function ItemSync:OnDisable()
@@ -192,12 +200,12 @@ function ItemSync:TextChange()
 	if (not self:Check_Opt("external",3)) then return nil; end
 
 	--code credited to Kael KC_Items and creator of type links (Jonathan Ritchie)
-	local text = this:GetText();
+	local text = self:GetText();
 
 	if (not(strfind(text, "^/script") or strfind(text, "^/dump"))) then
 		text = string.gsub(text, "%[%*(.-)%*%]", self.SetTextLink);
 		text = string.gsub(text, "([|]?[h]?)%[(.-)%]([|]?[h]?)", self.SetExactTextLink);
-		this:SetText(text);
+		self:SetText(text);
 	end
 end
 
@@ -248,7 +256,8 @@ end
 function ItemSync:ParseChat(text)
 
 	if (text) then
-		
+		-- ERROR review neccessary
+		ISynctext("Text = ", text) --hierhin kommen wir nie!!
 		local sStore = { }; --prevent repeats
 		
 		--special thanks to Kaelten for some advice =)
@@ -767,7 +776,7 @@ function ItemSync:ReturnHexColor(n)
 	if (not n) then return nil; end
 	n = tonumber(n);
 	if (not n) then return nil; end
-	local QL_Colors = { "9d9d9d", "ffffff", "1eff00", "0070dd", "a335ee", "ff8000", "ffcc9d"};
+	local QL_Colors = { "9d9d9d", "ffffff", "1eff00", "0070dd", "a335ee", "ff8000", "ffcc9d", "e6cc80"};
 	local color = QL_Colors[n + 1];
 	QL_Colors = nil;
 	return color;
@@ -784,7 +793,8 @@ function ItemSync:HexReturnQuality(hex)
 	QL_Colors["ffa335ee"] = 4;
 	QL_Colors["ffff8000"] = 5;
 	QL_Colors["ffffcc9d"] = 6;
-	
+	QL_Colors["ffe6cc80"] = 7;
+		
 	local color = QL_Colors[hex];
 	QL_Colors = nil;
 	if(not color) then color = -1; end

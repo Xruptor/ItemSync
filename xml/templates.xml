@@ -32,7 +32,7 @@
 			</Layers>
 			<Frames>
 			
-				<Frame name="$parentHeader_Box" inherits="OptionFrameBoxTemplate" enableMouse="true" >
+				<Frame name="$parentHeader_Box" inherits="OptionsBoxTemplate" enableMouse="true" >
 					<Size>
 						<AbsDimension x="338" y="30"/>
 					</Size>
@@ -59,17 +59,17 @@
 					<Scripts>
 						<OnLoad>
 
-							this:SetBackdropBorderColor(0.4, 0.4, 0.4);
-							this:SetBackdropColor(162/255, 217/255, 111/255, 0.7);
+							self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+							self:SetBackdropColor(162/255, 217/255, 111/255, 0.7);
 						</OnLoad>
 						<OnMouseDown>
-							if( arg1 == "LeftButton" ) then
+							if( button == "LeftButton" ) then
 								GameTooltip:Hide();
-								getglobal(this:GetParent():GetName()):StartMoving();
+								getglobal(self:GetParent():GetName()):StartMoving();
 							end
 						</OnMouseDown>
 						<OnMouseUp>
-							getglobal(this:GetParent():GetName()):StopMovingOrSizing();
+							getglobal(self:GetParent():GetName()):StopMovingOrSizing();
 						</OnMouseUp>
 					</Scripts>
 				</Frame>
@@ -88,9 +88,9 @@
 	
  
  			<Scripts>
-		     		<OnMouseDown> this:StartMoving();  </OnMouseDown>
-		      		<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
-		      		<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+		     		<OnMouseDown> self:StartMoving();  </OnMouseDown>
+		      		<OnMouseUp>  self:StopMovingOrSizing(); </OnMouseUp>
+		      		<OnDragStop> self:StopMovingOrSizing(); </OnDragStop>
  			</Scripts>
 	
 	</Frame>
@@ -103,13 +103,13 @@
 			</Size>
 			<Scripts>
 				<OnLoad>
-					this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 				</OnLoad>
 				<OnClick>
-					if (ItemSync) then ItemSync:ButtonClick(arg1); end
+					if (ItemSync) then ItemSync:ButtonClick(self, button, down); end
 				</OnClick>
 				<OnEnter>
-					if (ItemSync) then ItemSync:ButtonEnter(arg1); end
+					if (ItemSync) then ItemSync:ButtonEnter(self, motion); end
 				</OnEnter>
 				<OnLeave>
 					if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -199,13 +199,13 @@
 		</Size>
 		<Scripts>
 			<OnLoad>
-				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				if (ItemSync) then ItemSync:Fav_ButtonClick(arg1); end
+				if (ItemSync) then ItemSync:Fav_ButtonClick(self, button, down); end
 			</OnClick>
 			<OnEnter>
-				if (ItemSync) then ItemSync:Fav_ButtonEnter(arg1); end
+				if (ItemSync) then ItemSync:Fav_ButtonEnter(self, motion); end
 			</OnEnter>
 			<OnLeave>
 				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -273,16 +273,16 @@
 			</PushedTextOffset>
 			<Scripts>
 				<OnLoad>
-					this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 				</OnLoad>
 				<OnEnter>
-					if (ItemSync) then  ItemSync:Fav_DeleteButton(this:GetParent(), 1); end
+					if (ItemSync) then  ItemSync:Fav_DeleteButton(self, self:GetParent(), 1); end
 				</OnEnter>
 				<OnLeave>
 					GameTooltip:Hide();						
 				</OnLeave>
 				<OnClick>
-					if (ItemSync) then  ItemSync:Fav_DeleteButton(this:GetParent(), 2); end
+					if (ItemSync) then  ItemSync:Fav_DeleteButton(self, self:GetParent(), 2); end
 				</OnClick>
 			</Scripts>
    						
@@ -313,11 +313,11 @@
 		</Layers>
 		<Scripts>
 			<OnClick>
-				if (ItemSync) then ItemSync:TabClick(); end
+				if (ItemSync) then ItemSync:TabClick(self, button, down); end
 			</OnClick>
 			<OnEnter>
-				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-				GameTooltip:SetText(this.tipinfo);
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetText(self.tipinfo);
 			</OnEnter>
 			<OnLeave>
 				GameTooltip:Hide();
@@ -384,8 +384,8 @@
 					</Anchors>
 					<Scripts>
 						<OnClick>
-							if( this:GetParent().ToggleMenu ) then
-								this:GetParent().ToggleMenu();
+							if( self:GetParent().ToggleMenu ) then
+								self:GetParent().ToggleMenu();
 							end
 						</OnClick>
 					</Scripts>
@@ -425,23 +425,23 @@
 			</Frames>
 			<Scripts>
 				<OnClick>
-					if( this.ToggleMenu ) then
-						this.ToggleMenu();
+					if( self.ToggleMenu ) then
+						self.ToggleMenu();
 					end
 				</OnClick>
 				<OnHide>
-					if( this.OnHide ) then
-						this.OnHide();
+					if( self.OnHide ) then
+						self.OnHide();
 					end
 				</OnHide>
 				<OnEnter>
-					if( this.OnEnter ) then
-						this.OnEnter();
+					if( self.OnEnter ) then
+						self.OnEnter();
 					end
 				</OnEnter>
 				<OnLeave>
-					if( this.OnLeave ) then
-						this.OnLeave();
+					if( self.OnLeave ) then
+						self.OnLeave();
 					end
 				</OnLeave>
 			</Scripts>
@@ -489,20 +489,20 @@
 		</Layers>
 		<Scripts>
 			<OnEscapePressed>
-				this:ClearFocus()
+				self:ClearFocus()
 			</OnEscapePressed>
 			<OnEnterPressed>
 
-				if (this:GetName() == "ISyncMainFrame_QuickSearch") then
+				if (self:GetName() == "ISyncMainFrame_QuickSearch") then
 					ISync_SearchFrameName_Search:SetText("");
-				elseif (this:GetName() == "ISync_SearchFrameName_Search") then
+				elseif (self:GetName() == "ISync_SearchFrameName_Search") then
 					ISyncMainFrame_QuickSearch:SetText("");
 				end
 
 				if (ItemSync) then ItemSync:Main_Refresh(); end
 
 			</OnEnterPressed>
-			<OnClick>this:SetFocus();</OnClick>
+			<OnClick>self:SetFocus();</OnClick>
 			<OnLeave></OnLeave>
 			<OnEnter></OnEnter>
 		</Scripts>
@@ -611,13 +611,13 @@
 				</Layers>
 				<Scripts>
 					<OnLoad>
-						this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						if (ItemSync) then ItemSync:QuickBag_ItemClick(arg1); end
+						if (ItemSync) then ItemSync:QuickBag_ItemClick(self, button, down); end
 					</OnClick>
 					<OnEnter>
-						if (ItemSync) then ItemSync:QuickBag_ItemEnter(); end
+						if (ItemSync) then ItemSync:QuickBag_ItemEnter(self, motion); end
 					</OnEnter>
 					<OnLeave>
 						if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -635,8 +635,8 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						SmallMoneyFrame_OnLoad();
-						MoneyFrame_SetType("AUCTION");
+						SmallMoneyFrame_OnLoad(self);
+						MoneyFrame_SetType(self, "AUCTION");
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -644,14 +644,14 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 
 			</OnLoad>
 			<OnClick>
-				if (ItemSync) then ItemSync:QuickBag_ItemClick(arg1); end
+				if (ItemSync) then ItemSync:QuickBag_ItemClick(self, button, down); end
 			</OnClick>
 			<OnEnter>
-				if (ItemSync) then ItemSync:QuickBag_ItemEnter(); end
+				if (ItemSync) then ItemSync:QuickBag_ItemEnter(self, motion); end
 			</OnEnter>
 			<OnLeave>
 				if(GameTooltip:IsVisible()) then GameTooltip:Hide(); end 
@@ -731,14 +731,14 @@
 
 		<Scripts>
 			<OnEnter>
-				if (ItemSync) then ItemSync:ItemCount_OnEnter(); end
+				if (ItemSync) then ItemSync:ItemCount_OnEnter(self, motion); end
 			</OnEnter>
 			<OnLeave>
 				GameTooltip:Hide();
 			</OnLeave>
-			<OnMouseDown> if (not IsControlKeyDown()) then this:StartMoving(); end  </OnMouseDown>
-			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(arg1); end</OnMouseUp>
-			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+			<OnMouseDown> if (not IsControlKeyDown()) then self:StartMoving(); end  </OnMouseDown>
+			<OnMouseUp>  if (ItemSync) then ItemSync:ItemCount_OnMouseUp(self, button); end</OnMouseUp>
+			<OnDragStop> self:StopMovingOrSizing(); </OnDragStop>
 		</Scripts>
 
 	</Frame>

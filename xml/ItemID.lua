@@ -96,12 +96,12 @@ function ItemSync:ItemID_StartShow(link, coreid, subid, sfactor, frame)
 			local oldsfactor = sfactor;
 			local oldframe = frame;
 			
-			if ( self:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
+			if ( ItemSync:ReturnHyperlink(oldcore, oldsub, oldsfactor) ) then
 				self:Print(self.crayon:Colorize("A2D96F", ISL["ItemID_ValidYes"]));
-				self:Print(self:ReturnHyperlink(oldcore, oldsub, oldsfactor));
+				self:Print(ItemSync:ReturnHyperlink(oldcore, oldsub, oldsfactor));
 				
 				--blizzard really screwed up with negatives so we have to parse two different ways
-				for color, item, name in string.gmatch(self:ReturnHyperlink(oldcore, oldsub, oldsfactor), "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
+				for color, item, name in string.gmatch(ItemSync:ReturnHyperlink(oldcore, oldsub, oldsfactor), "|c(%x+)|Hitem:([-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+:[-0-9]+)|h%[(.-)%]|h|r") do
 					if(item) then
 						self:_parselinks(item, color, name);
 					end
