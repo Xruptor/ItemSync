@@ -1,5 +1,5 @@
--- Id: $Id: fr.lua 64 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 64 $
+-- Id: $Id: fr.lua 32104 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 32104 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync French Localization
@@ -140,6 +140,8 @@
 		["RarityOpt_3"] = "|cff0070ddRare|r",
 		["RarityOpt_4"] = "|cffa335eeEpique|r",
 		["RarityOpt_5"] = "|cffff8000L\195\169gendaire|r",
+		["RarityOpt_6"] = "|cffffcc9dArtifact|r",
+		["RarityOpt_7"] = "|cffe6cc80Heirloom|r",
 		["Filters_PurgeInvalid"] = "Purger tous les objets invalide",
 		["Filters_PurgeRarity"] = "Purger tous les objets par raret\195\169",
 		["PurgeInvalid_DialogHeader"] = "Purger les Invalide",
@@ -324,8 +326,33 @@
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
 		
-		
-		
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "Toggle Main Frame",
+	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		--////////////////////////////////
+
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "Debug",
+	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+	    	["Show"] = "Show",
+	    	["Open the ItemSync window."] = "Open the ItemSync window.",
+	    	["Itemid"] = "Itemid",
+	    	["Open the ItemID window."] = "Open the ItemID window.",
+	    	["Quickbag"] = "Quickbag",
+	    	["Open the QuickBag window."] = "Open the QuickBag window.",
+	    	["Favorites"] = "Favorites",
+	    	["Open the Favorites window."] = "Open the Favorites window.",
+	    	["Search"] = "Search",
+		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
+	    	["<partial item name>"] = "<partial item name>",
+	    	["Reset Window"] = "Reset Window",
+	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		--////////////////////////////////
+
 	    }--end return
 	    
 	end
@@ -355,7 +382,7 @@ if ( GetLocale() == "frFR" ) then
 			["Sac d'\195\162me"]=1,
 			["Giberne"]=1,
 			["Carquois"]=1,
-			["Gem Bag"]=1,
+			["Sac de gemmes"]=1,
 			
 		},
 		--////////////////////////////////
@@ -377,16 +404,16 @@ if ( GetLocale() == "frFR" ) then
 			["Main droite"]=12,
 			["Taille"]=13,
 			["T\195\170te"]=14,
-			["Armes \195\160 feu"]=15,
-			["Doigt"]=16,
-			["Mains"]=17,
-			["Epaule"]=18,
-			["Baguette"]=19,
-			["Bijou"]=20,
-			["Tabard"]=21,
-			["Cou"]=22,
-			["Armes de jet"]=23,
-			["Arbal\195\168te"]=24
+			["Doigt"]=15,
+			["Mains"]=16,
+			["Epaule"]=17,
+			["Bijou"]=18,
+			["Tabard"]=19,
+			["Cou"]=20,
+			["Armes de jet"]=21,          -- check this
+			--["Armes \195\160 feu"]=22,  see weapon types
+			--["Baguette"]=23,            see weapon types
+			--["Arbal\195\168te"]=24      see weapon types
 		},
 		--////////////////////////////////
 
@@ -404,7 +431,8 @@ if ( GetLocale() == "frFR" ) then
 			["Armes de jet"]=9,
 			["Armes d'hast"]=10,
 			["Arme de pugilat"]=11,
-			["Arbal\195\168te"]=12
+			["Arbal\195\168te"]=12,
+			["Canne \195\160 p\195\170che"]=13
 		},
 		--////////////////////////////////
 		
@@ -418,7 +446,14 @@ if ( GetLocale() == "frFR" ) then
 			["Ing\195\169nierie"]=5,
 			["Travail du cuir"]=6,
 			["Couture"]=7,
-			["Joaillerie"]=8
+			["Joaillerie"]=8,
+			["Secourisme"]=9,
+			["P\195\170che"]=10,
+			["Calligraphie"]=11,
+			["Herboristerie"]=12,
+			["D\195\169pe\185\167age"]=13,
+			["Minage"]=14,
+			["Arch\195\169ologie"]=15
 		},
 		--////////////////////////////////
 
@@ -428,15 +463,17 @@ if ( GetLocale() == "frFR" ) then
 			["Tissu"]=1,
 			["Cuir"]=2,
 			["Mailles"]=3,
-			["Plaques"]=4
+			["Plaques"]=4,
+			["Bouclier"]=5,
+			["Relique"]=6
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
-			["Targe"]=1,
-			["Bouclier"]=2
+			--["Targe"]=1,
+			["Bouclier"]=1
 		},
 		--////////////////////////////////
 		
@@ -454,18 +491,22 @@ if ( GetLocale() == "frFR" ) then
 		--////////////////////////////////
 		--Armor Rarity
 		["RARITY"] = { 
-			["Pauvre"]=0,
-			["Courant"]=1,
-			["Inhabituel"]=2,
+			["M\195\169diocre"]=0,
+			["Classique"]=1,
+			["Bonne"]=2,
 			["Rare"]=3,
 			["Epique"]=4,
 			["L\195\169gendaire"]=5,
-			[0]="Pauvre",
-			[1]="Courant",
-			[2]="Inhabituel",
+			["Artefact"]=6,
+			["H\195\169ritage"]=7,
+			[0]="M\195\169diocre",
+			[1]="Classique",
+			[2]="Bonne",
 			[3]="Rare",
 			[4]="Epique",
-			[5]="L\195\169gendaire"
+			[5]="L\195\169gendaire",
+			[6]="Artefact",
+			[7]="H\195\169ritage"
 		},
 		--////////////////////////////////
 		
@@ -486,6 +527,9 @@ if ( GetLocale() == "frFR" ) then
 			[11]="55-60",
 			[12]="60-65",
 			[13]="65-70",
+			[14]="70-75",
+			[15]="75-80",
+			[16]="80-85",
 			["1-5"]=0,
 			["5-10"]=1,
 			["10-15"]=2,
@@ -499,7 +543,10 @@ if ( GetLocale() == "frFR" ) then
 			["50-55"]=10,
 			["55-60"]=11,
 			["60-65"]=12,
-			["65-70"]=13
+			["65-70"]=13,
+			["70-75"]=14,
+			["75-80"]=15,
+			["80-85"]=16
 		},
 		--////////////////////////////////
 		

@@ -1,5 +1,5 @@
-﻿-- Id: $Id: tw.lua 65 2007-04-26 14:10:09Z mcc $
--- Version: r$Revision: 65 $
+﻿-- Id: $Id: tw.lua 33815 2007-04-26 14:10:09Z mcc $
+-- Version: r$Revision: 33815 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇
@@ -123,6 +123,8 @@
 		["RarityOpt_3"] = "|cff0070dd精良|r",
 		["RarityOpt_4"] = "|cffa335ee史詩|r",
 		["RarityOpt_5"] = "|cffff8000傳說|r",
+		["RarityOpt_6"] = "|cffffcc9dArtifact|r",
+		["RarityOpt_7"] = "|cffe6cc80Heirloom|r",
 		["Filters_PurgeInvalid"] = "清除所有無效物件",
 		["Filters_PurgeRarity"] = "清除所有物件-依稀有度",
 		["PurgeInvalid_DialogHeader"] = "清除無效物件",
@@ -307,6 +309,32 @@
 		["ItemCount_LeftClick"] = "Control+左鍵 = 打開ItemSync視窗",
 		--////////////////////////////////
 
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "Toggle Main Frame",
+	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		--////////////////////////////////
+
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "Debug",
+	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+	    	["Show"] = "Show",
+	    	["Open the ItemSync window."] = "Open the ItemSync window.",
+	    	["Itemid"] = "Itemid",
+	    	["Open the ItemID window."] = "Open the ItemID window.",
+	    	["Quickbag"] = "Quickbag",
+	    	["Open the QuickBag window."] = "Open the QuickBag window.",
+	    	["Favorites"] = "Favorites",
+	    	["Open the Favorites window."] = "Open the Favorites window.",
+	    	["Search"] = "Search",
+		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
+	    	["<partial item name>"] = "<partial item name>",
+	    	["Reset Window"] = "Reset Window",
+	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		--////////////////////////////////
 
 	    }--end return
 	    
@@ -359,16 +387,16 @@ if ( GetLocale() == "zhTW" ) then
 			["主手"]=12,
 			["腰部"]=13,
 			["頭部"]=14,
-			["槍械"]=15,
-			["手指"]=16,
-			["手套"]=17,
-			["肩部"]=18,
-			["魔杖"]=19,
-			["飾品"]=20,
-			["公會徽章"]=21,
-			["頸部"]=22,
-			["投擲武器"]=23,
-			["弩"]=24
+			["手指"]=15,
+			["手套"]=16,
+			["肩部"]=17,
+			["飾品"]=18,
+			["公會徽章"]=19,
+			["頸部"]=20,
+			["投擲武器"]=21,
+			--["魔杖"]=22,
+			--["槍械"]=23,
+			--["弩"]=24
 		},
 		--////////////////////////////////
 
@@ -386,7 +414,8 @@ if ( GetLocale() == "zhTW" ) then
 			["投擲武器"]=9,
 			["長柄武器"]=10,
 			["拳套"]=11,
-			["弩"]=12
+			["弩"]=12,
+			["Fishing Pole"]=13
 		},
 		--////////////////////////////////
 		
@@ -400,7 +429,14 @@ if ( GetLocale() == "zhTW" ) then
 			["工程學"]=5,
 			["製皮"]=6,
 			["裁縫"]=7,
-			["珠寶設計"]=8
+			["珠寶設計"]=8,
+			["First Aid"]=9,
+			["Fishing"]=10,
+			["Inscription"]=11,
+			["Herbalism"]=12,
+			["Skinning"]=13,
+			["Mining"]=14,
+			["Archaeology"]=15
 		},
 		--////////////////////////////////
 
@@ -410,15 +446,17 @@ if ( GetLocale() == "zhTW" ) then
 			["布甲"]=1,
 			["皮甲"]=2,
 			["鎖甲"]=3,
-			["鎧甲"]=4
+			["鎧甲"]=4,
+			["Shield"]=5,
+			["Relic"]=6
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
-			["圓盾"]=1,
-			["盾牌"]=2
+			--["圓盾"]=1,
+			["盾牌"]=1
 		},
 		--////////////////////////////////
 		
@@ -442,12 +480,16 @@ if ( GetLocale() == "zhTW" ) then
 			["精良"]=3,
 			["史詩"]=4,
 			["傳說"]=5,
+			["Artifact"]=6,
+			["Heirloom"]=7,
 			[0]="粗糙",
 			[1]="普通",
 			[2]="優秀",
 			[3]="精良",
 			[4]="史詩",
-			[5]="傳說"
+			[5]="傳說",
+			[6]="Artifact",
+			[7]="Heirloom"
 		},
 		--////////////////////////////////
 		
@@ -468,6 +510,9 @@ if ( GetLocale() == "zhTW" ) then
 			[11]="55-60",
 			[12]="60-65",
 			[13]="65-70",
+			[14]="70-75",
+			[15]="75-80",
+			[16]="80-85",
 			["1-5"]=0,
 			["5-10"]=1,
 			["10-15"]=2,
@@ -481,7 +526,10 @@ if ( GetLocale() == "zhTW" ) then
 			["50-55"]=10,
 			["55-60"]=11,
 			["60-65"]=12,
-			["65-70"]=13
+			["65-70"]=13,
+			["70-75"]=14,
+			["75-80"]=15,
+			["80-85"]=16
 		},
 		--////////////////////////////////
 		

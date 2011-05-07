@@ -1,5 +1,5 @@
--- Id: $Id: cn.lua 64 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 64 $
+-- Id: $Id: cn.lua 32104 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 32104 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Chinese Localization
@@ -123,6 +123,8 @@
 		["RarityOpt_3"] = "|cff0070ddRare|r",
 		["RarityOpt_4"] = "|cffa335eeEpic|r",
 		["RarityOpt_5"] = "|cffff8000Legendary|r",
+		["RarityOpt_6"] = "|cffffcc9dArtifact|r",
+		["RarityOpt_7"] = "|cffe6cc80Heirloom|r",
 		["Filters_PurgeInvalid"] = "Purge All Invalid Items",
 		["Filters_PurgeRarity"] = "Purge All Items By Rarity",
 		["PurgeInvalid_DialogHeader"] = "Purge Invalid",
@@ -307,6 +309,32 @@
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
 
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "Toggle Main Frame",
+	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		--////////////////////////////////
+
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "Debug",
+	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+	    	["Show"] = "Show",
+	    	["Open the ItemSync window."] = "Open the ItemSync window.",
+	    	["Itemid"] = "Itemid",
+	    	["Open the ItemID window."] = "Open the ItemID window.",
+	    	["Quickbag"] = "Quickbag",
+	    	["Open the QuickBag window."] = "Open the QuickBag window.",
+	    	["Favorites"] = "Favorites",
+	    	["Open the Favorites window."] = "Open the Favorites window.",
+	    	["Search"] = "Search",
+		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
+	    	["<partial item name>"] = "<partial item name>",
+	    	["Reset Window"] = "Reset Window",
+	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		--////////////////////////////////
 
 	    }--end return
 	    
@@ -359,16 +387,16 @@ if ( GetLocale() == "zhCN" ) then
 			["Main Hand"]=12,
 			["Waist"]=13,
 			["Head"]=14,
-			["Gun"]=15,
-			["Finger"]=16,
-			["Hands"]=17,
-			["Shoulder"]=18,
-			["Wand"]=19,
-			["Trinket"]=20,
-			["Tabard"]=21,
-			["Neck"]=22,
-			["Thrown"]=23,
-			["Crossbow"]=24
+			["Finger"]=15,
+			["Hands"]=16,
+			["Shoulder"]=17,
+			["Trinket"]=18,
+			["Tabard"]=19,
+			["Neck"]=20,
+			["Thrown"]=21, -- check this
+			--["Gun"]=22,     see weapon types
+			--["Wand"]=23,    see weapon types
+			--["Crossbow"]=24 see weapon types
 		},
 		--////////////////////////////////
 
@@ -386,7 +414,8 @@ if ( GetLocale() == "zhCN" ) then
 			["Thrown"]=9,
 			["Polearm"]=10,
 			["Fist Weapon"]=11,
-			["Crossbow"]=12
+			["Crossbow"]=12,
+			["Fishing Pole"]=13
 		},
 		--////////////////////////////////
 		
@@ -400,7 +429,14 @@ if ( GetLocale() == "zhCN" ) then
 			["Engineering"]=5,
 			["Leatherworking"]=6,
 			["Tailoring"]=7,
-			["Jewelcrafting"]=8
+			["Jewelcrafting"]=8,
+			["First Aid"]=9,
+			["Fishing"]=10,
+			["Inscription"]=11,
+			["Herbalism"]=12,
+			["Skinning"]=13,
+			["Mining"]=14,
+			["Archaeology"]=15
 		},
 		--////////////////////////////////
 
@@ -410,15 +446,17 @@ if ( GetLocale() == "zhCN" ) then
 			["Cloth"]=1,
 			["Leather"]=2,
 			["Mail"]=3,
-			["Plate"]=4
+			["Plate"]=4,
+			["Shield"]=5,
+			["Relic"]=6
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
-			["Buckler"]=1,
-			["Shield"]=2
+			--["Buckler"]=1,
+			["Shield"]=1
 		},
 		--////////////////////////////////
 		
@@ -442,12 +480,16 @@ if ( GetLocale() == "zhCN" ) then
 			["Rare"]=3,
 			["Epic"]=4,
 			["Legendary"]=5,
+			["Artifact"]=6,
+			["Heirloom"]=7,
 			[0]="Poor",
 			[1]="Common",
 			[2]="Uncommon",
 			[3]="Rare",
 			[4]="Epic",
-			[5]="Legendary"
+			[5]="Legendary",
+			[6]="Artifact",
+			[7]="Heirloom"
 		},
 		--////////////////////////////////
 		
@@ -468,6 +510,9 @@ if ( GetLocale() == "zhCN" ) then
 			[11]="55-60",
 			[12]="60-65",
 			[13]="65-70",
+			[14]="70-75",
+			[15]="75-80",
+			[16]="80-85",
 			["1-5"]=0,
 			["5-10"]=1,
 			["10-15"]=2,
@@ -481,7 +526,10 @@ if ( GetLocale() == "zhCN" ) then
 			["50-55"]=10,
 			["55-60"]=11,
 			["60-65"]=12,
-			["65-70"]=13
+			["65-70"]=13,
+			["70-75"]=14,
+			["75-80"]=15,
+			["80-85"]=16
 		},
 		--////////////////////////////////
 		

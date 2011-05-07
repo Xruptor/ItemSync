@@ -1,5 +1,5 @@
--- Id: $Id: gr.lua 64 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 64 $
+-- Id: $Id: gr.lua 32104 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 32104 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync German Localization
@@ -32,7 +32,7 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 	    	["No"] = "Nein",
 	    	["Yes"] = "Ja",
 		["Sell"] = "Verkaufe f\195\188r ",
-		["Vendor"] = "Beim H\195\164ndler f\195\188 ",
+		["Vendor"] = "Beim H\195\164ndler f\195\188r ",
 		["NoSellP"] = "Kein Verkaufspreis",
 		["ReqSearch1"] = "Ben\195\182tigt (.+)",
 		["ReqSearch2"] = "Stufe (%d+)",
@@ -140,6 +140,8 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		["RarityOpt_3"] = "|cff0070ddRar|r",
 		["RarityOpt_4"] = "|cffa335eeEpisch|r",
 		["RarityOpt_5"] = "|cffff8000Legend\195\164r|r",
+		["RarityOpt_6"] = "|cffffcc9dArtefakt|r",
+		["RarityOpt_7"] = "|cffe6cc80Erbst\195\188ck|r",
 		["Filters_PurgeInvalid"] = "L\195\182sche alle ung\195\188ltigen Items",
 		["Filters_PurgeRarity"] = "L\195\182sche Items nach Seltenheit",
 		["PurgeInvalid_DialogHeader"] = "L\195\182sche Ung\195\188ltige",
@@ -321,8 +323,35 @@ ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 		
 		--////////////////////////////////
 		--ItemCount Frame
-		["ItemCount_FrameHeader"] = "ItemSync Itemz\195\164hler",
-		["ItemCount_LeftClick"] = "Strg+Linksklick = ItemSync \195\182ffnen",
+		["ItemCount_FrameHeader"] = "ItemSync Item-Z\195\164hler",
+		["ItemCount_LeftClick"] = "Strg+Links-Klick = ItemSync-Fenster \195\182ffnen/schlie\195\159en",
+		--////////////////////////////////
+		
+		--////////////////////////////////
+		--Binding
+	    	["Toggle Main Frame"] = "Toggle Main Frame",
+	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		--////////////////////////////////
+
+		--////////////////////////////////
+		--Options Menu
+	    	["Debug"] = "Debug",
+	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+	    	["Show"] = "Show",
+	    	["Open the ItemSync window."] = "Open the ItemSync window.",
+	    	["Itemid"] = "Itemid",
+	    	["Open the ItemID window."] = "Open the ItemID window.",
+	    	["Quickbag"] = "Quickbag",
+	    	["Open the QuickBag window."] = "Open the QuickBag window.",
+	    	["Favorites"] = "Favoriten",
+	    	["Open the Favorites window."] = "Open the Favorites window.",
+	    	["Search"] = "Search",
+			["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
+	    	["<partial item name>"] = "<partial item name>",
+	    	["Reset Window"] = "Reset Window",
+	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
 		--////////////////////////////////
 
 	    }--end return
@@ -347,14 +376,20 @@ if ( GetLocale() == "deDE" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
 		["BAGS"] = { 
-			["Verzauberertasche"]=1,
-			["Ingenieurstasche"]=1,
-			["Kr\195\164utertasche"]=1,
-			["Seelentasche"]=1,
-			["Edelsteintasche"]=1,
-			["Munitionsbeutel"]=1,
-			["K\195\182cher"]=1,
+			--["Verzauberertasche"]=1,
+			--["Ingenieurstasche"]=1,
+			--["Kr\195\164utertasche"]=1,
+			--alt ["Seelentasche"]=1,
+			--["Edelsteintasche"]=1,
+			--alt ["Munitionsbeutel"]=1,
+			--alt["K\195\182cher"]=1,
+			--["Bergbautasche"]=1,
+			--["Lederertasche"]=1,
+			--["Schreibertasche"]=1,
+			--["Angelkiste"]=1,
+			--["Beh\195\182lter"]=1,
 			
 		},
 		--////////////////////////////////
@@ -376,16 +411,16 @@ if ( GetLocale() == "deDE" ) then
 			["Waffenhand"]=12,
 			["Taille"]=13,
 			["Kopf"]=14,
-			--["Schusswaffe"]=15,
 			["Finger"]=15,
 			["H\195\164nde"]=16,
 			["Schulter"]=17,
-			--["Zauberstab"]=19,
 			["Schmuck"]=18,
 			["Wappenrock"]=19,
 			["Hals"]=20,
-			["Wurfwaffe"]=21,
-			--["Armbrust"]=24
+			["Wurfwaffe"]=21,     --check this
+			--["Schusswaffe"]=22, see weapon types = Distanz
+			--["Zauberstab"]=23,  see weapon types = Distanz
+			--["Armbrust"]=24     see weapon types = Distanz
 		},
 
 
@@ -405,8 +440,9 @@ if ( GetLocale() == "deDE" ) then
 			["Wurfwaffe"]=9,
 			["Stangenwaffe"]=10,
 			["Faustwaffe"]=11,
-			["Armbrust"]=12
-		},
+			["Armbrust"]=12,
+			["Angelrute"]=13
+			},
 
 
 		--////////////////////////////////
@@ -414,14 +450,21 @@ if ( GetLocale() == "deDE" ) then
 		--////////////////////////////////
 		--Tradeskills
 		["TS"] = { 
-			["Alchimie"]=1,
+			["Alchemie"]=1,
 			["Schmiedekunst"]=2,
 			["Kochkunst"]=3,
 			["Verzauberkunst"]=4,
 			["Ingenieurskunst"]=5,
 			["Lederverarbeitung"]=6,
 			["Schneiderei"]=7,
-			["Juwelenschleifen"]=8
+			["Juwelenschleifen"]=8,
+			["Erste Hilfe"]=9,
+			["Angeln"]=10,
+			["Inschriftenkunde"]=11,
+			["Kr\195\164uterkunde"]=12,
+			["K\195\188rschnerei"]=13,
+			["Bergbau"]=14,
+			["Arch\195\164ologie"]=15
 		},
 
 
@@ -432,8 +475,10 @@ if ( GetLocale() == "deDE" ) then
 		["AT"] = { 
 			["Stoff"]=1,
 			["Leder"]=2,
-			["Schwere R\195\188stung"]=3,
-			["Platte"]=4
+			["Kette"]=3,
+			["Platte"]=4,
+			["Schild"]=5,
+			["Relikt"]=6
 		},
 
 
@@ -443,8 +488,8 @@ if ( GetLocale() == "deDE" ) then
 		--Shield Type
 		["ST"] = { 
 			--["Rundschild"]=1,
-			["Schild"]=1
-		},
+			["Schild"]=1,
+			},
 		--////////////////////////////////
 		
 		--////////////////////////////////
@@ -467,12 +512,16 @@ if ( GetLocale() == "deDE" ) then
 			["Rar"]=3,
 			["Episch"]=4,
 			["Legend\195\164r"]=5,
+			["Artefakt"]=6,
+			["Erbst\195\188ck"]=7,
 			[0]="Schlecht",
 			[1]="Verbreitet",
 			[2]="Selten",
 			[3]="Rar",
 			[4]="Episch",
-			[5]="Legend\195\164r"
+			[5]="Legend\195\164r",
+			[6]="Artefakt",
+			[7]="Erbst\195\188ck"
 		},
 		--////////////////////////////////
 		
@@ -493,6 +542,9 @@ if ( GetLocale() == "deDE" ) then
 			[11]="55-60",
 			[12]="60-65",
 			[13]="65-70",
+			[14]="70-75",
+			[15]="75-80",
+			[16]="80-85",
 			["1-5"]=0,
 			["5-10"]=1,
 			["10-15"]=2,
@@ -506,7 +558,10 @@ if ( GetLocale() == "deDE" ) then
 			["50-55"]=10,
 			["55-60"]=11,
 			["60-65"]=12,
-			["65-70"]=13
+			["65-70"]=13,
+			["70-75"]=14,
+			["75-80"]=15,
+			["80-85"]=16
 		},
 		--////////////////////////////////
 		
