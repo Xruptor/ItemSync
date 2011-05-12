@@ -1,12 +1,47 @@
--- Id: $Id: cn.lua 32104 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 32104 $
+-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Chinese Localization
+  ItemSync Spanish Localization
 
   Author:  Derkyle
   Website: http://www.manaflux.com
 -----------------------------------------------------------------------------------]]
+	
+	-- Ä: C3 84  - \195\132
+	-- É: C3 89  - \195\137
+	-- Ö: C3 96  - \195\150
+	-- Ü: C3 9C  - \195\156
+	-- à: C3 A0  - \195\160
+	-- ß: C3 9F  - \195\159
+	-- á: C3 A1  - \195\161
+	-- â: C3 A2  - \195\162
+	-- ã: C3 A3  - \195\163
+	-- ä: C3 A4  - \195\164
+	-- æ: C3 A6  - \195\166
+	-- ç: C3 A7  - \185\167
+	-- è: C3 A8  - \195\168
+	-- é: C3 A9  - \195\169
+	-- ê: C3 AA  - \195\170
+	-- ë: C3 AB  - \195\171
+	-- ì: C3 AC  - \195\172
+	-- í: C3 AD  - \195\173
+	-- î: C3 AE  - \195\174
+	-- ï: C3 AF  - \195\175
+	-- ñ: C3 B1  - \195\177
+	-- ò: C3 B2  - \195\178
+	-- ó: C3 B3  - \195\179
+	-- ô: C3 B4  - \195\180
+	-- õ: C3 B5  - \195\181
+	-- ö: C3 B6  - \195\182
+	-- ø: C3 B8  - \195\184
+	-- ù: C3 B9  - \195\185
+	-- ú: C3 BA  - \195\186
+	-- û: C3 BB  - \195\187
+	-- ü: C3 BC  - \195\188
+	-- œ: C5 93  - \197\147
+	--
+	-- ': E2 80 99  - \226\128\153
 
 	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
 	ISL:RegisterTranslations("esES", function()
@@ -358,14 +393,21 @@ if ( GetLocale() == "esES" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
+		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			["Enchanting Bag"]=1,
-			["Engineering Bag"]=1,
-			["Herb Bag"]=1,
-			["Soul Bag"]=1,
-			["Ammo Pouch"]=1,
-			["Quiver"]=1,
-			["Gem Bag"]=1,
+			--old ["Soul Bag"]=1,
+			--old ["Ammo Pouch"]=1,
+			--old ["Quiver"]=1,
+			--["Enchanting Bag"]=1,
+			--["Engineering Bag"]=1,
+			--["Herb Bag"]=1,
+			--["Gem Bag"]=1,
+			--["Mining Bag"]=1,
+			--["Leatherworking Bag"]=1,
+			--["Inscription Bag"]=1,
+			--["Tackle Box"]=1,
+			--["Bag"]=1,
 			
 		},
 		--////////////////////////////////
@@ -456,7 +498,7 @@ if ( GetLocale() == "esES" ) then
 		--Shield Type
 		["ST"] = { 
 			--["Buckler"]=1,
-			["Shield"]=1
+			["Shield"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		

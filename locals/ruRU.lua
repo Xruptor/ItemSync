@@ -1,8 +1,8 @@
--- Id: $Id: cn.lua 32104 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 32104 $
+-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Chinese Localization
+  ItemSync Russian Localization
 
   Author:  Derkyle
   Website: http://www.manaflux.com
@@ -358,14 +358,21 @@ if ( GetLocale() == "ruRU" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
+		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			["Enchanting Bag"]=1,
-			["Engineering Bag"]=1,
-			["Herb Bag"]=1,
-			["Soul Bag"]=1,
-			["Ammo Pouch"]=1,
-			["Quiver"]=1,
-			["Gem Bag"]=1,
+			--old ["Soul Bag"]=1,
+			--old ["Ammo Pouch"]=1,
+			--old ["Quiver"]=1,
+			--["Enchanting Bag"]=1,
+			--["Engineering Bag"]=1,
+			--["Herb Bag"]=1,
+			--["Gem Bag"]=1,
+			--["Mining Bag"]=1,
+			--["Leatherworking Bag"]=1,
+			--["Inscription Bag"]=1,
+			--["Tackle Box"]=1,
+			--["Bag"]=1,
 			
 		},
 		--////////////////////////////////
@@ -456,7 +463,7 @@ if ( GetLocale() == "ruRU" ) then
 		--Shield Type
 		["ST"] = { 
 			--["Buckler"]=1,
-			["Shield"]=1
+			["Shield"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		

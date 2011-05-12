@@ -1,5 +1,5 @@
--- Id: $Id: eng.lua 70922 2008-04-22 15:05:09Z next96 $
--- Version: r$Revision: 70922 $
+-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
   ItemSync English Localization
@@ -358,14 +358,21 @@ if ( GetLocale() == "enUS" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
+		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			["Enchanting Bag"]=1,
-			["Engineering Bag"]=1,
-			["Herb Bag"]=1,
-			["Soul Bag"]=1,
-			["Ammo Pouch"]=1,
-			["Quiver"]=1,
-			["Gem Bag"]=1,
+			--old ["Soul Bag"]=1,
+			--old ["Ammo Pouch"]=1,
+			--old ["Quiver"]=1,
+			--["Enchanting Bag"]=1,
+			--["Engineering Bag"]=1,
+			--["Herb Bag"]=1,
+			--["Gem Bag"]=1,
+			--["Mining Bag"]=1,
+			--["Leatherworking Bag"]=1,
+			--["Inscription Bag"]=1,
+			--["Tackle Box"]=1,
+			--["Bag"]=1,
 			
 		},
 		--////////////////////////////////
@@ -456,7 +463,7 @@ if ( GetLocale() == "enUS" ) then
 		--Shield Type
 		["ST"] = { 
 			--["Buckler"]=1,
-			["Shield"]=1
+			["Shield"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		

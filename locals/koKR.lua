@@ -1,5 +1,5 @@
-﻿-- Id: $Id: kr.lua 70922 2008-04-22 15:05:09Z next96 $
--- Version: r$Revision: 70922 $
+﻿-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
   ItemSync Korean Localization
@@ -361,13 +361,13 @@ if ( GetLocale() == "koKR" ) then
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
 		["BAGS"] = { 
-			["마법부여 가방"]=1,
-			["기계공학 가방"]=1,
-			["약초 가방"]=1,
-			["영혼의 가방"]=1,
-			["탄환 주머니"]=1,
-			["화살통"]=1,
-			["보석 가방"]=1,
+			--old ["영혼의 가방"]=1,
+			--old ["탄환 주머니"]=1,
+			--old ["화살통"]=1,
+			--["마법부여 가방"]=1,
+			--["기계공학 가방"]=1,
+			--["약초 가방"]=1,
+			--["보석 가방"]=1,
 			
 		},
 		--////////////////////////////////
@@ -458,7 +458,7 @@ if ( GetLocale() == "koKR" ) then
 		--Shield Type
 		["ST"] = { 
 			--["버클러"]=1,
-			["방패"]=1
+			["방패"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		

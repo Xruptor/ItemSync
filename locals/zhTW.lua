@@ -1,5 +1,5 @@
-﻿-- Id: $Id: tw.lua 33815 2007-04-26 14:10:09Z mcc $
--- Version: r$Revision: 33815 $
+﻿-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
   ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇
@@ -358,14 +358,16 @@ if ( GetLocale() == "zhTW" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
+		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			["附魔包"]=1,
-			["工程包"]=1,
-			["草藥包"]=1,
-			["靈魂碎片背包"]=1,
-			["彈藥袋"]=1,
-			["箭袋"]=1,
-			["寶石背包"]=1,
+			--old ["靈魂碎片背包"]=1,
+			--old ["彈藥袋"]=1,
+			--old ["箭袋"]=1,
+			--["附魔包"]=1,
+			--["工程包"]=1,
+			--["草藥包"]=1,
+			--["寶石背包"]=1,
 			
 		},
 		--////////////////////////////////
@@ -456,7 +458,7 @@ if ( GetLocale() == "zhTW" ) then
 		--Shield Type
 		["ST"] = { 
 			--["圓盾"]=1,
-			["盾牌"]=1
+			["盾牌"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		

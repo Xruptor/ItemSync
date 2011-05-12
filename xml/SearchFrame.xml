@@ -95,6 +95,7 @@
 					</Anchors>
 				</Button>
 				
+				<!--
 				<Button name="ISync_DD_Shield" inherits="ISync_DD_Template">
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -104,6 +105,7 @@
 						</Anchor>
 					</Anchors>
 				</Button>
+				-->
 
 
 				<CheckButton name="ISync_Search_Resist1" inherits="OptionsCheckButtonTemplate">

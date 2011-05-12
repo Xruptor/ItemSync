@@ -1,5 +1,5 @@
--- Id: $Id: fr.lua 32104 2007-04-08 15:40:55Z derkyle $
--- Version: r$Revision: 32104 $
+-- Id: $Id$
+-- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
   ItemSync French Localization
@@ -12,6 +12,7 @@
  	 
 -----------------------------------------------------------------------------------]]
 
+	-- É: C3 89  - \195\137
 	-- é: C3 A9  - \195\169
 	-- ê: C3 AA  - \195\170
 	-- à: C3 A0  - \195\160
@@ -375,14 +376,21 @@ if ( GetLocale() == "frFR" ) then
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
+		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
+		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			["Sac d'enchanteur"]=1,
-			["Boite \195\170 Outils"]=1,
-			["Sac d'herbes"]=1,
-			["Sac d'\195\162me"]=1,
-			["Giberne"]=1,
-			["Carquois"]=1,
-			["Sac de gemmes"]=1,
+			--old ["Sac d'\195\162me"]=1,
+			--old ["Giberne"]=1,
+			--old ["Carquois"]=1,
+			--["Sac d'enchanteur"]=1,
+			--["Sac d'ing\195\169nieur"]=1,
+			--["Sac d'herbes"]=1,
+			--["Sac de gemmes"]=1,
+			--["Sac de mineur"]=1,
+			--["Sac de travailleur du cuir"]=1,
+			--["Sac de calligraphie"]=1,
+			--["Boite de mat\195\169riel"]=1,
+			--["Sac"]=1,
 			
 		},
 		--////////////////////////////////
@@ -473,7 +481,7 @@ if ( GetLocale() == "frFR" ) then
 		--Shield Type
 		["ST"] = { 
 			--["Targe"]=1,
-			["Bouclier"]=1
+			["Bouclier"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		
@@ -495,7 +503,7 @@ if ( GetLocale() == "frFR" ) then
 			["Classique"]=1,
 			["Bonne"]=2,
 			["Rare"]=3,
-			["Epique"]=4,
+			["\195\137pique"]=4,
 			["L\195\169gendaire"]=5,
 			["Artefact"]=6,
 			["H\195\169ritage"]=7,
