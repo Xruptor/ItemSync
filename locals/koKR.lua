@@ -2,20 +2,20 @@
 -- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Korean Localization
+	ItemSync Korean Localization
 
-  Author:  Derkyle
-  Website: http://www.manaflux.com
+	Author:  Derkyle
+	Website: http://www.manaflux.com
 
-  Korean Translation by Zeno(precia@paran.com)
+	Korean Translation by Zeno(precia@paran.com)
 -----------------------------------------------------------------------------------]]
 
-	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("koKR", function()
+ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
+ISL:RegisterTranslations("koKR", function()
 	
-	    return {
-	    	["No"] = "아니오",
-	    	["Yes"] = "예",
+	return {
+		["No"] = "아니오",
+		["Yes"] = "예",
 		["Sell"] = "판매 가격 ",
 		["Vendor"] = "상점 가격 ",
 		["NoSellP"] = "팔 수 없음",
@@ -46,7 +46,7 @@
 		["Purge_all_db"] = "정말로 모든 데이터베이스를\n삭제하시겠습니까? 돌이킬 수 없습니다!",
 		["ShowNone"] = "None",
 		["DisplayInvalid"] = "Display Invalid",
-
+		
 		--////////////////////////////////
 		--Key Bindings
 		["ToggleMain"] = "메인 메뉴 열기/닫기",
@@ -63,7 +63,7 @@
 		["Wand"] = "마법봉",
 		"|c00FF0000경고: 접속이 끊어지는 현상에 대해 \nItemSync의 제작자는 어떠한 책임도 지지 않습니다!|r\n|c00A2D96F사용시에 주의해 주십시오!|r";
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Invalid Item
 		["InvalidItem"] = "잘못된 아이템",
@@ -76,7 +76,7 @@
 		["ItemForceSuccess"] = "이하의 아이템들이 성공적으로 확인되었습니다: ",
 		["InvalidForce_Wait"] = "오류 아이템 확인 작업이 이미 수행 중입니다!",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Search Feature
 		["SearchName"]="이름으로 검색:",
@@ -136,9 +136,8 @@
 		["PurgeRarity_DialogHeader"] = "등급에 따른 삭제",
 		["PurgeRarity_DialogWarn"] = "정말로 삭제하시겠습니까?:\n",
 		["PurgeRarity_DialogComplete"] = "삭제가 완료되었습니다:",
-		
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "현재 선택된 플레이어:",
@@ -153,7 +152,7 @@
 		["Fav_DeleteWarning"] = "이 아이템을 다음 플레이어의 즐겨찾기에서 삭제하시겠습니까?",
 		["Fav_DeleteComplete"] = "아이템이 성공적으로 삭제되었습니다.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--ItemID
 		["ItemID_Item"] = "아이템:",
@@ -173,7 +172,7 @@
 		["DeleteItem_Warn"] = "정말로 이 아이템을\n데이터베이스에서 삭제하시겠습니까?",
 		["DeleteItem_DeleteComplete"] = "아이템이 성공적으로 삭제되었습니다.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "총 갯수 표시",
@@ -181,7 +180,7 @@
 		["QuickBag_SortPrice"] = "가격 순 정렬",
 		["QuickBag_SortRarity"] = "등급 순 정렬",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "(클릭)",
@@ -202,7 +201,7 @@
 		["OneDB_SureSecond"] = "정말로 당신의 데이터베이스를\n분리하시겠습니까?:",
 		["OneDB_Complete"] = "데이터베이스의 처리가 완료되었습니다!",
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Optimize
 		["Optimize_Header"] = "최적화",
@@ -216,7 +215,7 @@
 		["Optimize_No"] = "이미 최적화가 실행 중입니다!",
 		["Optimize_InvalidRelog"] = "주의: 몇몇 아이템은 다음 로그인까지\n 확인되지 않을 수도 있습니다.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
@@ -313,42 +312,42 @@
 		
 		--////////////////////////////////
 		--Binding
-	    	["Toggle Main Frame"] = "메인창 토글",
-	    	["Toggle Favorites Frame"] = "즐겨찾기창 토글",
-	    	["Toggle ItemID Frame"] = "아이템ID창 토글",
-	    	["Toggle QuickBag Frame"] = "빠른가방창 토글",
+		["Toggle Main Frame"] = "메인창 토글",
+		["Toggle Favorites Frame"] = "즐겨찾기창 토글",
+		["Toggle ItemID Frame"] = "아이템ID창 토글",
+		["Toggle QuickBag Frame"] = "빠른가방창 토글",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Options Menu
-	    	["Debug"] = "디버그",
-	    	["Turns display of debugging text on and off."] = "디버깅 메세지를 키거나 끕니다.",
-	    	["Show"] = "표시",
-	    	["Open the ItemSync window."] = "ItemSync창을 엽니다.",
-	    	["Itemid"] = "아이템ID",
-	    	["Open the ItemID window."] = "아이템ID창을 엽니다.",
-	    	["Quickbag"] = "빠른가방",
-	    	["Open the QuickBag window."] = "빠른가방창을 엽니다.",
-	    	["Favorites"] = "즐겨찾기",
-	    	["Open the Favorites window."] = "즐겨찾기창을 엽니다.",
-	    	["Search"] = "검색",
+		["Debug"] = "디버그",
+		["Turns display of debugging text on and off."] = "디버깅 메세지를 키거나 끕니다.",
+		["Show"] = "표시",
+		["Open the ItemSync window."] = "ItemSync창을 엽니다.",
+		["Itemid"] = "아이템ID",
+		["Open the ItemID window."] = "아이템ID창을 엽니다.",
+		["Quickbag"] = "빠른가방",
+		["Open the QuickBag window."] = "빠른가방창을 엽니다.",
+		["Favorites"] = "즐겨찾기",
+		["Open the Favorites window."] = "즐겨찾기창을 엽니다.",
+		["Search"] = "검색",
 		["Do a search for an item by keywords."] = "키워드로 아이템을 검색합니다.",
-	    	["<partial item name>"] = "<아이템의 부분적인 이름>",
-	    	["Reset Window"] = "창 초기화",
-	    	["Resets all ItemSync windows."] = "모든 ItemSync 창을 초기화 합니다.",
+		["<partial item name>"] = "<아이템의 부분적인 이름>",
+		["Reset Window"] = "창 초기화",
+		["Resets all ItemSync windows."] = "모든 ItemSync 창을 초기화 합니다.",
 		--////////////////////////////////
-
-	    }--end return
-	    
-	end
-	)--end function
+		
+	}--end return
+	
+end
+)--end function
 
 
 if ( GetLocale() == "koKR" ) then
-
+	
 	--array type
 	ISA = {
-	
+		
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
@@ -356,7 +355,7 @@ if ( GetLocale() == "koKR" ) then
 			["등급"]=2,
 		},
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
@@ -368,10 +367,9 @@ if ( GetLocale() == "koKR" ) then
 			--["기계공학 가방"]=1,
 			--["약초 가방"]=1,
 			--["보석 가방"]=1,
-			
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Location
 		["WL"] = { 
@@ -401,7 +399,7 @@ if ( GetLocale() == "koKR" ) then
 			--["석궁"]=24       see weapon types
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
@@ -534,7 +532,6 @@ if ( GetLocale() == "koKR" ) then
 			["80-85"]=16
 		},
 		--////////////////////////////////
-		
 		
 	};
 	

@@ -2,16 +2,16 @@
 -- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync French Localization
+	ItemSync French Localization
 
-  Author:  Derkyle
-  Website: http://www.manaflux.com
-  
-  French Translation By The Following:
- 	 lefou - (ui.worldofwar.net)
- 	 
------------------------------------------------------------------------------------]]
+	Author:  Derkyle
+	Website: http://www.manaflux.com
 
+	French Translation By The Following:
+		lefou - (ui.worldofwar.net)
+
+
+	Special Keys in French:
 	-- É: C3 89  - \195\137
 	-- é: C3 A9  - \195\169
 	-- ê: C3 AA  - \195\170
@@ -26,12 +26,14 @@
 	--
 	-- ': E2 80 99  - \226\128\153
 
-	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("frFR", function()
+-----------------------------------------------------------------------------------]]
+
+ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
+ISL:RegisterTranslations("frFR", function()
 	
-	    return {
-	    	["No"] = "Non",
-	    	["Yes"] = "Oui",
+	return {
+		["No"] = "Non",
+		["Yes"] = "Oui",
 		["Sell"] = "Vendu pour ",
 		["Vendor"] = "Vendeur pour ",
 		["NoSellP"] = "Pas de Prix de Vente",
@@ -62,7 +64,7 @@
 		["Purge_all_db"] = "Are you sure you want to\npurge the entire item database? IRREVERSIBLE!",
 		["ShowNone"] = "None",
 		["DisplayInvalid"] = "Display Invalid",
-
+		
 		--////////////////////////////////
 		--Key Bindings
 		["ToggleMain"] = "Toggle Main Window",
@@ -79,7 +81,7 @@
 		["Wand"] = "Baguette",
 		"|c00FF0000WARNING: Le cr\195\169ateur d'ItemSync n'est pas\n responsable des d\195\169sconnections qui\n peuvent survenir!|r\n|c00A2D96FUTILISEZ A VOS RISQUES!|r";
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Invalid Item
 		["InvalidItem"] = "Objets Invalide",
@@ -92,7 +94,7 @@
 		["ItemForceSuccess"] = "The following item was successfully validated: ",
 		["InvalidForce_Wait"] = "Please wait Invalid Item validation already in progress!",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Search Feature
 		["SearchName"]="Recherche par nom:",
@@ -152,9 +154,8 @@
 		["PurgeRarity_DialogHeader"] = "Purge Raret\195\169",
 		["PurgeRarity_DialogWarn"] = "Etes-vous sur de vouloir tous PURGER:\n",
 		["PurgeRarity_DialogComplete"] = "Processus de Purge termin\195\169:",
-		
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "Current Selection:",
@@ -169,7 +170,7 @@
 		["Fav_DeleteWarning"] = "Delete the following item from user?",
 		["Fav_DeleteComplete"] = "Item has been successfully deleted from favorites.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--ItemID
 		["ItemID_Item"] = "Objet:",
@@ -189,7 +190,7 @@
 		["DeleteItem_Warn"] = "Etes-vous sur de vouloir supprimer\nl'objet suivant de la BDD?",
 		["DeleteItem_DeleteComplete"] = "Suppresion de l'objet r\195\169ussi.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "Show Stacked Total",
@@ -197,7 +198,7 @@
 		["QuickBag_SortPrice"] = "Trier par Prix",
 		["QuickBag_SortRarity"] = "Trier par Raret\195\169",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "(Click)",
@@ -218,7 +219,7 @@
 		["OneDB_SureSecond"] = "Are you sure you want to split\nyour database to:",
 		["OneDB_Complete"] = "Database operation complete!",
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Optimize
 		["Optimize_Header"] = "Optimize",
@@ -232,7 +233,7 @@
 		["Optimize_No"] = "Optimizing already in progress!",
 		["Optimize_InvalidRelog"] = "Note: Not all items will validate\nuntil you logout->login.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
@@ -329,42 +330,42 @@
 		
 		--////////////////////////////////
 		--Binding
-	    	["Toggle Main Frame"] = "Toggle Main Frame",
-	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
-	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
-	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		["Toggle Main Frame"] = "Toggle Main Frame",
+		["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+		["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+		["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Options Menu
-	    	["Debug"] = "Debug",
-	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
-	    	["Show"] = "Show",
-	    	["Open the ItemSync window."] = "Open the ItemSync window.",
-	    	["Itemid"] = "Itemid",
-	    	["Open the ItemID window."] = "Open the ItemID window.",
-	    	["Quickbag"] = "Quickbag",
-	    	["Open the QuickBag window."] = "Open the QuickBag window.",
-	    	["Favorites"] = "Favorites",
-	    	["Open the Favorites window."] = "Open the Favorites window.",
-	    	["Search"] = "Search",
+		["Debug"] = "Debug",
+		["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+		["Show"] = "Show",
+		["Open the ItemSync window."] = "Open the ItemSync window.",
+		["Itemid"] = "Itemid",
+		["Open the ItemID window."] = "Open the ItemID window.",
+		["Quickbag"] = "Quickbag",
+		["Open the QuickBag window."] = "Open the QuickBag window.",
+		["Favorites"] = "Favorites",
+		["Open the Favorites window."] = "Open the Favorites window.",
+		["Search"] = "Search",
 		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
-	    	["<partial item name>"] = "<partial item name>",
-	    	["Reset Window"] = "Reset Window",
-	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		["<partial item name>"] = "<partial item name>",
+		["Reset Window"] = "Reset Window",
+		["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
 		--////////////////////////////////
-
-	    }--end return
-	    
-	end
-	)--end function
+		
+	}--end return
+	
+end
+)--end function
 
 
 if ( GetLocale() == "frFR" ) then
-
+	
 	--array type
 	ISA = {
-	
+		
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
@@ -372,7 +373,7 @@ if ( GetLocale() == "frFR" ) then
 			["Raret\195\169"]=2,
 		},
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
@@ -391,10 +392,9 @@ if ( GetLocale() == "frFR" ) then
 			--["Sac de calligraphie"]=1,
 			--["Boite de mat\195\169riel"]=1,
 			--["Sac"]=1,
-			
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Location
 		["WL"] = { 
@@ -424,7 +424,7 @@ if ( GetLocale() == "frFR" ) then
 			--["Arbal\195\168te"]=24      see weapon types
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
@@ -464,7 +464,7 @@ if ( GetLocale() == "frFR" ) then
 			["Arch\195\169ologie"]=15
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Armor Types
 		["AT"] = { 
@@ -476,7 +476,7 @@ if ( GetLocale() == "frFR" ) then
 			["Relique"]=6
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
@@ -557,7 +557,6 @@ if ( GetLocale() == "frFR" ) then
 			["80-85"]=16
 		},
 		--////////////////////////////////
-		
 		
 	};
 	

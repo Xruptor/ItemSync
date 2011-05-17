@@ -1,19 +1,21 @@
--- Id: $Id$
+﻿-- Id: $Id$
 -- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Chinese Localization
+	ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇
 
-  Author:  Derkyle
-  Website: http://www.manaflux.com
+	Author:  Derkyle
+	Website: http://www.manaflux.com
+
+	Chinese Translation By The Following:
 -----------------------------------------------------------------------------------]]
 
-	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("zhCN", function()
+ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
+ISL:RegisterTranslations("zhCN", function()
 	
-	    return {
-	    	["No"] = "No",
-	    	["Yes"] = "Yes",
+	return {
+		["No"] = "No",
+		["Yes"] = "Yes",
 		["Sell"] = "Sell for ",
 		["Vendor"] = "Vendor for ",
 		["NoSellP"] = "No Sell Price",
@@ -44,7 +46,7 @@
 		["Purge_all_db"] = "Are you sure you want to\npurge the entire item database? IRREVERSIBLE!",
 		["ShowNone"] = "None",
 		["DisplayInvalid"] = "Display Invalid",
-
+		
 		--////////////////////////////////
 		--Key Bindings
 		["ToggleMain"] = "Toggle Main Window",
@@ -61,7 +63,7 @@
 		["Wand"] = "Wand",
 		"|c00FF0000WARNING: The creator of ItemSync is not\n responsible for any disconnections that\n may occur!|r\n|c00A2D96FUSE AT YOUR OWN RISK!|r";
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Invalid Item
 		["InvalidItem"] = "Item Invalid",
@@ -74,7 +76,7 @@
 		["ItemForceSuccess"] = "The following item was successfully validated: ",
 		["InvalidForce_Wait"] = "Please wait Invalid Item validation already in progress!",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Search Feature
 		["SearchName"]="Search by Name:",
@@ -134,9 +136,8 @@
 		["PurgeRarity_DialogHeader"] = "Purge Rarity",
 		["PurgeRarity_DialogWarn"] = "Are you sure you want to PURGE all:\n",
 		["PurgeRarity_DialogComplete"] = "Purge process complete:",
-		
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "Current Selection:",
@@ -151,7 +152,7 @@
 		["Fav_DeleteWarning"] = "Delete the following item from user?",
 		["Fav_DeleteComplete"] = "Item has been successfully deleted from favorites.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--ItemID
 		["ItemID_Item"] = "item:",
@@ -171,7 +172,7 @@
 		["DeleteItem_Warn"] = "Are you sure you want to delete\nthe following item from the DATABASE?",
 		["DeleteItem_DeleteComplete"] = "Item has been successfully deleted.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "Show Stacked Total",
@@ -179,7 +180,7 @@
 		["QuickBag_SortPrice"] = "Sort by Price",
 		["QuickBag_SortRarity"] = "Sort by Rarity",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "(Click)",
@@ -200,7 +201,7 @@
 		["OneDB_SureSecond"] = "Are you sure you want to split\nyour database to:",
 		["OneDB_Complete"] = "Database operation complete!",
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Optimize
 		["Optimize_Header"] = "Optimize",
@@ -214,7 +215,7 @@
 		["Optimize_No"] = "Optimizing already in progress!",
 		["Optimize_InvalidRelog"] = "Note: Not all items will validate\nuntil you logout->login.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
@@ -308,45 +309,45 @@
 		["ItemCount_FrameHeader"] = "ItemSync ItemCount Frame",
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Binding
-	    	["Toggle Main Frame"] = "Toggle Main Frame",
-	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
-	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
-	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		["Toggle Main Frame"] = "Toggle Main Frame",
+		["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+		["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+		["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Options Menu
-	    	["Debug"] = "Debug",
-	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
-	    	["Show"] = "Show",
-	    	["Open the ItemSync window."] = "Open the ItemSync window.",
-	    	["Itemid"] = "Itemid",
-	    	["Open the ItemID window."] = "Open the ItemID window.",
-	    	["Quickbag"] = "Quickbag",
-	    	["Open the QuickBag window."] = "Open the QuickBag window.",
-	    	["Favorites"] = "Favorites",
-	    	["Open the Favorites window."] = "Open the Favorites window.",
-	    	["Search"] = "Search",
+		["Debug"] = "Debug",
+		["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+		["Show"] = "Show",
+		["Open the ItemSync window."] = "Open the ItemSync window.",
+		["Itemid"] = "Itemid",
+		["Open the ItemID window."] = "Open the ItemID window.",
+		["Quickbag"] = "Quickbag",
+		["Open the QuickBag window."] = "Open the QuickBag window.",
+		["Favorites"] = "Favorites",
+		["Open the Favorites window."] = "Open the Favorites window.",
+		["Search"] = "Search",
 		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
-	    	["<partial item name>"] = "<partial item name>",
-	    	["Reset Window"] = "Reset Window",
-	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		["<partial item name>"] = "<partial item name>",
+		["Reset Window"] = "Reset Window",
+		["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
 		--////////////////////////////////
-
-	    }--end return
-	    
-	end
-	)--end function
+		
+	}--end return
+	
+end
+)--end function
 
 
 if ( GetLocale() == "zhCN" ) then
-
+	
 	--array type
 	ISA = {
-	
+		
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
@@ -354,7 +355,7 @@ if ( GetLocale() == "zhCN" ) then
 			["Rarity"]=2,
 		},
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
@@ -373,7 +374,6 @@ if ( GetLocale() == "zhCN" ) then
 			--["Inscription Bag"]=1,
 			--["Tackle Box"]=1,
 			--["Bag"]=1,
-			
 		},
 		--////////////////////////////////
 
@@ -406,7 +406,7 @@ if ( GetLocale() == "zhCN" ) then
 			--["Crossbow"]=24 see weapon types
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
@@ -446,7 +446,7 @@ if ( GetLocale() == "zhCN" ) then
 			["Archaeology"]=15
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Armor Types
 		["AT"] = { 
@@ -458,7 +458,7 @@ if ( GetLocale() == "zhCN" ) then
 			["Relic"]=6
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
@@ -540,7 +540,6 @@ if ( GetLocale() == "zhCN" ) then
 		},
 		--////////////////////////////////
 		
-		
-	};
+		};
 	
 end

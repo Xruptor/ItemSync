@@ -14,13 +14,14 @@ BINDING_NAME_QUICKBAG = ISL["Toggle QuickBag Frame"];
 
 ItemSync = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceModuleCore-2.0", "AceHook-2.1", "AceDebug-2.0", "AceConsole-2.0", "AceDB-2.0")
 
+--[[ debuging code: only for alpha testing
 function ISynctext(msg, txt)
 	if( DEFAULT_CHAT_FRAME and msg ~= nil) then 
 		if txt == nil then txt = "nil" end
 		DEFAULT_CHAT_FRAME:AddMessage( "|cffffcc00ItemSync:|cff0000ff "..msg.." "..txt)
 	end
 end -- chattext()
-
+--]]
 
 function ItemSync:OnInitialize()
 
@@ -257,7 +258,7 @@ function ItemSync:ParseChat(text)
 
 	if (text) then
 		-- ERROR review neccessary
-		ISynctext("Text = ", text) --hierhin kommen wir nie!!
+		-- ISynctext("Text = ", text) --hierhin kommen wir nie!!
 		local sStore = { }; --prevent repeats
 		
 		--special thanks to Kaelten for some advice =)

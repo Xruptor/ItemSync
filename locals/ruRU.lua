@@ -1,19 +1,22 @@
--- Id: $Id$
+﻿-- Id: $Id$
 -- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Russian Localization
+	ItemSync Russian Localization
 
-  Author:  Derkyle
-  Website: http://www.manaflux.com
+	Author:  Brandmauer
+	Website: ---
+
+	Russian Translation By The Following:
+		Brandmauer (www.wowace.com)
 -----------------------------------------------------------------------------------]]
 
-	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("ruRU", function()
+ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
+ISL:RegisterTranslations("ruRU", function()
 	
-	    return {
-	    	["No"] = "No",
-	    	["Yes"] = "Yes",
+	return {
+		["No"] = "No",
+		["Yes"] = "Yes",
 		["Sell"] = "Sell for ",
 		["Vendor"] = "Vendor for ",
 		["NoSellP"] = "No Sell Price",
@@ -44,7 +47,7 @@
 		["Purge_all_db"] = "Are you sure you want to\npurge the entire item database? IRREVERSIBLE!",
 		["ShowNone"] = "None",
 		["DisplayInvalid"] = "Display Invalid",
-
+		
 		--////////////////////////////////
 		--Key Bindings
 		["ToggleMain"] = "Toggle Main Window",
@@ -61,7 +64,7 @@
 		["Wand"] = "Wand",
 		"|c00FF0000WARNING: The creator of ItemSync is not\n responsible for any disconnections that\n may occur!|r\n|c00A2D96FUSE AT YOUR OWN RISK!|r";
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Invalid Item
 		["InvalidItem"] = "Item Invalid",
@@ -74,7 +77,7 @@
 		["ItemForceSuccess"] = "The following item was successfully validated: ",
 		["InvalidForce_Wait"] = "Please wait Invalid Item validation already in progress!",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Search Feature
 		["SearchName"]="Search by Name:",
@@ -134,9 +137,8 @@
 		["PurgeRarity_DialogHeader"] = "Purge Rarity",
 		["PurgeRarity_DialogWarn"] = "Are you sure you want to PURGE all:\n",
 		["PurgeRarity_DialogComplete"] = "Purge process complete:",
-		
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "Current Selection:",
@@ -151,7 +153,7 @@
 		["Fav_DeleteWarning"] = "Delete the following item from user?",
 		["Fav_DeleteComplete"] = "Item has been successfully deleted from favorites.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--ItemID
 		["ItemID_Item"] = "item:",
@@ -171,7 +173,7 @@
 		["DeleteItem_Warn"] = "Are you sure you want to delete\nthe following item from the DATABASE?",
 		["DeleteItem_DeleteComplete"] = "Item has been successfully deleted.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "Show Stacked Total",
@@ -179,7 +181,7 @@
 		["QuickBag_SortPrice"] = "Sort by Price",
 		["QuickBag_SortRarity"] = "Sort by Rarity",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "(Click)",
@@ -200,7 +202,7 @@
 		["OneDB_SureSecond"] = "Are you sure you want to split\nyour database to:",
 		["OneDB_Complete"] = "Database operation complete!",
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Optimize
 		["Optimize_Header"] = "Optimize",
@@ -214,7 +216,7 @@
 		["Optimize_No"] = "Optimizing already in progress!",
 		["Optimize_InvalidRelog"] = "Note: Not all items will validate\nuntil you logout->login.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
@@ -308,195 +310,194 @@
 		["ItemCount_FrameHeader"] = "ItemSync ItemCount Frame",
 		["ItemCount_LeftClick"] = "Control+Left-Click = Toggle ItemSync Window",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Binding
-	    	["Toggle Main Frame"] = "Toggle Main Frame",
-	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
-	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
-	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		["Toggle Main Frame"] = "Toggle Main Frame",
+		["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+		["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+		["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Options Menu
-	    	["Debug"] = "Debug",
-	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
-	    	["Show"] = "Show",
-	    	["Open the ItemSync window."] = "Open the ItemSync window.",
-	    	["Itemid"] = "Itemid",
-	    	["Open the ItemID window."] = "Open the ItemID window.",
-	    	["Quickbag"] = "Quickbag",
-	    	["Open the QuickBag window."] = "Open the QuickBag window.",
-	    	["Favorites"] = "Favorites",
-	    	["Open the Favorites window."] = "Open the Favorites window.",
-	    	["Search"] = "Search",
+		["Debug"] = "Debug",
+		["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+		["Show"] = "Show",
+		["Open the ItemSync window."] = "Open the ItemSync window.",
+		["Itemid"] = "Itemid",
+		["Open the ItemID window."] = "Open the ItemID window.",
+		["Quickbag"] = "Quickbag",
+		["Open the QuickBag window."] = "Open the QuickBag window.",
+		["Favorites"] = "Favorites",
+		["Open the Favorites window."] = "Open the Favorites window.",
+		["Search"] = "Search",
 		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
-	    	["<partial item name>"] = "<partial item name>",
-	    	["Reset Window"] = "Reset Window",
-	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		["<partial item name>"] = "<partial item name>",
+		["Reset Window"] = "Reset Window",
+		["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
 		--////////////////////////////////
-
-	    }--end return
-	    
-	end
-	)--end function
+		
+	}--end return
+	
+end
+)--end function
 
 
 if ( GetLocale() == "ruRU" ) then
-
+	
 	--array type
 	ISA = {
-	
+		
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
-			["Name"]=1,
-			["Rarity"]=2,
+			["Имя"]=1,
+			["Качество"]=2,
 		},
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
 		--we want to ignore any events in which the bag is ammo / to prevent lag (this list will be ignored)
 		--because we have no ammo bags anymore in wow 4.x.x the list is disabled completly
 		["BAGS"] = { 
-			--old ["Soul Bag"]=1,
+			--old ["Сумкa душ"]=1,
 			--old ["Ammo Pouch"]=1,
 			--old ["Quiver"]=1,
-			--["Enchanting Bag"]=1,
-			--["Engineering Bag"]=1,
-			--["Herb Bag"]=1,
-			--["Gem Bag"]=1,
-			--["Mining Bag"]=1,
-			--["Leatherworking Bag"]=1,
-			--["Inscription Bag"]=1,
-			--["Tackle Box"]=1,
-			--["Bag"]=1,
-			
+			--["Сумка зачаровывателя"]=1,
+			--["Сумка инженера"]=1,
+			--["Сумка травника"]=1,
+			--["Сумка ювелира"]=1,
+			--["Сумка шахтера"]=1,
+			--["Сумка кожевника"]=1,
+			--["Сумка начертателя"]=1,
+			--["Ящик для рыболовных снастей"]=1,
+			--["Сумка"]=1,
 		},
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Weapon Location
 		["WL"] = { 
-			["Held In Off-hand"]=1,
-			["Back"]=2,
-			["One-Hand"]=3,
-			["Two-Hand"]=4,
-			["Off Hand"]=5,
-			["Wrist"]=6,
-			["Chest"]=7,
-			["Legs"]=8,
-			["Feet"]=9,
-			["Shirt"]=10,
-			["Ranged"]=11,
-			["Main Hand"]=12,
-			["Waist"]=13,
-			["Head"]=14,
-			["Finger"]=15,
-			["Hands"]=16,
-			["Shoulder"]=17,
-			["Trinket"]=18,
-			["Tabard"]=19,
-			["Neck"]=20,
-			["Thrown"]=21, -- check this
-			--["Gun"]=22,     see weapon types
-			--["Wand"]=23,    see weapon types
-			--["Crossbow"]=24 see weapon types
+			--["Левая рука"]=1,  disabled, because there is no difference between "Off Hand" and "Held In Off-hand" in russian language  
+			["Спина"]=2,
+			["Одноручное"]=3,
+			["Двуручное"]=4,
+			["Левая рука"]=5,
+			["Запястья"]=6,
+			["Грудь"]=7,
+			["Ноги"]=8,
+			["Ступни"]=9,
+			["Рубашка"]=10,
+			["Дальний бой"]=11,
+			["Правая рука"]=12,
+			["Пояс"]=13,
+			["Голова"]=14,
+			["Палец"]=15,
+			["Кисти рук"]=16,
+			["Плечо"]=17,
+			["Аксессуар"]=18,
+			["Гербовая накидка"]=19,
+			["Шея"]=20,
+			["Метательное"]=21, -- check this
+			--["Огнестрельное"]=22, see weapon types
+			--["Жезл"]=23,          see weapon types
+			--["Арбалет"]=24        see weapon types
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
-			["Axe"]=1,
-			["Bow"]=2,
-			["Dagger"]=3,
-			["Mace"]=4,
-			["Staff"]=5,
-			["Sword"]=6,
-			["Gun"]=7,
-			["Wand"]=8,
-			["Thrown"]=9,
-			["Polearm"]=10,
-			["Fist Weapon"]=11,
-			["Crossbow"]=12,
-			["Fishing Pole"]=13
+			["Топор"]=1,
+			["Лук"]=2,
+			["Кинжал"]=3,
+			["Дробящее"]=4,
+			["Посох"]=5,
+			["Меч"]=6,
+			["Огнестрельное"]=7,
+			["Жезл"]=8,
+			["Метательное"]=9,
+			["Древковое"]=10,
+			["Кистевое"]=11,
+			["Арбалет"]=12,
+			["Удочка"]=13
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Tradeskills
 		["TS"] = { 
-			["Alchemy"]=1,
-			["Blacksmithing"]=2,
-			["Cooking"]=3,
-			["Enchanting"]=4,
-			["Engineering"]=5,
-			["Leatherworking"]=6,
-			["Tailoring"]=7,
-			["Jewelcrafting"]=8,
-			["First Aid"]=9,
-			["Fishing"]=10,
-			["Inscription"]=11,
-			["Herbalism"]=12,
-			["Skinning"]=13,
-			["Mining"]=14,
-			["Archaeology"]=15
+			["Алхимия"]=1,
+			["Кузнечное дело"]=2,
+			["Кулинария"]=3,
+			["Наложение чар"]=4,
+			["Инженерное дело"]=5,
+			["Кожевничество"]=6,
+			["Портняжное дело"]=7,
+			["Ювелирное дело"]=8,
+			["Первая помощь"]=9,
+			["Рыбная ловля"]=10,
+			["Начертание"]=11,
+			["Травничество"]=12,
+			["Снятие шкур"]=13,
+			["Горное дело"]=14,
+			["Археология"]=15
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Armor Types
 		["AT"] = { 
-			["Cloth"]=1,
-			["Leather"]=2,
-			["Mail"]=3,
-			["Plate"]=4,
-			["Shield"]=5,
-			["Relic"]=6
+			["Ткань"]=1,
+			["Кожа"]=2,
+			["Кольчуга"]=3,
+			["Латы"]=4,
+			["Щит"]=5,
+			["Реликвия"]=6
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
 			--["Buckler"]=1,
-			["Shield"]=0	--we want to reset old values from old databases
+			["Щит"]=0	--we want to reset old values from old databases
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Armor Resistances
 		["AR"] = { 
-			["Arcane Resistance"]=1,
-			["Fire Resistance"]=2,
-			["Nature Resistance"]=3,
-			["Frost Resistance"]=4,
-			["Shadow Resistance"]=5
+			["Сопротивление тайной магии"]=1,
+			["Сопротивление огню"]=2,
+			["Сопротивление силам природы"]=3,
+			["Сопротивление магии льда"]=4,
+			["Сопротивление темной магии"]=5
 		},
 		--////////////////////////////////
 		
 		--////////////////////////////////
 		--Armor Rarity
 		["RARITY"] = { 
-			["Poor"]=0,
-			["Common"]=1,
-			["Uncommon"]=2,
-			["Rare"]=3,
-			["Epic"]=4,
-			["Legendary"]=5,
-			["Artifact"]=6,
-			["Heirloom"]=7,
-			[0]="Poor",
-			[1]="Common",
-			[2]="Uncommon",
-			[3]="Rare",
-			[4]="Epic",
-			[5]="Legendary",
-			[6]="Artifact",
-			[7]="Heirloom"
+			["Низкий"]=0,
+			["Обычный"]=1,
+			["Необычный"]=2,
+			["Редкий"]=3,
+			["Эпический"]=4,
+			["Легендарный"]=5,
+			["Артефакт"]=6,
+			["Фамильная черта"]=7,
+			[0]="Низкий",
+			[1]="Обычный",
+			[2]="Необычный",
+			[3]="Редкий",
+			[4]="Эпический",
+			[5]="Легендарный",
+			[6]="Артефакт",
+			[7]="Фамильная черта"
 		},
 		--////////////////////////////////
 		
@@ -540,7 +541,6 @@ if ( GetLocale() == "ruRU" ) then
 		},
 		--////////////////////////////////
 		
-		
-	};
+		};
 	
 end

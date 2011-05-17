@@ -2,18 +2,20 @@
 -- Version: r$Revision$
 
 --[[--------------------------------------------------------------------------------
-  ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇
+	ItemSync Traditional Chinese Localization 竹笙姬@暴風祭壇
 
-  Author:  Derkyle
-  Website: http://www.manaflux.com
+	Author:  Derkyle
+	Website: http://www.manaflux.com
+
+	Chinese Translation By The Following:
 -----------------------------------------------------------------------------------]]
 
-	ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
-	ISL:RegisterTranslations("zhTW", function()
+ISL = AceLibrary("AceLocale-2.2"):new("ItemSync")
+ISL:RegisterTranslations("zhTW", function()
 	
-	    return {
-	    	["No"] = "No",
-	    	["Yes"] = "Yes",
+	return {
+		["No"] = "No",
+		["Yes"] = "Yes",
 		["Sell"] = "出售:",
 		["Vendor"] = "購買:",
 		["NoSellP"] = "無售價資料",
@@ -44,7 +46,7 @@
 		["Purge_all_db"] = "請確定是否要\n清除所有物件資料庫? 此動作無法復原!!!",
 		["ShowNone"] = "無",
 		["DisplayInvalid"] = "顯示無效物件",
-
+		
 		--////////////////////////////////
 		--Key Bindings
 		["ToggleMain"] = "切換主視窗",
@@ -61,7 +63,7 @@
 		["Wand"] = "魔杖",
 		"|c00FF0000警告: ItemSync插件作者對於\n 發生斷線現象不負任何責任|r\n|c00A2D96F風險自負!|r";
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Invalid Item
 		["InvalidItem"] = "無效物件",
@@ -74,7 +76,7 @@
 		["ItemForceSuccess"] = "下列物件已成功轉換為有效物件: ",
 		["InvalidForce_Wait"] = "請稍候, 系統正在處理中!",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Search Feature
 		["SearchName"]="用名稱搜尋:",
@@ -134,9 +136,8 @@
 		["PurgeRarity_DialogHeader"] = "稀有度清除",
 		["PurgeRarity_DialogWarn"] = "請確定是否要清除:\n",
 		["PurgeRarity_DialogComplete"] = "清除程序完成:",
-		
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Favorites
 		["Fav_CurrentUsr"] = "當前角色:",
@@ -151,7 +152,7 @@
 		["Fav_DeleteWarning"] = "是否刪除下列角色_我的最愛?",
 		["Fav_DeleteComplete"] = "物品已經成功於我的最愛中刪除.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--ItemID
 		["ItemID_Item"] = "物件:",
@@ -171,7 +172,7 @@
 		["DeleteItem_Warn"] = "請確定是否要從資料庫中\n刪除下列物件?",
 		["DeleteItem_DeleteComplete"] = "物件已刪除成功.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--QuickBag
 		["QuickBag_ShowStack"] = "顯示堆疊數",
@@ -179,7 +180,7 @@
 		["QuickBag_SortPrice"] = "依價格排序",
 		["QuickBag_SortRarity"] = "依稀有度排序",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--MiniMap
 		["MiniMap_LeftClick"] = "(點擊)",
@@ -200,7 +201,7 @@
 		["OneDB_SureSecond"] = "請確定是否要拆開\n你的資料庫:",
 		["OneDB_Complete"] = "資料庫運作完成!",
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Optimize
 		["Optimize_Header"] = "優化",
@@ -214,7 +215,7 @@
 		["Optimize_No"] = "系統正在處理中!",
 		["Optimize_InvalidRelog"] = "注意: 並非所有物件都將成功轉換,\n請重新登入.",
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Help
 		["Help_MainSection"] = 19,
@@ -311,42 +312,42 @@
 
 		--////////////////////////////////
 		--Binding
-	    	["Toggle Main Frame"] = "Toggle Main Frame",
-	    	["Toggle Favorites Frame"] = "Toggle Favorites Frame",
-	    	["Toggle ItemID Frame"] = "Toggle ItemID Frame",
-	    	["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
+		["Toggle Main Frame"] = "Toggle Main Frame",
+		["Toggle Favorites Frame"] = "Toggle Favorites Frame",
+		["Toggle ItemID Frame"] = "Toggle ItemID Frame",
+		["Toggle QuickBag Frame"] = "Toggle QuickBag Frame",
 		--////////////////////////////////
 
 		--////////////////////////////////
 		--Options Menu
-	    	["Debug"] = "Debug",
-	    	["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
-	    	["Show"] = "Show",
-	    	["Open the ItemSync window."] = "Open the ItemSync window.",
-	    	["Itemid"] = "Itemid",
-	    	["Open the ItemID window."] = "Open the ItemID window.",
-	    	["Quickbag"] = "Quickbag",
-	    	["Open the QuickBag window."] = "Open the QuickBag window.",
-	    	["Favorites"] = "Favorites",
-	    	["Open the Favorites window."] = "Open the Favorites window.",
-	    	["Search"] = "Search",
+		["Debug"] = "Debug",
+		["Turns display of debugging text on and off."] = "Turns display of debugging text on and off.",
+		["Show"] = "Show",
+		["Open the ItemSync window."] = "Open the ItemSync window.",
+		["Itemid"] = "Itemid",
+		["Open the ItemID window."] = "Open the ItemID window.",
+		["Quickbag"] = "Quickbag",
+		["Open the QuickBag window."] = "Open the QuickBag window.",
+		["Favorites"] = "Favorites",
+		["Open the Favorites window."] = "Open the Favorites window.",
+		["Search"] = "Search",
 		["Do a search for an item by keywords."] = "Do a search for an item by keywords.",
-	    	["<partial item name>"] = "<partial item name>",
-	    	["Reset Window"] = "Reset Window",
-	    	["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
+		["<partial item name>"] = "<partial item name>",
+		["Reset Window"] = "Reset Window",
+		["Resets all ItemSync windows."] = "Resets all ItemSync windows.",
 		--////////////////////////////////
 
-	    }--end return
-	    
-	end
-	)--end function
+	}--end return
+	
+end
+)--end function
 
 
 if ( GetLocale() == "zhTW" ) then
 
 	--array type
 	ISA = {
-	
+		
 		--////////////////////////////////
 		--Weapon Location
 		["SORTING"] = {
@@ -354,7 +355,7 @@ if ( GetLocale() == "zhTW" ) then
 			["稀有度"]=2,
 		},
 		--////////////////////////////////
-	
+		
 		--////////////////////////////////
 		--Types of Bags
 		--This corresponds to the subItemTypes in getiteminfo()
@@ -368,10 +369,9 @@ if ( GetLocale() == "zhTW" ) then
 			--["工程包"]=1,
 			--["草藥包"]=1,
 			--["寶石背包"]=1,
-			
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Location
 		["WL"] = { 
@@ -401,7 +401,7 @@ if ( GetLocale() == "zhTW" ) then
 			--["弩"]=24
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Weapon Types
 		["WT"] = { 
@@ -441,7 +441,7 @@ if ( GetLocale() == "zhTW" ) then
 			["Archaeology"]=15
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Armor Types
 		["AT"] = { 
@@ -453,7 +453,7 @@ if ( GetLocale() == "zhTW" ) then
 			["Relic"]=6
 		},
 		--////////////////////////////////
-
+		
 		--////////////////////////////////
 		--Shield Type
 		["ST"] = { 
@@ -534,7 +534,6 @@ if ( GetLocale() == "zhTW" ) then
 			["80-85"]=16
 		},
 		--////////////////////////////////
-		
 		
 	};
 	
