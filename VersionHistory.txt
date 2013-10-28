@@ -1,0 +1,20 @@
+*to-do*
+	- update Ace2 to Ace3
+	- more search options (for Searchframe)
+
+*known issues* 
+	- there is a coloring bug in the favourite list (no tickets please)
+	- FuBar-Plugin of ItemSync not tested yet
+
+*r92 (28-Oct-2012)
+	- updated AceEvent-2.0
+	- moved AceEvent into Addon, because it is not updated anymore
+
+*r87 (17-May-2011)
+	-fixed: updated externals and .pkgmeta
+	-fixed: embeded (changed) Metrognome-2.0 library, because not available anymore as external
+	-fixed: get the code working on client 4.x.x
+	-changed: updated several language files and changed file names
+	-added: esES language file incl. translation for Searchframe options
+	-added: ruRU language file incl. translation for Searchframe options
+	-changed: updated and increased searchframe options
