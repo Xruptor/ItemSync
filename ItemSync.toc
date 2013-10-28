@@ -24,7 +24,6 @@
 libs\AceLibrary\AceLibrary.lua
 libs\AceOO-2.0\AceOO-2.0.lua
 
-libs\AceEvent-2.0\AceEvent-2.0.lua
 libs\AceHook-2.1\AceHook-2.1.lua
 libs\AceDB-2.0\AceDB-2.0.lua
 libs\AceDebug-2.0\AceDebug-2.0.lua
@@ -40,6 +39,7 @@ libs\Crayon-2.0\Crayon-2.0.lua
 #@end-no-lib-strip@
 
 # delivered libs within the addon, because not available anymore
+embeds\AceEvent-2.0\AceEvent-2.0.lua
 embeds\Metrognome-2.0\Metrognome-2.0.lua
 
 xml\templates.xml
