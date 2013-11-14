@@ -1,4 +1,4 @@
-## Id: $Id$
+## Id: $Id: ItemSync.toc 89 2013-10-28 20:46:44Z Brandmauer $
 ## Interface: 50400
 ## Title: ItemSync |cff7fff7f -Ace2-|r
 ## Notes: ItemSync the happy item gatherer and toolkit.
@@ -6,7 +6,7 @@
 ## Author: Derkyle, Xruptor, Brandmauer
 ## Email: 
 
-## Version: r$Revision$
+## Version: r$Revision: 89 $
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## RequiredDeps: 

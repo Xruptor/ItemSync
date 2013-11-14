@@ -1,5 +1,5 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: frFR.lua 87 2011-05-17 11:42:27Z Brandmauer $
+-- Version: r$Revision: 87 $
 
 --[[--------------------------------------------------------------------------------
 	ItemSync French Localization

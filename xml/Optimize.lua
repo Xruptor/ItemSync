@@ -1,5 +1,5 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: Optimize.lua 64 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 64 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Optimize Core

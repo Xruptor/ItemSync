@@ -1,5 +1,5 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: Filters.lua 81 2011-05-07 18:31:22Z Brandmauer $
+-- Version: r$Revision: 81 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Filters Core

@@ -1,5 +1,5 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: ItemSync_Fubar.lua 64 2007-04-08 15:40:55Z derkyle $
+-- Version: r$Revision: 64 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync FuBar Plugin

@@ -1,5 +1,5 @@
--- Id: $Id$
--- Version: r$Revision$
+-- Id: $Id: Options.lua 81 2011-05-07 18:31:22Z Brandmauer $
+-- Version: r$Revision: 81 $
 
 --[[--------------------------------------------------------------------------------
   ItemSync Options Core
